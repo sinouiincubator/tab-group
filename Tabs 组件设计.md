@@ -43,9 +43,9 @@ import { TabContent, TabPanel } from '@sinouiincubator/tab-group';
 function Demo() {
   return (
     <TabContent active={0}>
-      <TabPanel>内容1</TabPanel>
-      <TabPanel>内容2</TabPanel>
-      <TabPanel>内容3</TabPanel>
+      <TabPanel id={0}>内容1</TabPanel>
+      <TabPanel id={1}>内容2</TabPanel>
+      <TabPanel id={2}>内容3</TabPanel>
     </TabContent>
   );
 }
