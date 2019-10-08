@@ -1,0 +1,82 @@
+{
+  "name": "@sinouiincubator/tab-group",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "umd:main": "dist/sinouiincubator-tab-group.umd.production.js",
+  "module": "dist/sinouiincubator-tab-group.esm.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "ts-lib-tools watch",
+    "test": "ts-lib-tools test",
+    "build": "ts-lib-tools build",
+    "format": "ts-lib-tools format",
+    "lint": "ts-lib-tools lint",
+    "prepublishOnly": "ts-lib-tools build",
+    "doc:dev": "docz dev",
+    "doc:build": "docz build",
+    "doc:publish": "docz build && gh-pages -d .docz/dist"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always"
+  },
+  "eslintConfig": {
+    "extends": "ts-lib"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{ts,tsx}": [
+      "cross-env CI=true ts-lib-tools test",
+      "eslint --fix --color",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "files": [
+    "dist",
+    "assets"
+  ],
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "@babel/runtime": "^7.6.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.1.1",
+    "@testing-library/react": "^9.3.0",
+    "@testing-library/react-hooks": "^2.0.3",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "css-loader": "^3.2.0",
+    "docz": "^1.3.2",
+    "docz-theme-default": "^1.2.0",
+    "gh-pages": "^2.1.1",
+    "husky": "^3.0.8",
+    "lint-staged": "^9.4.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^1.18.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-test-renderer": "^16.10.2",
+    "style-loader": "^1.0.0",
+    "ts-lib-tools": "^0.4.7",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typescript": "^3.6.3",
+    "webpack-docz-ghpages-plugin": "^0.4.0"
+  }
+}
