@@ -3,6 +3,47 @@ name: 开始
 route: /
 ---
 
+import { useState } from 'react';
+import { Playground } from 'docz';
+import { TabHeader, TabHeaderItem } from '../src';
+
 # 开始使用
 
-在这里写项目使用文档。
+安装依赖：
+
+```shell
+yarn add sinoui-components @sinouiincubator/tab-group
+```
+
+## 入门示例
+
+```tsx
+import React from 'react';
+import TabGroup, { Tab } from '@sinouiincubator/tab-group';
+
+function Demo() {
+  return (
+    <TabGroup>
+      <Tab title="标签1">标签内容1</Tab>
+      <Tab title="标签2">标签内容2</Tab>
+      <Tab title="标签3">标签内容3</Tab>
+    </TabGroup>
+  );
+}
+```
+
+## TabHeader
+
+<Playground>
+  {() => {
+    const [active, setActive] = useState('1');
+
+    return <TabHeader value={active} onChange={setActive}>
+      <TabHeaderItem title="标签1" id="1" />
+      <TabHeaderItem title="标签2" id="2" />
+      <TabHeaderItem title="标签3" id="3" />
+    </TabHeader>;
+
+}}
+
+</Playground>
