@@ -13,6 +13,8 @@ function Demo() {
     <TabGroup>
       <Tab title="标签1">标签内容1</Tab>
       <Tab title="标签2">标签内容2</Tab>
+      {test && <Tab title="标签3">标签内容3</Tab>}
+      <Tab title="标签4">标签内容4</Tab>
     </TabGroup>
   );
 }
@@ -22,14 +24,18 @@ API2：（只渲染出头部信息条）
 
 ```tsx
 import React from 'react';
-import { TabHeader, Tab } from '@sinouiincubator/tab-group';
+import { TabHeader, TabHeaderItem } from '@sinouiincubator/tab-group';
 
 function Demo() {
   const [active, setActive] = React.useState(0);
   return (
     <TabHeader value={active} onChange={setActive}>
-      <Tab title="标签1" />
-      <Tab title="标签2" />
+      <TabHeaderItem title="标签1" id={0} />
+      <TabHeaderItem title="标签2" id={1} />
+      <Test>
+        <TabHeaderItem title="标签3" id={2} />
+      </Test>
+      <TabHeaderItem title="标签4" id={3} />
     </TabHeader>
   );
 }
