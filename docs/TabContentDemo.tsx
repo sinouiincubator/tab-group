@@ -22,7 +22,7 @@ export default function TabContentDemo() {
   }, [active]);
 
   return (
-    <div>
+    <>
       <TabContent active={active}>
         <TabPanel id={0} style={{ background: 'red' }}>
           内容1
@@ -36,6 +36,6 @@ export default function TabContentDemo() {
       </TabContent>
       <Button onClick={handlePrevClick}>上一页</Button>
       <Button onClick={handleNextClick}>下一页</Button>
-    </div>
+    </>
   );
 }
