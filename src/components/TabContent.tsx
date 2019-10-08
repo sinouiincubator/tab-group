@@ -21,7 +21,7 @@ const TabContentWrapper = styled.div`
 export default function TabContent(props: Props) {
   const { className, active, children } = props;
   const context = useMemo(() => ({ active }), [active]);
-  const transform = useMemo(() => `translate3d(-${100 * active}%,0,0`, [
+  const transform = useMemo(() => `translate3d(-${100 * active}%, 0px, 0px)`, [
     active,
   ]);
 
