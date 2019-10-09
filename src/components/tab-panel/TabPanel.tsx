@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import styled from 'styled-components';
-import TabContentContext from './TabContentContext';
+import TabContentContext from '../TabContentContext';
+import TabPanelWrapper from './TabPanelWrapper';
 
 interface TabPanelProps {
   children: React.ReactNode;
@@ -10,11 +10,9 @@ interface TabPanelProps {
   style?: React.CSSProperties;
 }
 
-const TabPanelWrapper = styled.div`
-  width: 100%;
-  flex-shrink: 0;
-`;
-
+/**
+ * 标签页面板组件
+ */
 export default function TabPanel(props: TabPanelProps) {
   const { children, id, className, ...other } = props;
   const { active } = useContext(TabContentContext);
@@ -30,7 +28,14 @@ export default function TabPanel(props: TabPanelProps) {
   return (
     <TabPanelWrapper
       {...other}
-      className={classNames('sinoui-tab-panel', className)}
+      className={classNames(
+        'sinoui-tab-panel',
+        {
+          'sinoui-tab-panel-active': active === id,
+          'sinoui-tab-panel-hidden': !isShow,
+        },
+        className,
+      )}
     >
       {isRendered ? children : null}
     </TabPanelWrapper>

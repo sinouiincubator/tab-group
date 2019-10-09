@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabContent 镜像测试 渲染 TabContent 1`] = `
+.c0 {
+  overflow-x: hidden;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
+  -webkit-transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
+  transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
+}
+
+<div
+  className="c0 sinoui-tab-content"
+>
+  <div
+    className="c1 sinoui-tab-panel-list"
+    style={
+      Object {
+        "transform": "translate3d(-100%, 0px, 0px)",
+      }
+    }
+  >
+    内容
+  </div>
+</div>
+`;

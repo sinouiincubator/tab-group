@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
-import styled from 'styled-components';
-import TabContentContext from './TabContentContext';
+import TabContentContext from '../TabContentContext';
+import TabContentWrapper from './TabContentWrapper';
+import TabPanelListWrapper from './TabPanelListWrapper';
 
 export interface Props {
   children?: React.ReactNode;
@@ -9,15 +10,9 @@ export interface Props {
   active: number;
 }
 
-const Container = styled.div`
-  overflow-x: hidden;
-`;
-
-const TabContentWrapper = styled.div`
-  display: flex;
-  transition: transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s;
-`;
-
+/**
+ * 选项卡组件的内容组件
+ */
 export default function TabContent(props: Props) {
   const { className, active, children } = props;
   const context = useMemo(() => ({ active }), [active]);
@@ -27,14 +22,16 @@ export default function TabContent(props: Props) {
 
   return (
     <TabContentContext.Provider value={context}>
-      <Container>
-        <TabContentWrapper
-          className={classNames('sinoui-tab-content', className)}
+      <TabContentWrapper
+        className={classNames('sinoui-tab-content', className)}
+      >
+        <TabPanelListWrapper
           style={{ transform }}
+          className="sinoui-tab-panel-list"
         >
           {children}
-        </TabContentWrapper>
-      </Container>
+        </TabPanelListWrapper>
+      </TabContentWrapper>
     </TabContentContext.Provider>
   );
 }

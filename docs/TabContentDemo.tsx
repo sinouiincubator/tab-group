@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Button from 'sinoui-components/Button';
-import TabContent from '../src/components/TabContent';
-import TabPanel from '../src/components/TabPanel';
+import { TabContent, TabPanel } from '../src';
 
 export default function TabContentDemo() {
   const [active, setActive] = useState(0);
