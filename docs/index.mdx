@@ -5,12 +5,16 @@ route: /
 
 import { useState } from 'react';
 import { Playground } from 'docz';
-import { TabHeader, TabHeaderItem } from '../src';
+import { MdDelete } from 'react-icons/md';
+import TabGroup, { Tab, TabHeader, TabHeaderItem } from '../src';
 import TabContentDemo from './TabContentDemo';
+import Button from 'sinoui-components/Button';
 
-# 开始使用
+# 标签页
 
-安装依赖：
+选项卡切换组件。
+
+## 安装依赖
 
 ```shell
 yarn add sinoui-components @sinouiincubator/tab-group
@@ -33,16 +37,30 @@ function Demo() {
 }
 ```
 
+<Playground>
+  {() => {
+    const [active, setActive] = useState(0);
+
+    return <TabGroup selectedIndex={active} onSelect={(index) => setActive(index)}>
+        <Tab title="标签1">内容 1</Tab>
+        <Tab title="标签2">内容 2</Tab>
+        <Tab title="标签3">内容 3</Tab>
+    </TabGroup>;
+
+}}
+
+</Playground>
+
 ## TabHeader
 
 <Playground>
   {() => {
-    const [active, setActive] = useState('1');
+    const [active, setActive] = useState(0);
 
-    return <TabHeader value={active} onChange={setActive}>
-      <TabHeaderItem title="标签1" id="1" />
-      <TabHeaderItem title="标签2" id="2" />
-      <TabHeaderItem title="标签3" id="3" />
+    return <TabHeader selectedIndex={active} onSelect={setActive}>
+      <TabHeaderItem title="标签1" />
+      <TabHeaderItem title="标签2" />
+      <TabHeaderItem title="标签3" />
     </TabHeader>;
 
 }}
@@ -53,4 +71,49 @@ function Demo() {
 
 <Playground>
   <TabContentDemo />
+</Playground>
+
+## 维护标签页
+
+<Playground>
+  {() => {
+    const [tabs, setTabs] = useState(() => {
+      const items = [];
+      for (let i = 0; i < 10; i++) {
+        items.push({ id: i, title: `标签${i + 1}`, content: `内容${i + 1}` });
+      }
+      return items;
+    });
+
+    const handleTabRemove = (event, tabId) => {
+      event.stopPropagation();
+      const newTabs = tabs.filter(tab => tab.id !== tabId);
+
+      setTabs(newTabs);
+    };
+
+    const handleAdd = () => {
+      const index = Math.max(...tabs.map(tab => tab.id)) + 1;
+      const newTabs = [...tabs, { id: index, title: `标签${index + 1}`, content: `内容${index + 1}` }];
+
+      setTabs(newTabs);
+    }
+
+    return (
+      <>
+      <TabGroup>
+        {tabs.map((tab) => (
+          <Tab key={tab.id} title={<div>
+              {tab.title}<MdDelete onClick={(event) => handleTabRemove(event, tab.id)}></MdDelete>
+            </div>}>
+            {tab.content}
+          </Tab>
+        ))}
+      </TabGroup>
+      <Button raised onClick={handleAdd}>新增</Button>
+      </>
+    );
+
+}}
+
 </Playground>

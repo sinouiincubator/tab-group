@@ -1,8 +1,10 @@
 import React, { useContext, useCallback } from 'react';
 import classNames from 'classnames';
 import { useRipple } from '@sinoui/ripple';
-import TabHeaderContext from '../TabHeaderContext';
 import TabHeaderItemWrapper from './TabHeaderItemWrapper';
+import TabListContext from '../TabListContext';
+import useTabRegister from '../commons/useTabRegister';
+import TabHeaderContext from '../TabHeaderContext';
 
 interface Props {
   /**
@@ -18,10 +20,6 @@ interface Props {
    */
   style?: React.CSSProperties;
   /**
-   * 指定选项卡id
-   */
-  id: string;
-  /**
    * 是否可用
    */
   disabled?: boolean;
@@ -30,37 +28,39 @@ interface Props {
 /**
  * 头部选项卡项组件
  */
-function TabHeaderItem({
-  id,
-  title,
-  className,
-  style,
-  disabled,
-  ...rest
-}: Props) {
-  const context = useContext(TabHeaderContext);
-  // eslint-disable-next-line react/destructuring-assignment
-  const active = context ? context.activeTabId === id : false;
+function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
+  const tabListContext = useContext(TabListContext);
+  const tabHeaderContext = useContext(TabHeaderContext);
+  const index = useTabRegister();
+  const selectedIndex = tabListContext ? tabListContext.selectedIndex : -1;
+  const isActive = index === selectedIndex;
 
   const rippleRef = useRipple<HTMLDivElement>();
 
-  const handleClick = useCallback(() => {
-    if (context) {
-      context.onChange(id);
-    }
-  }, [context, id]);
+  const handleClick = useCallback(
+    (event: React.MouseEvent) => {
+      if (tabHeaderContext) {
+        tabHeaderContext.onSelect(index, event);
+      }
+    },
+    [index, tabHeaderContext],
+  );
+
+  if (index === -1) {
+    return null;
+  }
 
   return (
     <TabHeaderItemWrapper
       className={classNames('sinoui-tab-label', className, {
-        'sinoui-tab-label-active': active,
+        'sinoui-tab-label-active': isActive,
       })}
       style={style}
       disabled={disabled}
-      active={active}
+      active={isActive}
       onClick={disabled ? undefined : handleClick}
-      data-tab-id={id}
       ref={rippleRef}
+      data-testid={`tab-header-item-${index}`}
       {...rest}
     >
       <div className="sinoui-tab-label-content">{title}</div>

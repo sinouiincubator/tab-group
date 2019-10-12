@@ -1,43 +1,60 @@
-import React, { useContext, useMemo, useState, useEffect } from 'react';
+/* eslint-disable react/destructuring-assignment */
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import TabContentContext from '../TabContentContext';
 import TabPanelWrapper from './TabPanelWrapper';
+import TabListContext from '../TabListContext';
+import useTabRegister from '../commons/useTabRegister';
 
 interface TabPanelProps {
   children: React.ReactNode;
-  id: number | string;
   className?: string;
   style?: React.CSSProperties;
+}
+
+function useIsNeedRendered(isActive: boolean) {
+  const [isNeedRendered, setIsNeedRendered] = useState(false);
+
+  if (isActive && !isNeedRendered) {
+    setIsNeedRendered(true);
+  }
+
+  return isNeedRendered;
+}
+
+function useIsActive(index: number) {
+  const context = useContext(TabListContext);
+  const selectedIndex = context ? context.selectedIndex : 0;
+
+  return index === selectedIndex;
 }
 
 /**
  * 标签页面板组件
  */
 export default function TabPanel(props: TabPanelProps) {
-  const { children, id, className, ...other } = props;
-  const { active } = useContext(TabContentContext);
-  const [isRendered, setIsRendered] = useState(false);
-  const isShow = useMemo(() => active === id, [active, id]);
+  const { children, className, ...other } = props;
+  const index = useTabRegister();
+  const isActive = useIsActive(index);
+  const isNeedRendered = useIsNeedRendered(isActive);
 
-  useEffect(() => {
-    if (isShow) {
-      setIsRendered(true);
-    }
-  }, [isShow]);
+  if (index === -1) {
+    return null;
+  }
 
   return (
     <TabPanelWrapper
+      data-testid={`tab-panel-${index}`}
       {...other}
       className={classNames(
         'sinoui-tab-panel',
         {
-          'sinoui-tab-panel-active': active === id,
-          'sinoui-tab-panel-hidden': !isShow,
+          'sinoui-tab-panel-active': isActive,
+          'sinoui-tab-panel-hidden': !isActive,
         },
         className,
       )}
     >
-      {isRendered ? children : null}
+      {isNeedRendered ? children : null}
     </TabPanelWrapper>
   );
 }

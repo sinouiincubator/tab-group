@@ -5,17 +5,19 @@ interface TabHeaderContextState {
    * 是否是密集模式
    */
   dense?: boolean;
-  /**
-   * 当前选项卡id
-   */
-  activeTabId: string;
 
   /**
-   * 变更当前选项卡id
+   * 变更当前选项卡
    */
-  onChange: (tabId: string) => void;
+  onSelect: (
+    tabIndex: number,
+    event: React.MouseEvent | React.KeyboardEvent,
+  ) => void;
 }
 
+/**
+ * 标签头部上下文
+ */
 const TabHeaderContext = React.createContext<TabHeaderContextState | null>(
   null,
 );

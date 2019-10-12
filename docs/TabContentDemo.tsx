@@ -21,10 +21,10 @@ export default function TabContentDemo() {
 
   return (
     <>
-      <TabContent active={active}>
-        <TabPanel id={0}>内容1</TabPanel>
-        <TabPanel id={1}>内容2</TabPanel>
-        <TabPanel id={2}>内容3</TabPanel>
+      <TabContent selectedIndex={active}>
+        <TabPanel>内容1</TabPanel>
+        <TabPanel>内容2</TabPanel>
+        <TabPanel>内容3</TabPanel>
       </TabContent>
       <Button onClick={handlePrevClick}>上一页</Button>
       <Button onClick={handleNextClick}>下一页</Button>

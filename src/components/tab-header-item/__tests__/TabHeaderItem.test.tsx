@@ -5,18 +5,25 @@ import defaultTheme from 'sinoui-components/styles/defaultTheme';
 import React from 'react';
 import TabHeaderContext from '../../TabHeaderContext';
 import TabHeaderItem from '../TabHeaderItem';
+import TabListContext from '../../TabListContext';
 
 it('选项卡是选中状态', () => {
   const context = {
-    onChange: jest.fn(),
-    activeTabId: '1',
+    onSelect: jest.fn(),
+  };
+  const tabListContext = {
+    selectedIndex: 0,
+    register: () => 0,
+    unregister: jest.fn(),
   };
 
   const { getByTestId } = render(
     <ThemeProvider theme={defaultTheme}>
-      <TabHeaderContext.Provider value={context}>
-        <TabHeaderItem id="1" title="标签1" data-testId="tab" />
-      </TabHeaderContext.Provider>
+      <TabListContext.Provider value={tabListContext}>
+        <TabHeaderContext.Provider value={context}>
+          <TabHeaderItem title="标签1" data-testId="tab" />
+        </TabHeaderContext.Provider>
+      </TabListContext.Provider>
     </ThemeProvider>,
   );
 
@@ -26,15 +33,21 @@ it('选项卡是选中状态', () => {
 
 it('点击标签时，调用 onChange 方法', () => {
   const context = {
-    onChange: jest.fn(),
-    activeTabId: '2',
+    onSelect: jest.fn(),
+  };
+  const tabListContext = {
+    selectedIndex: 0,
+    register: () => 0,
+    unregister: jest.fn(),
   };
 
   const { getByTestId } = render(
     <ThemeProvider theme={defaultTheme}>
-      <TabHeaderContext.Provider value={context}>
-        <TabHeaderItem id="1" title="标签1" data-testId="tab" />
-      </TabHeaderContext.Provider>
+      <TabListContext.Provider value={tabListContext}>
+        <TabHeaderContext.Provider value={context}>
+          <TabHeaderItem title="标签1" data-testId="tab" />
+        </TabHeaderContext.Provider>
+      </TabListContext.Provider>
     </ThemeProvider>,
   );
 
@@ -42,20 +55,26 @@ it('点击标签时，调用 onChange 方法', () => {
     fireEvent.click(getByTestId('tab'));
   });
 
-  expect(context.onChange).toBeCalled();
+  expect(context.onSelect).toBeCalledWith(0, expect.anything());
 });
 
 it('不可用时不能点击', () => {
   const context = {
-    onChange: jest.fn(),
-    activeTabId: '2',
+    onSelect: jest.fn(),
+  };
+  const tabListContext = {
+    selectedIndex: 0,
+    register: () => 0,
+    unregister: jest.fn(),
   };
 
   const { getByTestId } = render(
     <ThemeProvider theme={defaultTheme}>
-      <TabHeaderContext.Provider value={context}>
-        <TabHeaderItem id="1" title="标签1" data-testId="tab" disabled />
-      </TabHeaderContext.Provider>
+      <TabListContext.Provider value={tabListContext}>
+        <TabHeaderContext.Provider value={context}>
+          <TabHeaderItem title="标签1" data-testId="tab" disabled />
+        </TabHeaderContext.Provider>
+      </TabListContext.Provider>
     </ThemeProvider>,
   );
 
@@ -63,5 +82,13 @@ it('不可用时不能点击', () => {
     fireEvent.click(getByTestId('tab'));
   });
 
-  expect(context.onChange).not.toBeCalled();
+  expect(context.onSelect).not.toBeCalled();
+});
+
+it('不在TabHeader中使用，不渲染TabHeaderItem', () => {
+  const { container } = render(
+    <TabHeaderItem title="标签1" data-testId="tab" disabled />,
+  );
+
+  expect(container).toBeEmpty();
 });

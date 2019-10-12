@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`正确渲染TabGroup 1`] = `
+<div
+  className="sinoui-tab-group"
+>
+  <div
+    className="sc-bdVaJa dOqOXa sinoui-tab-header"
+  >
+    <div
+      className="sinoui-tab-label-container"
+    >
+      <div
+        className="sinoui-tab-list"
+      >
+        <div
+          className="sinoui-tab-labels"
+        >
+          <div
+            className="sc-ifAKCX bpNOxv sinoui-tab-label sinoui-tab-label-active"
+            data-testid="tab-header-item-0"
+            onClick={[Function]}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页1
+            </div>
+          </div>
+          <div
+            className="sc-ifAKCX bkwWcO sinoui-tab-label"
+            data-testid="tab-header-item-1"
+            onClick={[Function]}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页2
+            </div>
+          </div>
+          <div
+            className="sc-ifAKCX bkwWcO sinoui-tab-label"
+            data-testid="tab-header-item-2"
+            onClick={[Function]}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页3
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-bwzfXH fmPQiX sinoui-ink-bar"
+          data-testid="inkbar"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-htpNat huDZjU sinoui-tab-content"
+  >
+    <div
+      className="sc-bxivhb fmAyFL sinoui-tab-panel-list"
+      style={
+        Object {
+          "transform": "translate3d(-0%, 0px, 0px)",
+        }
+      }
+    >
+      <div
+        className="sc-EHOje bZofev sinoui-tab-panel sinoui-tab-panel-active"
+        data-testid="tab-panel-0"
+      >
+        内容1
+      </div>
+      <div
+        className="sc-EHOje bZofev sinoui-tab-panel sinoui-tab-panel-hidden"
+        data-testid="tab-panel-1"
+      />
+      <div
+        className="sc-EHOje bZofev sinoui-tab-panel sinoui-tab-panel-hidden"
+        data-testid="tab-panel-2"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`选中第二个标签页 1`] = `
+<div
+  className="sinoui-tab-group"
+>
+  <div
+    className="sc-bdVaJa dOqOXa sinoui-tab-header"
+  >
+    <div
+      className="sinoui-tab-label-container"
+    >
+      <div
+        className="sinoui-tab-list"
+      >
+        <div
+          className="sinoui-tab-labels"
+        >
+          <div
+            className="sc-ifAKCX bkwWcO sinoui-tab-label"
+            data-testid="tab-header-item-0"
+            onClick={[Function]}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页1
+            </div>
+          </div>
+          <div
+            className="sc-ifAKCX bpNOxv sinoui-tab-label sinoui-tab-label-active"
+            data-testid="tab-header-item-1"
+            onClick={[Function]}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页2
+            </div>
+          </div>
+          <div
+            className="sc-ifAKCX bkwWcO sinoui-tab-label"
+            data-testid="tab-header-item-2"
+            onClick={[Function]}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页3
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-bwzfXH fmPQiX sinoui-ink-bar"
+          data-testid="inkbar"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-htpNat huDZjU sinoui-tab-content"
+  >
+    <div
+      className="sc-bxivhb fmAyFL sinoui-tab-panel-list"
+      style={
+        Object {
+          "transform": "translate3d(-100%, 0px, 0px)",
+        }
+      }
+    >
+      <div
+        className="sc-EHOje bZofev sinoui-tab-panel sinoui-tab-panel-hidden"
+        data-testid="tab-panel-0"
+      />
+      <div
+        className="sc-EHOje bZofev sinoui-tab-panel sinoui-tab-panel-active"
+        data-testid="tab-panel-1"
+      >
+        内容2
+      </div>
+      <div
+        className="sc-EHOje bZofev sinoui-tab-panel sinoui-tab-panel-hidden"
+        data-testid="tab-panel-2"
+      />
+    </div>
+  </div>
+</div>
+`;

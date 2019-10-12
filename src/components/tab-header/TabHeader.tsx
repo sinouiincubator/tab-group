@@ -1,68 +1,56 @@
-import React, { useMemo, useRef, useEffect } from 'react';
-import usePreventTransitionWhenMount from 'src/helpers/usePreventTransitionWhenMount';
-import InkBar from '../InkBar';
+import React, { useMemo } from 'react';
 import TabHeaderContext from '../TabHeaderContext';
 import useRefValue from '../../helpers/useRefValue';
-import TabHeaderWrapper from './TabHeaderWrapper';
+import InnerTabHeader from './InnerTabHeader';
+import TabListContext from '../TabListContext';
+import useTabList from '../commons/useTabList';
+import { TabSelectCallback } from '../../types';
 
 interface Props {
   children?: React.ReactNode;
   dense?: boolean;
-  value: string;
-  onChange?: (tabId: string) => void;
+  /**
+   * 设置当前选中的标签页。这是一个从 `0` 开始的索引，第一个标签页的索引为 `0`，第二个标签页的索引为 `1`，……
+   *
+   * 默认值为 null。
+   */
+  selectedIndex: number;
+  /**
+   * 每次标签页切换时调用的事件处理器。这个函数的 `index` 参数是新的选中标签页索引，`lastIndex` 参数是变更之前选中的标签页索引，`event` 参数是引起页签切换的事件，可能是 `keydown` 或者 `click` 事件。如果 `index` 和 `lastIndex` 相同时，表示用户在当前选中的标签页上点击。
+   */
+  onSelect?: TabSelectCallback;
 }
 
 /**
  * 选项卡头部组件
  *
  */
-function TabHeader({ children, dense, value, onChange }: Props) {
-  const onChangeRef = useRefValue(onChange);
+function TabHeader({ children, dense, selectedIndex = 0, onSelect }: Props) {
+  const tabList = useTabList(selectedIndex);
+
+  const onSelectRef = useRefValue(onSelect);
 
   const context = useMemo(
     () => ({
       dense,
-      activeTabId: value,
-      onChange: (tabId: string) => {
-        if (onChangeRef.current) {
-          onChangeRef.current(tabId);
+      onSelect: (
+        tabIndex: number,
+        event: React.MouseEvent | React.KeyboardEvent,
+      ) => {
+        if (onSelectRef.current) {
+          onSelectRef.current(tabIndex, selectedIndex, event);
         }
       },
     }),
-    [dense, onChangeRef, value],
+    [dense, onSelectRef, selectedIndex],
   );
 
-  const tabListRef = useRef<HTMLDivElement>(null);
-  const inkBarRef = useRef<HTMLDivElement>(null);
-
-  usePreventTransitionWhenMount(inkBarRef);
-
-  useEffect(() => {
-    const inkBar = inkBarRef.current;
-    const tabList = tabListRef.current;
-    if (inkBar && tabList) {
-      const activeTab = tabList.querySelector('.sinoui-tab-label-active');
-      if (activeTab) {
-        const { width, left } = activeTab.getBoundingClientRect();
-        const { left: containerLeft } = tabList.getBoundingClientRect();
-        inkBar.style.width = `${width}px`;
-        inkBar.style.transform = `translate3d(${left -
-          containerLeft}px, 0px, 0px)`;
-      }
-    }
-  }, [value]);
-
   return (
-    <TabHeaderContext.Provider value={context}>
-      <TabHeaderWrapper className="sinoui-tab-header">
-        <div className="sinoui-tab-label-container">
-          <div className="sinoui-tab-list" ref={tabListRef}>
-            <div className="sinoui-tab-labels">{children}</div>
-            <InkBar ref={inkBarRef} data-testid="inkbar" />
-          </div>
-        </div>
-      </TabHeaderWrapper>
-    </TabHeaderContext.Provider>
+    <TabListContext.Provider value={tabList}>
+      <TabHeaderContext.Provider value={context}>
+        <InnerTabHeader>{children}</InnerTabHeader>
+      </TabHeaderContext.Provider>
+    </TabListContext.Provider>
   );
 }
 
