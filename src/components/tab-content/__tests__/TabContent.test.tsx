@@ -16,7 +16,7 @@ it('渲染TabContent', () => {
     '.sinoui-tab-panel-list',
   ) as HTMLElement;
 
-  expect(tabContent).toBeInTheDOM();
+  expect(tabContent).toBeInTheDocument();
   expect(tabContent).toHaveStyle('transform: translate3d(-100%, 0px, 0px);');
 });
 
