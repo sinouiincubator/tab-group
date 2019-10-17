@@ -71,10 +71,10 @@ exports[`正确渲染TabGroup 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat huDZjU sinoui-tab-content"
+    className="sc-htpNat dROSTM sinoui-tab-content"
   >
     <div
-      className="sc-bxivhb lcFdNp sinoui-tab-panel-list"
+      className="sc-bxivhb flnhqc sinoui-tab-panel-list"
       style={
         Object {
           "transform": "translate3d(-0%, 0px, 0px)",
@@ -177,10 +177,10 @@ exports[`选中第二个标签页 1`] = `
     </div>
   </div>
   <div
-    className="sc-htpNat huDZjU sinoui-tab-content"
+    className="sc-htpNat dROSTM sinoui-tab-content"
   >
     <div
-      className="sc-bxivhb lcFdNp sinoui-tab-panel-list"
+      className="sc-bxivhb flnhqc sinoui-tab-panel-list"
       style={
         Object {
           "transform": "translate3d(-100%, 0px, 0px)",

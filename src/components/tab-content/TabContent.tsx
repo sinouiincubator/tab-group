@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import TabContentContext from '../TabContentContext';
 import TabContentWrapper from './TabContentWrapper';
@@ -21,6 +21,69 @@ export interface Props {
    * 设置启动标签面板渲染到 DOM 的缓存特性。当`forceRenderTabPanel` 为 `false` 此配置才有效。默认为 `true`。如果设置为 `false`，则不会缓存标签面板的渲染，标签切换后，销毁该标签面板的DOM。
    */
   cacheable?: boolean;
+  /**
+   * 设置启用标签面板切换时内容高度过渡动画。默认为 `false`，不启用。设置为 `true`，启用高度过渡动画，但是可能会影响性能。
+   */
+  animateHeight?: boolean;
+}
+
+/**
+ * 应用高度动画的hook。
+ *
+ * @param animateHeight 是否启用高度动画
+ * @param selectedIndex 当前标签的索引位置
+ * @param tabContentRef 标签内容容器DOM
+ */
+function useAnimateHeight(
+  animateHeight: boolean,
+  selectedIndex: number,
+  tabContentRef: React.RefObject<HTMLDivElement>,
+) {
+  const prevSelectedIndexRef = useRef(selectedIndex);
+
+  useEffect(() => {
+    const prevSelectedIndex = prevSelectedIndexRef.current;
+    const tabContent = tabContentRef.current;
+    prevSelectedIndexRef.current = selectedIndex;
+
+    if (prevSelectedIndex === selectedIndex || !tabContent || !animateHeight) {
+      return undefined;
+    }
+
+    const panels = tabContent.querySelectorAll('.sinoui-tab-panel');
+    const prev = panels[prevSelectedIndex] as HTMLElement;
+    const current = panels[selectedIndex] as HTMLElement;
+    prev.style.height = 'auto';
+    current.style.height = '';
+    const { height: prevHeight } = prev.getBoundingClientRect();
+    const { height } = current.getBoundingClientRect();
+
+    tabContent.style.height = `${prevHeight}px`;
+    tabContent.style.overflow = 'hidden';
+
+    let isEnd = false;
+    const reset = () => {
+      isEnd = true;
+      tabContent.style.transition = '';
+      tabContent.style.height = '';
+      tabContent.style.overflow = '';
+      prev.style.height = '';
+    };
+
+    const rafId = requestAnimationFrame(() => {
+      tabContent.style.height = `${height}px`;
+    });
+
+    const timeoutId = setTimeout(reset, 500);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(timeoutId);
+      if (!isEnd) {
+        reset();
+      }
+    };
+  }, [animateHeight, selectedIndex, tabContentRef]);
 }
 
 /**
@@ -33,11 +96,16 @@ export default function TabContent(props: Props) {
     children,
     forceRenderTabPanel,
     cacheable,
+    animateHeight = false,
     ...rest
   } = props;
   const tabListContext = useTabList(selectedIndex);
   const context = useMemo(
-    () => ({ inTabContent: true, forceRenderTabPanel, cacheable }),
+    () => ({
+      inTabContent: true,
+      forceRenderTabPanel,
+      cacheable,
+    }),
     [cacheable, forceRenderTabPanel],
   );
   const transform = useMemo(
@@ -45,12 +113,16 @@ export default function TabContent(props: Props) {
     [selectedIndex],
   );
 
+  const tabContentRef = useRef<HTMLDivElement>(null);
+  useAnimateHeight(animateHeight, selectedIndex, tabContentRef);
+
   return (
     <TabListContext.Provider value={tabListContext}>
       <TabContentContext.Provider value={context}>
         <TabContentWrapper
           className={classNames('sinoui-tab-content', className)}
           {...rest}
+          ref={tabContentRef}
         >
           <TabPanelListWrapper
             style={{ transform }}

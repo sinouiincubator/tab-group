@@ -3,6 +3,8 @@
 exports[`TabContent 镜像测试 渲染 TabContent 1`] = `
 .c0 {
   overflow-x: hidden;
+  -webkit-transition: height 0.5s cubic-bezier(0.15,0.3,0.25,1) 0s;
+  transition: height 0.5s cubic-bezier(0.15,0.3,0.25,1) 0s;
 }
 
 .c1 {
@@ -10,6 +12,10 @@ exports[`TabContent 镜像测试 渲染 TabContent 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
   -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
   -webkit-transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
   transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;

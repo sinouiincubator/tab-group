@@ -45,6 +45,11 @@ interface Props {
    * 设置启动标签面板渲染到 DOM 的缓存特性。当`forceRenderTabPanel` 为 `false` 此配置才有效。默认为 `true`。如果设置为 `false`，则不会缓存标签面板的渲染，标签切换后，销毁该标签面板的DOM。
    */
   cacheable?: boolean;
+
+  /**
+   * 设置启用标签面板切换时内容高度过渡动画。默认为 `false`，不启用。设置为 `true`，启用高度过渡动画，但是可能会影响性能。
+   */
+  animateHeight?: boolean;
 }
 
 function InnerTabGroup({
@@ -55,6 +60,7 @@ function InnerTabGroup({
   dense,
   forceRenderTabPanel,
   cacheable,
+  animateHeight,
   ...rest
 }: Props) {
   return (
@@ -70,6 +76,7 @@ function InnerTabGroup({
         selectedIndex={selectedIndex}
         forceRenderTabPanel={forceRenderTabPanel}
         cacheable={cacheable}
+        animateHeight={animateHeight}
       >
         {children}
       </TabContent>
