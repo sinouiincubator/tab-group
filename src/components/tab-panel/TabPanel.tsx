@@ -90,6 +90,25 @@ function useIsForceRenderContent(isForceRenderContent?: boolean) {
 }
 
 /**
+ * 获取即将渲染的标签面板内容
+ *
+ * @param isActive 是否是当前标签
+ * @param children 内容
+ */
+function useRenderingChildren(isActive: boolean, children?: React.ReactNode) {
+  const activeChildren = useRef(children);
+  const renderingChildren = isActive ? children : activeChildren.current;
+
+  useEffect(() => {
+    if (isActive) {
+      activeChildren.current = children;
+    }
+  });
+
+  return renderingChildren;
+}
+
+/**
  * 标签页面板组件
  */
 export default function TabPanel(props: TabPanelProps) {
@@ -105,6 +124,7 @@ export default function TabPanel(props: TabPanelProps) {
   const isCacheable = useIsCacheable(cacheable);
   const isNeedRendered = useIsNeedRendered(isCacheable, isActive);
   const isForceRenderContent = useIsForceRenderContent(forceRenderContent);
+  const renderingChildren = useRenderingChildren(isActive, children);
 
   if (index === -1) {
     return null;
@@ -126,7 +146,7 @@ export default function TabPanel(props: TabPanelProps) {
         className,
       )}
     >
-      {isNeedRendered || isForceRenderContent ? children : null}
+      {isNeedRendered || isForceRenderContent ? renderingChildren : null}
     </TabPanelWrapper>
   );
 }

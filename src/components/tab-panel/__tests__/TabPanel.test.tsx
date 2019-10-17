@@ -125,3 +125,51 @@ it('不缓存标签面板内容', () => {
 
   expect(container).not.toHaveTextContent('内容一');
 });
+
+it('不可见的标签面板内容不参与到重绘中', () => {
+  let contentRenderCount = 0;
+  const Content: React.SFC = () => {
+    contentRenderCount += 1;
+    return <div>123</div>;
+  };
+
+  const register = jest.fn();
+  const unregister = jest.fn();
+  const getTabsCount = jest.fn();
+
+  register.mockReturnValue(0);
+
+  const { rerender } = render(
+    <TabListContext.Provider
+      value={{ selectedIndex: 0, register, unregister, getTabsCount }}
+    >
+      <TabPanel data-testid="tabpanel">
+        <Content />
+      </TabPanel>
+    </TabListContext.Provider>,
+  );
+
+  rerender(
+    <TabListContext.Provider
+      value={{ selectedIndex: 1, register, unregister, getTabsCount }}
+    >
+      <TabPanel data-testid="tabpanel">
+        <Content />
+      </TabPanel>
+    </TabListContext.Provider>,
+  );
+
+  expect(contentRenderCount).toBe(1);
+
+  rerender(
+    <TabListContext.Provider
+      value={{ selectedIndex: 0, register, unregister, getTabsCount }}
+    >
+      <TabPanel data-testid="tabpanel">
+        <Content />
+      </TabPanel>
+    </TabListContext.Provider>,
+  );
+
+  expect(contentRenderCount).toBe(2);
+});
