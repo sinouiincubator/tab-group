@@ -17,6 +17,10 @@ export interface Props {
    * 默认情况下只有当前标签面板会渲染到 DOM 中（出于性能考量）。如果设置为 `true`，则所有的标签面板从一开始就会立即渲染到 DOM 中。默认为 `false`。
    */
   forceRenderTabPanel?: boolean;
+  /**
+   * 设置启动标签面板渲染到 DOM 的缓存特性。当`forceRenderTabPanel` 为 `false` 此配置才有效。默认为 `true`。如果设置为 `false`，则不会缓存标签面板的渲染，标签切换后，销毁该标签面板的DOM。
+   */
+  cacheable?: boolean;
 }
 
 /**
@@ -28,12 +32,14 @@ export default function TabContent(props: Props) {
     selectedIndex,
     children,
     forceRenderTabPanel,
+    cacheable,
     ...rest
   } = props;
   const tabListContext = useTabList(selectedIndex);
-  const context = useMemo(() => ({ inTabContent: true, forceRenderTabPanel }), [
-    forceRenderTabPanel,
-  ]);
+  const context = useMemo(
+    () => ({ inTabContent: true, forceRenderTabPanel, cacheable }),
+    [cacheable, forceRenderTabPanel],
+  );
   const transform = useMemo(
     () => `translate3d(-${100 * selectedIndex}%, 0px, 0px)`,
     [selectedIndex],

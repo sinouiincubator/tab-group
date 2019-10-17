@@ -134,3 +134,27 @@ it('立即渲染所有标签内容', () => {
   expect(container).toHaveTextContent('内容2');
   expect(container).toHaveTextContent('内容3');
 });
+
+it('不缓存标签内容', () => {
+  const { container, rerender } = render(
+    <ThemeProvider theme={defaultTheme}>
+      <TabGroup selectedIndex={0}>
+        <Tab title="标签页1">内容1</Tab>
+        <Tab title="标签页2">内容2</Tab>
+        <Tab title="标签页3">内容3</Tab>
+      </TabGroup>
+    </ThemeProvider>,
+  );
+
+  rerender(
+    <ThemeProvider theme={defaultTheme}>
+      <TabGroup cacheable={false} selectedIndex={1}>
+        <Tab title="标签页1">内容1</Tab>
+        <Tab title="标签页2">内容2</Tab>
+        <Tab title="标签页3">内容3</Tab>
+      </TabGroup>
+    </ThemeProvider>,
+  );
+
+  expect(container).not.toHaveTextContent('内容1');
+});

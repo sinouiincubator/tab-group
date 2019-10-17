@@ -6,6 +6,10 @@ interface TabContentContextState {
    * 是否立即渲染所有的标签面板到 DOM 中。
    */
   forceRenderTabPanel?: boolean;
+  /**
+   * 设置启动标签面板渲染到 DOM 的缓存特性。
+   */
+  cacheable?: boolean;
 }
 
 /**

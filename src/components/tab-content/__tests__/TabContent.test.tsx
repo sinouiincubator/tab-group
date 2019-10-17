@@ -81,4 +81,24 @@ describe('TabContent + TabPanel 组合使用', () => {
     expect(container).toHaveTextContent('内容2');
     expect(container).toHaveTextContent('内容3');
   });
+
+  it('不缓存标签面板内容', () => {
+    const { container, rerender } = render(
+      <TabContent selectedIndex={1}>
+        <TabPanel>内容1</TabPanel>
+        <TabPanel>内容2</TabPanel>
+        <TabPanel>内容3</TabPanel>
+      </TabContent>,
+    );
+
+    rerender(
+      <TabContent selectedIndex={0} cacheable={false}>
+        <TabPanel>内容1</TabPanel>
+        <TabPanel>内容2</TabPanel>
+        <TabPanel>内容3</TabPanel>
+      </TabContent>,
+    );
+
+    expect(container).not.toHaveTextContent('内容2');
+  });
 });

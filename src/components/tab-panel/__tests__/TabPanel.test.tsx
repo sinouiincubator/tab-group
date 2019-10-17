@@ -9,11 +9,14 @@ afterEach(cleanup);
 it('标签页不是当前标签页，则不渲染标签页内容', () => {
   const register = jest.fn();
   const unregister = jest.fn();
+  const getTabsCount = jest.fn();
 
   register.mockReturnValue(1);
 
   const { getByTestId } = render(
-    <TabListContext.Provider value={{ selectedIndex: 0, register, unregister }}>
+    <TabListContext.Provider
+      value={{ selectedIndex: 0, register, unregister, getTabsCount }}
+    >
       <TabPanel data-testid="tabpanel">内容一</TabPanel>
     </TabListContext.Provider>,
   );
@@ -26,11 +29,14 @@ it('标签页不是当前标签页，则不渲染标签页内容', () => {
 it('标签页是当前标签页，则渲染标签页内容', () => {
   const register = jest.fn();
   const unregister = jest.fn();
+  const getTabsCount = jest.fn();
 
   register.mockReturnValue(1);
 
   const { getByTestId } = render(
-    <TabListContext.Provider value={{ selectedIndex: 1, register, unregister }}>
+    <TabListContext.Provider
+      value={{ selectedIndex: 1, register, unregister, getTabsCount }}
+    >
       <TabPanel data-testid="tabpanel">内容一</TabPanel>
     </TabListContext.Provider>,
   );
@@ -44,17 +50,22 @@ it('标签页是当前标签页，则渲染标签页内容', () => {
 it('当前标签页切换后，已渲染的标签页内容不销毁', () => {
   const register = jest.fn();
   const unregister = jest.fn();
+  const getTabsCount = jest.fn();
 
   register.mockReturnValue(1);
 
   const { getByTestId, rerender } = render(
-    <TabListContext.Provider value={{ selectedIndex: 1, register, unregister }}>
+    <TabListContext.Provider
+      value={{ selectedIndex: 1, register, unregister, getTabsCount }}
+    >
       <TabPanel data-testid="tabpanel">内容一</TabPanel>
     </TabListContext.Provider>,
   );
 
   rerender(
-    <TabListContext.Provider value={{ selectedIndex: 0, register, unregister }}>
+    <TabListContext.Provider
+      value={{ selectedIndex: 0, register, unregister, getTabsCount }}
+    >
       <TabPanel data-testid="tabpanel">内容一</TabPanel>
     </TabListContext.Provider>,
   );
@@ -68,11 +79,14 @@ it('当前标签页切换后，已渲染的标签页内容不销毁', () => {
 it('立即渲染标签内容', () => {
   const register = jest.fn();
   const unregister = jest.fn();
+  const getTabsCount = jest.fn();
 
   register.mockReturnValue(1);
 
   const { container } = render(
-    <TabListContext.Provider value={{ selectedIndex: 0, register, unregister }}>
+    <TabListContext.Provider
+      value={{ selectedIndex: 0, register, unregister, getTabsCount }}
+    >
       <TabPanel data-testid="tabpanel" forceRenderContent>
         内容一
       </TabPanel>
@@ -80,4 +94,34 @@ it('立即渲染标签内容', () => {
   );
 
   expect(container).toHaveTextContent('内容一');
+});
+
+it('不缓存标签面板内容', () => {
+  const register = jest.fn();
+  const unregister = jest.fn();
+  const getTabsCount = jest.fn();
+
+  register.mockReturnValue(0);
+
+  const { container, rerender } = render(
+    <TabListContext.Provider
+      value={{ selectedIndex: 0, register, unregister, getTabsCount }}
+    >
+      <TabPanel data-testid="tabpanel">内容一</TabPanel>
+    </TabListContext.Provider>,
+  );
+
+  expect(container).toHaveTextContent('内容一');
+
+  rerender(
+    <TabListContext.Provider
+      value={{ selectedIndex: 1, register, unregister, getTabsCount }}
+    >
+      <TabPanel data-testid="tabpanel" cacheable={false}>
+        内容一
+      </TabPanel>
+    </TabListContext.Provider>,
+  );
+
+  expect(container).not.toHaveTextContent('内容一');
 });
