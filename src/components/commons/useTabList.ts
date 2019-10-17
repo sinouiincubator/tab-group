@@ -4,12 +4,12 @@ import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
  * 标签页列表状态管理
  */
 function useTabList(selectedIndex: number) {
-  const [renderCount, setRenderCount] = useState(1);
-  const isRenderredRef = useRef(false);
-  const tabsRef = useRef<string[]>([]);
-  const sortedTabsRef = useRef<string[]>([]);
-  sortedTabsRef.current = [];
-  isRenderredRef.current = false;
+  const [renderCount, setRenderCount] = useState(1); // 内部 tab 发生变化引起重绘的次数
+  const isRenderredRef = useRef(false); // 是否已经同步渲染过
+  const tabsRef = useRef<string[]>([]); // 所有包含标签页（无序的）
+  const sortedTabsRef = useRef<string[]>([]); // 包含的有序的标签页
+  sortedTabsRef.current = []; // TODO: current mode 可能会有缺陷，参见： https://github.com/facebook/react/issues/14099
+  isRenderredRef.current = false; // TODO: current mode 可能会有缺陷，参见： https://github.com/facebook/react/issues/14099
 
   useEffect(() => {
     isRenderredRef.current = true;
@@ -62,17 +62,22 @@ function useTabList(selectedIndex: number) {
     }
   }, []);
 
+  /**
+   * 获取标签页总数
+   */
+  const getTabsCount = useCallback(() => {
+    return tabsRef.current.length;
+  }, []);
+
   return useMemo(
     () => ({
       register,
       unregister,
       selectedIndex,
       renderCount,
-      getTabsCount() {
-        return tabsRef.current.length;
-      },
+      getTabsCount,
     }),
-    [register, renderCount, selectedIndex, unregister],
+    [getTabsCount, register, renderCount, selectedIndex, unregister],
   );
 }
 
