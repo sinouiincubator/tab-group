@@ -22,6 +22,7 @@ exports[`正确渲染TabGroup 1`] = `
             className="sc-ifAKCX gAgPRm sinoui-tab-label sinoui-tab-label-active"
             data-testid="tab-header-item-0"
             onClick={[Function]}
+            onKeyDown={[Function]}
             role="tab"
             tabIndex={0}
           >
@@ -36,6 +37,7 @@ exports[`正确渲染TabGroup 1`] = `
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-1"
             onClick={[Function]}
+            onKeyDown={[Function]}
             role="tab"
             tabIndex={-1}
           >
@@ -50,6 +52,7 @@ exports[`正确渲染TabGroup 1`] = `
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-2"
             onClick={[Function]}
+            onKeyDown={[Function]}
             role="tab"
             tabIndex={-1}
           >
@@ -125,6 +128,7 @@ exports[`选中第二个标签页 1`] = `
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-0"
             onClick={[Function]}
+            onKeyDown={[Function]}
             role="tab"
             tabIndex={-1}
           >
@@ -139,6 +143,7 @@ exports[`选中第二个标签页 1`] = `
             className="sc-ifAKCX gAgPRm sinoui-tab-label sinoui-tab-label-active"
             data-testid="tab-header-item-1"
             onClick={[Function]}
+            onKeyDown={[Function]}
             role="tab"
             tabIndex={0}
           >
@@ -153,6 +158,7 @@ exports[`选中第二个标签页 1`] = `
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-2"
             onClick={[Function]}
+            onKeyDown={[Function]}
             role="tab"
             tabIndex={-1}
           >
