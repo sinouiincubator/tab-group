@@ -21,7 +21,7 @@ it('选项卡是选中状态', () => {
     <ThemeProvider theme={defaultTheme}>
       <TabListContext.Provider value={tabListContext}>
         <TabHeaderContext.Provider value={context}>
-          <TabHeaderItem title="标签1" data-testId="tab" />
+          <TabHeaderItem title="标签1" data-testid="tab" />
         </TabHeaderContext.Provider>
       </TabListContext.Provider>
     </ThemeProvider>,
@@ -45,7 +45,7 @@ it('点击标签时，调用 onChange 方法', () => {
     <ThemeProvider theme={defaultTheme}>
       <TabListContext.Provider value={tabListContext}>
         <TabHeaderContext.Provider value={context}>
-          <TabHeaderItem title="标签1" data-testId="tab" />
+          <TabHeaderItem title="标签1" data-testid="tab" />
         </TabHeaderContext.Provider>
       </TabListContext.Provider>
     </ThemeProvider>,
@@ -72,7 +72,7 @@ it('不可用时不能点击', () => {
     <ThemeProvider theme={defaultTheme}>
       <TabListContext.Provider value={tabListContext}>
         <TabHeaderContext.Provider value={context}>
-          <TabHeaderItem title="标签1" data-testId="tab" disabled />
+          <TabHeaderItem title="标签1" data-testid="tab" disabled />
         </TabHeaderContext.Provider>
       </TabListContext.Provider>
     </ThemeProvider>,
@@ -87,7 +87,7 @@ it('不可用时不能点击', () => {
 
 it('不在TabHeader中使用，不渲染TabHeaderItem', () => {
   const { container } = render(
-    <TabHeaderItem title="标签1" data-testId="tab" disabled />,
+    <TabHeaderItem title="标签1" data-testid="tab" disabled />,
   );
 
   expect(container).toBeEmpty();

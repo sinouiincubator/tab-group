@@ -11,6 +11,8 @@ exports[`正确渲染TabHeaderWrapper 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   border-bottom: 1px solid rgba(0,0,0,0.12);
+  font-size: 1rem;
+  color: rgba(0,0,0,0.87);
 }
 
 .c0 .sinoui-tab-label-container {
