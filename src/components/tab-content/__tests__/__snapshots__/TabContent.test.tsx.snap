@@ -13,6 +13,11 @@ exports[`TabContent 镜像测试 渲染 TabContent 1`] = `
   -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
   -webkit-transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
   transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
+  will-change: transform;
+}
+
+.c1 > .sinoui-tab-panel-hidden {
+  height: 0px;
 }
 
 <div
