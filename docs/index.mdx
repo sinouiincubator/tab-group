@@ -3,10 +3,16 @@ name: 开始
 route: /
 ---
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Playground } from 'docz';
 import { MdDelete } from 'react-icons/md';
-import TabGroup, { Tab, TabHeader, TabHeaderItem } from '../src';
+import TabGroup, {
+  Tab,
+  TabHeader,
+  TabHeaderItem,
+  TabContent,
+  TabPanel,
+} from '../src';
 import TabContentDemo from './TabContentDemo';
 import Button from 'sinoui-components/Button';
 
@@ -38,20 +44,66 @@ function Demo() {
 ```
 
 <Playground>
-  {() => {
-    const [active, setActive] = useState(0);
-
-    return <TabGroup selectedIndex={active} onSelect={(index) => setActive(index)}>
-        <Tab title="标签1">内容 1</Tab>
-        <Tab title="标签2">内容 2</Tab>
-        <Tab title="标签3">内容 3</Tab>
-    </TabGroup>;
-
-}}
-
+  <TabGroup>
+    <Tab title="标签1">标签内容1</Tab>
+    <Tab title="标签2">标签内容2</Tab>
+    <Tab title="标签3">标签内容3</Tab>
+  </TabGroup>
 </Playground>
 
-## TabHeader
+## 可访问性
+
+```tsx
+import React from 'react';
+import TabGroup, { Tab } from '@sinouiincubator/tab-group';
+
+function Demo() {
+  return (
+    <TabGroup>
+      <Tab title="标签1" id="tab-pad">
+        标签内容1
+      </Tab>
+      <Tab title="标签2" id="tab-phone">
+        标签内容2
+      </Tab>
+      <Tab title="标签3" id="tab-vr">
+        标签内容3
+      </Tab>
+    </TabGroup>
+  );
+}
+```
+
+<Playground>
+  <TabGroup>
+    <Tab title="标签1" id="tab-pad">
+      标签内容1
+    </Tab>
+    <Tab title="标签2" id="tab-phone">
+      标签内容2
+    </Tab>
+    <Tab title="标签3" id="tab-vr">
+      标签内容3
+    </Tab>
+  </TabGroup>
+</Playground>
+
+## 标签头部 - TabHeader
+
+```tsx
+import React from 'react';
+import { TabHeader, TabHeaderItem } from '@sinouiincubator/tab-group';
+
+function TabHeaderDemo() {
+  return (
+    <TabHeader>
+      <TabHeaderItem title="标签1">标签内容1</TabHeaderItem>
+      <Tab title="标签2">标签内容2</Tab>
+      <Tab title="标签3">标签内容3</Tab>
+    </TabHeader>
+  );
+}
+```
 
 <Playground>
   {() => {
@@ -67,10 +119,56 @@ function Demo() {
 
 </Playground>
 
+<Playground>
+  {() => {
+    const [active, setActive] = useState(0);
+    const NextIcon = () => <div style={{ display: 'inline-block', padding: "12px 8px 0px 8px", color: 'rgba(0, 0, 0, 0.54)'}}>></div>;
+    return <TabHeader selectedIndex={active} onSelect={setActive}>
+      <TabHeaderItem title="标签1" />
+      <NextIcon />
+      <TabHeaderItem title="标签2" />
+      <NextIcon />
+      <TabHeaderItem title="标签3" />
+    </TabHeader>;
+
+}}
+
+</Playground>
+
 ## TabContent
 
 <Playground>
-  <TabContentDemo />
+  {() => {
+    const [active, setActive] = useState(0);
+    const handlePrevClick = useCallback(() => {
+      if (active === 0) {
+        return;
+      }
+
+      setActive(active - 1);
+    }, [active]);
+
+    const handleNextClick = useCallback(() => {
+      if (active === 2) {
+        return;
+      }
+      setActive(active + 1);
+    }, [active]);
+
+    return (
+      <>
+        <TabContent selectedIndex={active}>
+          <TabPanel>内容1</TabPanel>
+          <TabPanel>内容2</TabPanel>
+          <TabPanel>内容3</TabPanel>
+        </TabContent>
+        <Button onClick={handlePrevClick}>上一页</Button>
+        <Button onClick={handleNextClick}>下一页</Button>
+      </>
+    );
+
+}}
+
 </Playground>
 
 ## 维护标签页
