@@ -13,6 +13,14 @@ interface TabListContextState {
    * 当前选中标签页的索引。索引从 0 开始。
    */
   selectedIndex: number;
+  /**
+   * tab的总数
+   */
+  tabsCount: number;
+  /**
+   * 设置tabs个数
+   */
+  setTabsCount: (count: number) => void;
 }
 
 /**

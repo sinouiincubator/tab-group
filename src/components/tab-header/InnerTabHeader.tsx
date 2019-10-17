@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import usePreventTransitionWhenMount from '../../helpers/usePreventTransitionWhenMount';
 
 import TabHeaderWrapper from './TabHeaderWrapper';
 import InkBar from '../InkBar';
+import TabListContext from '../TabListContext';
 
 interface Props {
   children: React.ReactNode;
@@ -11,8 +12,17 @@ interface Props {
 function InnerTabHeader({ children }: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
   const inkBarRef = useRef<HTMLDivElement>(null);
+  const tabListContext = useContext(TabListContext);
 
   usePreventTransitionWhenMount(inkBarRef);
+
+  useEffect(() => {
+    if (tabListContext && tabListRef.current) {
+      const { setTabsCount } = tabListContext;
+      const tabItems = tabListRef.current.querySelectorAll('.sinoui-tab-label');
+      setTabsCount(tabItems.length);
+    }
+  }, [tabListContext]);
 
   useEffect(() => {
     const inkBar = inkBarRef.current;
