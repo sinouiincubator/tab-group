@@ -1,6 +1,12 @@
 import React, { useContext, useCallback } from 'react';
 import classNames from 'classnames';
 import { useRipple } from '@sinoui/ripple';
+import {
+  LEFT_KEY_CODE,
+  TOP_KEY_CODE,
+  RIGHT_KEY_CODE,
+  BOTTOM_KEY_CODE,
+} from 'src/constants';
 import TabHeaderItemWrapper from './TabHeaderItemWrapper';
 import TabListContext from '../TabListContext';
 import useTabRegister from '../commons/useTabRegister';
@@ -50,6 +56,33 @@ function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
     [index, tabHeaderContext],
   );
 
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      const { keyCode } = event;
+      if (tabListContext && tabHeaderContext) {
+        const { tabsCount } = tabListContext;
+        if (keyCode === RIGHT_KEY_CODE || keyCode === BOTTOM_KEY_CODE) {
+          event.stopPropagation();
+          event.preventDefault();
+          if (selectedIndex < tabsCount - 1) {
+            tabHeaderContext.onSelect(selectedIndex + 1, event);
+          } else {
+            tabHeaderContext.onSelect(0, event);
+          }
+        } else if (keyCode === LEFT_KEY_CODE || keyCode === TOP_KEY_CODE) {
+          event.stopPropagation();
+          event.preventDefault();
+          if (selectedIndex > 0) {
+            tabHeaderContext.onSelect(selectedIndex - 1, event);
+          } else {
+            tabHeaderContext.onSelect(tabsCount - 1, event);
+          }
+        }
+      }
+    },
+    [selectedIndex, tabHeaderContext, tabListContext],
+  );
+
   if (index === -1) {
     return null;
   }
@@ -69,6 +102,7 @@ function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
       tabIndex={isActive ? 0 : -1}
       aria-disabled={disabled}
       aria-selected={isActive}
+      onKeyDown={disabled ? undefined : handleKeyDown}
       {...rest}
     >
       <div className="sinoui-tab-label-content">{title}</div>
