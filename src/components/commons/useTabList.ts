@@ -10,7 +10,6 @@ function useTabList(selectedIndex: number) {
   const sortedTabsRef = useRef<string[]>([]);
   sortedTabsRef.current = [];
   isRenderredRef.current = false;
-  const [tabsCount, setTabsCount] = useState(0);
 
   useEffect(() => {
     isRenderredRef.current = true;
@@ -69,10 +68,11 @@ function useTabList(selectedIndex: number) {
       unregister,
       selectedIndex,
       renderCount,
-      tabsCount,
-      setTabsCount,
+      getTabsCount() {
+        return tabsRef.current.length;
+      },
     }),
-    [register, renderCount, selectedIndex, tabsCount, unregister],
+    [register, renderCount, selectedIndex, unregister],
   );
 }
 

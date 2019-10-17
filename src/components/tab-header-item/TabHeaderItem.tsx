@@ -60,7 +60,8 @@ function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
     (event: React.KeyboardEvent) => {
       const { keyCode } = event;
       if (tabListContext && tabHeaderContext) {
-        const { tabsCount } = tabListContext;
+        const { getTabsCount } = tabListContext;
+        const tabsCount = getTabsCount();
         if (keyCode === RIGHT_KEY_CODE || keyCode === BOTTOM_KEY_CODE) {
           event.stopPropagation();
           event.preventDefault();

@@ -14,13 +14,9 @@ interface TabListContextState {
    */
   selectedIndex: number;
   /**
-   * tab的总数
+   * 获取标签页数量
    */
-  tabsCount: number;
-  /**
-   * 设置tabs个数
-   */
-  setTabsCount: (count: number) => void;
+  getTabsCount(): number;
 }
 
 /**
