@@ -5,6 +5,8 @@ const TabHeaderWrapper = styled.div`
   overflow: hidden;
   flex-shrink: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 1rem;
+  color: ${(props) => props.theme.palette.text.primary};
 
   .sinoui-tab-label-container {
     display: flex;

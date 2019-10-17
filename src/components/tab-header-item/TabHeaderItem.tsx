@@ -23,6 +23,10 @@ interface Props {
    * 是否可用
    */
   disabled?: boolean;
+  /**
+   * 指定标签页id
+   */
+  id?: string;
 }
 
 /**
@@ -61,6 +65,10 @@ function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
       onClick={disabled ? undefined : handleClick}
       ref={rippleRef}
       data-testid={`tab-header-item-${index}`}
+      role="tab"
+      tabIndex={isActive ? 0 : -1}
+      aria-disabled={disabled}
+      aria-selected={isActive}
       {...rest}
     >
       <div className="sinoui-tab-label-content">{title}</div>

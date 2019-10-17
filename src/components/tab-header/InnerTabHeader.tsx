@@ -30,7 +30,7 @@ function InnerTabHeader({ children }: Props) {
   });
 
   return (
-    <TabHeaderWrapper className="sinoui-tab-header">
+    <TabHeaderWrapper className="sinoui-tab-header" role="tablist">
       <div className="sinoui-tab-label-container">
         <div className="sinoui-tab-list" ref={tabListRef}>
           <div className="sinoui-tab-labels">{children}</div>

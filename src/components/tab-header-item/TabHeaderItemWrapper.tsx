@@ -28,6 +28,8 @@ const TabHeaderItemWrapper = styled.div<TabHeaderItemWrapperProps>`
   justify-content: center;
   white-space: nowrap; /* 不换行显示 */
   color: ${(props) => props.theme.palette.text.primary};
+  outline: none;
+  user-select: none;
 
   letter-spacing: 1.25px;
   font-weight: 500;

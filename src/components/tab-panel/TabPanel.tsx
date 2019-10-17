@@ -9,6 +9,10 @@ interface TabPanelProps {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  /**
+   * 指定标签 id
+   */
+  tabId?: string;
 }
 
 function useIsNeedRendered(isActive: boolean) {
@@ -44,6 +48,9 @@ export default function TabPanel(props: TabPanelProps) {
   return (
     <TabPanelWrapper
       data-testid={`tab-panel-${index}`}
+      role="tabpanel"
+      aria-hidden={!isActive}
+      aria-labelledby={props.tabId}
       {...other}
       className={classNames(
         'sinoui-tab-panel',

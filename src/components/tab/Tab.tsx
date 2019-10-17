@@ -18,6 +18,11 @@ interface Props {
    * 指定标签不可用。默认为 `false`。
    */
   disabled?: boolean;
+
+  /**
+   * 指定标签id
+   */
+  id?: string;
 }
 
 /**
@@ -26,16 +31,16 @@ interface Props {
  * @param {Props} props
  * @returns
  */
-function Tab({ children, title, disabled }: Props) {
+function Tab({ children, title, disabled, id }: Props) {
   const isInTabHeader = useInTabHeader();
   const isInTabContent = useInTabContent();
 
   if (isInTabHeader) {
-    return <TabHeaderItem title={title} disabled={disabled} />;
+    return <TabHeaderItem title={title} disabled={disabled} id={id} />;
   }
 
   if (isInTabContent) {
-    return <TabPanel>{children}</TabPanel>;
+    return <TabPanel tabId={id}>{children}</TabPanel>;
   }
 
   return null;
