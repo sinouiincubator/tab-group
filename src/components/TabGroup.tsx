@@ -36,6 +36,10 @@ interface Props {
    * 设置标签页在密集模式下展现。
    */
   dense?: boolean;
+  /**
+   * 默认情况下只有当前标签面板会渲染到 DOM 中（出于性能考量）。如果设置为 `true`，则所有的标签面板从一开始就会立即渲染到 DOM 中。默认为 `false`。
+   */
+  forceRenderTabPanel?: boolean;
 }
 
 function InnerTabGroup({
@@ -44,6 +48,7 @@ function InnerTabGroup({
   selectedIndex = 0,
   children,
   dense,
+  forceRenderTabPanel,
   ...rest
 }: Props) {
   return (
@@ -55,7 +60,12 @@ function InnerTabGroup({
       >
         {children}
       </TabHeader>
-      <TabContent selectedIndex={selectedIndex}>{children}</TabContent>
+      <TabContent
+        selectedIndex={selectedIndex}
+        forceRenderTabPanel={forceRenderTabPanel}
+      >
+        {children}
+      </TabContent>
     </div>
   );
 }

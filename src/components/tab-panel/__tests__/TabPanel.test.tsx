@@ -64,3 +64,20 @@ it('当前标签页切换后，已渲染的标签页内容不销毁', () => {
   expect(panel).toHaveTextContent('内容一');
   expect(panel).toHaveClass('sinoui-tab-panel-hidden');
 });
+
+it('立即渲染标签内容', () => {
+  const register = jest.fn();
+  const unregister = jest.fn();
+
+  register.mockReturnValue(1);
+
+  const { container } = render(
+    <TabListContext.Provider value={{ selectedIndex: 0, register, unregister }}>
+      <TabPanel data-testid="tabpanel" forceRenderContent>
+        内容一
+      </TabPanel>
+    </TabListContext.Provider>,
+  );
+
+  expect(container).toHaveTextContent('内容一');
+});

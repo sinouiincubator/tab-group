@@ -118,3 +118,19 @@ it('阻止受控组件切换标签页', () => {
     'sinoui-tab-label-active',
   );
 });
+
+it('立即渲染所有标签内容', () => {
+  const { container } = render(
+    <ThemeProvider theme={defaultTheme}>
+      <TabGroup forceRenderTabPanel>
+        <Tab title="标签页1">内容1</Tab>
+        <Tab title="标签页2">内容2</Tab>
+        <Tab title="标签页3">内容3</Tab>
+      </TabGroup>
+    </ThemeProvider>,
+  );
+
+  expect(container).toHaveTextContent('内容1');
+  expect(container).toHaveTextContent('内容2');
+  expect(container).toHaveTextContent('内容3');
+});

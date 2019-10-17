@@ -67,4 +67,18 @@ describe('TabContent + TabPanel 组合使用', () => {
 
     expect(getByTestId('tab-panel-2')).toHaveClass('sinoui-tab-panel-active');
   });
+
+  it('立即渲染所有标签内容', () => {
+    const { container } = render(
+      <TabContent selectedIndex={1} forceRenderTabPanel>
+        <TabPanel>内容1</TabPanel>
+        <TabPanel>内容2</TabPanel>
+        <TabPanel>内容3</TabPanel>
+      </TabContent>,
+    );
+
+    expect(container).toHaveTextContent('内容1');
+    expect(container).toHaveTextContent('内容2');
+    expect(container).toHaveTextContent('内容3');
+  });
 });

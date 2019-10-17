@@ -23,6 +23,11 @@ interface Props {
    * 指定标签id
    */
   id?: string;
+
+  /**
+   * 默认情况下，只有当前标签的内容会渲染到 DOM 中。设置为 `true`，则组件初始化时立即渲染标签面板内容到 DOM 中。
+   */
+  forceRenderTabPanel?: boolean;
 }
 
 /**
@@ -31,7 +36,7 @@ interface Props {
  * @param {Props} props
  * @returns
  */
-function Tab({ children, title, disabled, id }: Props) {
+function Tab({ children, title, disabled, id, forceRenderTabPanel }: Props) {
   const isInTabHeader = useInTabHeader();
   const isInTabContent = useInTabContent();
 
@@ -40,7 +45,11 @@ function Tab({ children, title, disabled, id }: Props) {
   }
 
   if (isInTabContent) {
-    return <TabPanel tabId={id}>{children}</TabPanel>;
+    return (
+      <TabPanel tabId={id} forceRenderContent={forceRenderTabPanel}>
+        {children}
+      </TabPanel>
+    );
   }
 
   return null;
