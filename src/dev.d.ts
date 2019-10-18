@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 // import original module declarations
 import 'styled-components';
 import { Theme } from 'sinoui-components/styles';
