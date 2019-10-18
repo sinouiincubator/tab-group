@@ -23,13 +23,23 @@ interface Props {
     lastIndex: number,
     event: React.MouseEvent | React.KeyboardEvent,
   ) => boolean | undefined | void;
+  /**
+   * 在标签右侧添加附件内容。
+   */
+  extraContent?: React.ReactNode;
 }
 
 /**
  * 选项卡头部组件
  *
  */
-function TabHeader({ children, dense, selectedIndex = 0, onSelect }: Props) {
+function TabHeader({
+  children,
+  dense,
+  selectedIndex = 0,
+  onSelect,
+  extraContent,
+}: Props) {
   const tabList = useTabList(selectedIndex);
 
   const onSelectRef = useRefValue(onSelect);
@@ -52,7 +62,7 @@ function TabHeader({ children, dense, selectedIndex = 0, onSelect }: Props) {
   return (
     <TabListContext.Provider value={tabList}>
       <TabHeaderContext.Provider value={context}>
-        <InnerTabHeader>{children}</InnerTabHeader>
+        <InnerTabHeader extraContent={extraContent}>{children}</InnerTabHeader>
       </TabHeaderContext.Provider>
     </TabListContext.Provider>
   );

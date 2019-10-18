@@ -127,6 +127,29 @@ TabGroup 可以嵌套使用。
   </TabGroup>
 </Playground>
 
+## 附件内容
+
+可以在页签右边添加附加操作。
+
+<Playground>
+  <TabGroup
+    tabHeaderExtraContent={
+      <div>
+        <Button primary raised style={{ margin: 0 }}>
+          提交
+        </Button>
+        <Button primary raised style={{ margin: 0, marginLeft: 8 }}>
+          保存
+        </Button>
+      </div>
+    }
+  >
+    <Tab title="标签1">标签内容1</Tab>
+    <Tab title="标签2">标签内容2</Tab>
+    <Tab title="标签3">标签内容3</Tab>
+  </TabGroup>
+</Playground>
+
 ## 内容高度自适应
 
 `TabGroup` 组件在切换时内容高度是自适应的。

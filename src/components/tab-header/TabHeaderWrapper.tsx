@@ -25,6 +25,10 @@ const TabHeaderWrapper = styled.div`
     display: flex;
     position: relative;
   }
+
+  .sinoui-tab-header-extra-content {
+    line-height: 48px;
+  }
 `;
 
 export default TabHeaderWrapper;

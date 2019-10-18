@@ -1,14 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import usePreventTransitionWhenMount from '../../helpers/usePreventTransitionWhenMount';
-
 import TabHeaderWrapper from './TabHeaderWrapper';
 import InkBar from '../InkBar';
 
 interface Props {
   children: React.ReactNode;
+  /**
+   * 在标签右侧添加附件内容。
+   */
+  extraContent?: React.ReactNode;
 }
 
-function InnerTabHeader({ children }: Props) {
+function InnerTabHeader({ children, extraContent }: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
   const inkBarRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +39,9 @@ function InnerTabHeader({ children }: Props) {
           <div className="sinoui-tab-labels">{children}</div>
           <InkBar ref={inkBarRef} data-testid="inkbar" />
         </div>
+        {extraContent ? (
+          <div className="sinoui-tab-header-extra-content">{extraContent}</div>
+        ) : null}
       </div>
     </TabHeaderWrapper>
   );

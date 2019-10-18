@@ -55,6 +55,10 @@ interface Props {
    * 设置启用标签面板切换时内容高度过渡动画。默认为 `false`，不启用。设置为 `true`，启用高度过渡动画，但是可能会影响性能。
    */
   animateHeight?: boolean;
+  /**
+   * 在标签右侧添加附件内容。
+   */
+  tabHeaderExtraContent?: React.ReactNode;
 }
 
 function InnerTabGroup({
@@ -66,6 +70,7 @@ function InnerTabGroup({
   forceRenderTabPanel,
   cacheable,
   animateHeight,
+  tabHeaderExtraContent,
   ...rest
 }: Props) {
   return (
@@ -74,6 +79,7 @@ function InnerTabGroup({
         selectedIndex={selectedIndex}
         dense={dense}
         onSelect={onSelect}
+        extraContent={tabHeaderExtraContent}
       >
         {children}
       </TabHeader>

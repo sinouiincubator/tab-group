@@ -31,6 +31,21 @@ it('正确渲染TabHeader', () => {
   expect(tree).toMatchSnapshot();
 });
 
+it('附件内容', () => {
+  const tree = renderer.create(
+    <ThemeProvider theme={defaultTheme}>
+      <TabHeader extraContent={<div>附件内容</div>} selectedIndex={0}>
+        <div className="sinoui-tab-label">标签内容1</div>
+        <div className="sinoui-tab-label sinoui-tab-label-active">
+          标签内容2
+        </div>
+      </TabHeader>
+    </ThemeProvider>,
+  );
+
+  expect(tree).toMatchSnapshot();
+});
+
 let clientRectFn: jest.Mock | undefined;
 beforeEach(() => {
   clientRectFn = jest.fn();

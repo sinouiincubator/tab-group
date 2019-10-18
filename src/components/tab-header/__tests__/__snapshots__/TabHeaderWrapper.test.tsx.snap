@@ -47,6 +47,10 @@ exports[`正确渲染TabHeaderWrapper 1`] = `
   position: relative;
 }
 
+.c0 .sinoui-tab-header-extra-content {
+  line-height: 48px;
+}
+
 <div
   className="c0"
 />
