@@ -4,7 +4,7 @@ export interface TabProps {
   disabled?: boolean;
 }
 
-interface TabListContextState {
+export interface TabListContextState {
   /**
    * 注册标签页
    */

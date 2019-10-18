@@ -4,7 +4,7 @@ import TabContentContext from '../TabContentContext';
 import TabContentWrapper from './TabContentWrapper';
 import TabPanelListWrapper from './TabPanelListWrapper';
 import useTabList from '../commons/useTabList';
-import TabListContext from '../TabListContext';
+import TabListContext, { TabListContextState } from '../TabListContext';
 
 export interface Props {
   children?: React.ReactNode;
@@ -40,11 +40,13 @@ export interface Props {
  * @param animateHeight 是否启用高度动画
  * @param selectedIndex 当前标签的索引位置
  * @param tabContentRef 标签内容容器DOM
+ * @param tabListContext 标签列表上下文
  */
 function useAnimateHeight(
   animateHeight: boolean,
   selectedIndex: number,
   tabContentRef: React.RefObject<HTMLDivElement>,
+  tabListContext: TabListContextState,
 ) {
   const prevSelectedIndexRef = useRef(selectedIndex);
 
@@ -57,9 +59,13 @@ function useAnimateHeight(
       return undefined;
     }
 
-    const panels = tabContent.querySelectorAll('.sinoui-tab-panel');
-    const prev = panels[prevSelectedIndex] as HTMLElement;
-    const current = panels[selectedIndex] as HTMLElement;
+    const tabs = tabListContext.getTabs();
+    const prev = tabContent.querySelector(
+      `#${tabs[prevSelectedIndex]}`,
+    ) as HTMLElement;
+    const current = tabContent.querySelector(
+      `#${tabs[selectedIndex]}`,
+    ) as HTMLElement;
     prev.style.height = 'auto';
     current.style.height = '';
     const { height: prevHeight } = prev.getBoundingClientRect();
@@ -90,7 +96,7 @@ function useAnimateHeight(
         reset();
       }
     };
-  }, [animateHeight, selectedIndex, tabContentRef]);
+  }, [animateHeight, selectedIndex, tabContentRef, tabListContext]);
 }
 
 /**
@@ -121,7 +127,7 @@ export default function TabContent(props: Props) {
   );
 
   const tabContentRef = useRef<HTMLDivElement>(null);
-  useAnimateHeight(animateHeight, selectedIndex, tabContentRef);
+  useAnimateHeight(animateHeight, selectedIndex, tabContentRef, tabListContext);
 
   return (
     <TabListContext.Provider value={tabListContext}>
