@@ -1,10 +1,14 @@
 import React from 'react';
 
+export interface TabProps {
+  disabled?: boolean;
+}
+
 interface TabListContextState {
   /**
    * 注册标签页
    */
-  register: (tabId: string) => number;
+  register: (tabId: string, props: TabProps) => number;
   /**
    * 取消注册标签页
    */
@@ -14,9 +18,10 @@ interface TabListContextState {
    */
   selectedIndex: number;
   /**
-   * 获取标签页数量
+   * 获取所有标签页的id
    */
-  getTabsCount(): number;
+  getTabs(): string[];
+  getTabProps(tabId: string): TabProps;
 }
 
 /**

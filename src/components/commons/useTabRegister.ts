@@ -1,15 +1,15 @@
 import { useContext, useEffect } from 'react';
 import useRefValue from '../../helpers/useRefValue';
-import TabListContext from '../TabListContext';
+import TabListContext, { TabProps } from '../TabListContext';
 import useTabId from './useTabId';
 
 /**
  * 注册标签页
  */
-function useTabRegister() {
+function useTabRegister(props?: TabProps) {
   const context = useContext(TabListContext);
   const tabId = useTabId();
-  const index = context ? context.register(tabId) : -1;
+  const index = context ? context.register(tabId, props || {}) : -1;
   const unregisterRef = useRefValue(context ? context.unregister : undefined);
 
   useEffect(() => {

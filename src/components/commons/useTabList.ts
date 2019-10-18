@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
+import { TabProps } from '../TabListContext';
 
 /**
  * 标签页列表状态管理
@@ -8,6 +9,7 @@ function useTabList(selectedIndex: number) {
   const isRenderredRef = useRef(false); // 是否已经同步渲染过
   const tabsRef = useRef<string[]>([]); // 所有包含标签页（无序的）
   const sortedTabsRef = useRef<string[]>([]); // 包含的有序的标签页
+  const tabsPropsRef = useRef<{ [name: string]: TabProps }>({});
   sortedTabsRef.current = []; // TODO: current mode 可能会有缺陷，参见： https://github.com/facebook/react/issues/14099
   isRenderredRef.current = false; // TODO: current mode 可能会有缺陷，参见： https://github.com/facebook/react/issues/14099
 
@@ -18,7 +20,7 @@ function useTabList(selectedIndex: number) {
   /**
    * 注册标签页
    */
-  const register = useCallback((tabId: string) => {
+  const register = useCallback((tabId: string, props: TabProps) => {
     const sortedTabs = sortedTabsRef.current;
     const currentIdx = sortedTabs.indexOf(tabId);
     if (isRenderredRef.current && currentIdx === -1) {
@@ -30,6 +32,7 @@ function useTabList(selectedIndex: number) {
 
     if (!isAdded) {
       tabsRef.current.push(tabId);
+      tabsPropsRef.current[tabId] = props;
     }
 
     if (currentIdx !== -1) {
@@ -53,6 +56,7 @@ function useTabList(selectedIndex: number) {
     const tabIdx = tabs.indexOf(tabId);
     if (tabIdx !== -1) {
       tabs.splice(tabIdx, 1);
+      delete tabsPropsRef.current[tabId];
     }
 
     if (idx !== -1) {
@@ -63,10 +67,17 @@ function useTabList(selectedIndex: number) {
   }, []);
 
   /**
-   * 获取标签页总数
+   * 获取所有标签id
    */
-  const getTabsCount = useCallback(() => {
-    return tabsRef.current.length;
+  const getTabs = useCallback(() => {
+    return sortedTabsRef.current;
+  }, []);
+
+  /**
+   * 获取指定id的属性
+   */
+  const getTabProps = useCallback((tabId: string) => {
+    return tabsPropsRef.current[tabId];
   }, []);
 
   return useMemo(
@@ -75,9 +86,10 @@ function useTabList(selectedIndex: number) {
       unregister,
       selectedIndex,
       renderCount,
-      getTabsCount,
+      getTabs,
+      getTabProps,
     }),
-    [getTabsCount, register, renderCount, selectedIndex, unregister],
+    [getTabProps, getTabs, register, renderCount, selectedIndex, unregister],
   );
 }
 
