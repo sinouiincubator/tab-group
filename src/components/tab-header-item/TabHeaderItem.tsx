@@ -84,8 +84,8 @@ function getPrevTabIndex(
     }
   }
 
-  if (i === 0) {
-    return getNextTabIndex(tabs.length + 1, tabs, getTabProps);
+  if (selectedIndex === 0) {
+    return getPrevTabIndex(tabs.length, tabs, getTabProps);
   }
 }
 
