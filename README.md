@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/@sinouiincubator/tab-group)](https://www.npmjs.com/package/@sinouiincubator/tab-group)
 [![downloads](https://img.shields.io/npm/dm/@sinouiincubator/tab-group)](https://www.npmjs.com/package/@sinouiincubator/tab-group)
 
-选项卡切换组件。
+选项卡切换组件。UI 遵循 [Material Design Tabs 设计指南](https://material.io/components/tabs/)。
 
 [官方文档](https://sinouiincubator.github.io/tab-group)
 
