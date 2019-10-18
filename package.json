@@ -23,7 +23,9 @@
     "prepublishOnly": "ts-lib-tools build",
     "doc:dev": "docz dev",
     "doc:build": "docz build",
-    "doc:publish": "docz build && gh-pages -d .docz/dist"
+    "doc:publish": "docz build && gh-pages -d .docz/dist",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "prettier": {
     "printWidth": 80,
@@ -67,6 +69,11 @@
     "classnames": "^2.2.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-actions": "^5.2.4",
+    "@storybook/addon-links": "^5.2.4",
+    "@storybook/addons": "^5.2.4",
+    "@storybook/react": "^5.2.4",
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
     "@testing-library/react-hooks": "^3.1.0",
@@ -74,6 +81,7 @@
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
     "@types/styled-components": "^4.1.19",
+    "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "docz": "^1.3.2",
     "docz-theme-default": "^1.2.0",
@@ -90,7 +98,7 @@
     "react-test-renderer": "^16.10.2",
     "sinoui-components": "^0.2.2",
     "style-loader": "^1.0.0",
-    "styled-components": "^4.4.0",
+    "styled-components": "^5.0.0-beta.9",
     "ts-lib-tools": "^0.4.7",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.6.4",
