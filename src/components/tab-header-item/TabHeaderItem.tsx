@@ -6,7 +6,7 @@ import {
   TOP_KEY_CODE,
   RIGHT_KEY_CODE,
   BOTTOM_KEY_CODE,
-} from 'src/constants';
+} from '../../constants';
 import TabHeaderItemWrapper from './TabHeaderItemWrapper';
 import TabListContext from '../TabListContext';
 import useTabRegister from '../commons/useTabRegister';
@@ -36,12 +36,66 @@ interface Props {
 }
 
 /**
+ * 获取下一个可用的tab索引
+ *
+ * @param {number} selectedIndex
+ * @param {string[]} tabs
+ * @param {(tabId: string) => { disabled?: boolean }} getTabProps
+ * @returns
+ */
+function getNextTabIndex(
+  selectedIndex: number,
+  tabs: string[],
+  getTabProps: (tabId: string) => { disabled?: boolean },
+) {
+  let i = selectedIndex + 1;
+  for (; i < tabs.length; i += 1) {
+    const tabId = tabs[i];
+    const tabDisabled = getTabProps(tabId).disabled;
+    if (!tabDisabled) {
+      return i;
+    }
+  }
+
+  if (i === tabs.length) {
+    return getNextTabIndex(-1, tabs, getTabProps);
+  }
+}
+
+/**
+ * 获取上一个可用标签页的索引
+ *
+ * @param {number} selectedIndex
+ * @param {string[]} tabs
+ * @param {(tabId: string) => { disabled?: boolean }} getTabProps
+ * @returns
+ */
+function getPrevTabIndex(
+  selectedIndex: number,
+  tabs: string[],
+  getTabProps: (tabId: string) => { disabled?: boolean },
+) {
+  let i = selectedIndex - 1;
+  for (; i > 0; i -= 1) {
+    const tabId = tabs[i];
+    const tabDisabled = getTabProps(tabId).disabled;
+    if (!tabDisabled) {
+      return i;
+    }
+  }
+
+  if (i === 0) {
+    return getNextTabIndex(tabs.length + 1, tabs, getTabProps);
+  }
+}
+
+/**
  * 头部选项卡项组件
  */
 function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
   const tabListContext = useContext(TabListContext);
   const tabHeaderContext = useContext(TabHeaderContext);
-  const index = useTabRegister();
+  const index = useTabRegister({ disabled });
   const selectedIndex = tabListContext ? tabListContext.selectedIndex : -1;
   const isActive = index === selectedIndex;
 
@@ -60,24 +114,18 @@ function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
     (event: React.KeyboardEvent) => {
       const { keyCode } = event;
       if (tabListContext && tabHeaderContext) {
-        const { getTabsCount } = tabListContext;
-        const tabsCount = getTabsCount();
+        const { getTabs, getTabProps } = tabListContext;
+        const tabs = getTabs();
         if (keyCode === RIGHT_KEY_CODE || keyCode === BOTTOM_KEY_CODE) {
           event.stopPropagation();
           event.preventDefault();
-          if (selectedIndex < tabsCount - 1) {
-            tabHeaderContext.onSelect(selectedIndex + 1, event);
-          } else {
-            tabHeaderContext.onSelect(0, event);
-          }
+          const nextTab = getNextTabIndex(selectedIndex, tabs, getTabProps);
+          tabHeaderContext.onSelect(nextTab, event);
         } else if (keyCode === LEFT_KEY_CODE || keyCode === TOP_KEY_CODE) {
           event.stopPropagation();
           event.preventDefault();
-          if (selectedIndex > 0) {
-            tabHeaderContext.onSelect(selectedIndex - 1, event);
-          } else {
-            tabHeaderContext.onSelect(tabsCount - 1, event);
-          }
+          const prevTab = getPrevTabIndex(selectedIndex, tabs, getTabProps);
+          tabHeaderContext.onSelect(prevTab, event);
         }
       }
     },
