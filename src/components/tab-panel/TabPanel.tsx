@@ -8,7 +8,13 @@ import TabContentContext from '../TabContentContext';
 
 interface TabPanelProps {
   children: React.ReactNode;
+  /**
+   * 指定自定义样式名
+   */
   className?: string;
+  /**
+   * 指定自定义样式
+   */
   style?: React.CSSProperties;
   /**
    * 指定标签 id

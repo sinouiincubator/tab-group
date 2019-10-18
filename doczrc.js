@@ -27,7 +27,20 @@ export default {
   typescript: true,
   files: ['**/*.mdx'],
   public: './docs/assets',
-  menu: ['首页'],
+  menu: [
+    '开始',
+    {
+      name: 'API',
+      menu: [
+        'TabGroup',
+        'Tab',
+        'TabHeader',
+        'TabHeaderItem',
+        'TabContent',
+        'TabPanel',
+      ],
+    },
+  ],
   wrapper: 'docs/Wrapper.tsx',
   indexHtml: 'docs/index.html',
   base: getBaseUrl(),
@@ -69,8 +82,8 @@ export default {
       .end();
 
     config.watchOptions({
-        ignored: ['node_modules', 'dist', '.cache', 'coverage', '.docz']
-      });
+      ignored: ['node_modules', 'dist', '.cache', 'coverage', '.docz'],
+    });
 
     return config;
   },

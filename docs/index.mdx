@@ -4,7 +4,7 @@ route: /
 ---
 
 import { useState, useCallback } from 'react';
-import { Playground } from 'docz';
+import { Playground, Props } from 'docz';
 import { MdDelete } from 'react-icons/md';
 import TabGroup, {
   Tab,
@@ -13,18 +13,21 @@ import TabGroup, {
   TabContent,
   TabPanel,
 } from '../src';
-import TabContentDemo from './TabContentDemo';
 import Button from 'sinoui-components/Button';
 
-# 标签页
+# TabGroup 标签页
 
 选项卡切换组件。
 
 ## 安装依赖
 
 ```shell
-yarn add sinoui-components @sinouiincubator/tab-group
+yarn add @sinouiincubator/tab-group
 ```
+
+## 何时使用
+
+提供平级的区域将大块内容进行收纳和展现，保持界面整洁。TabGroup 提供的是标准线条式页签，用于容器内部的主功能切换，这是最常用的 Tabs。
 
 ## 入门示例
 
@@ -51,7 +54,248 @@ function Demo() {
   </TabGroup>
 </Playground>
 
+## 主题切换
+
+TabGroup 组件通过 styled-components 支持主题切换。所以在项目中使用 TabGroup 组件，需要做一些主题初始化工作。
+
+安装依赖：
+
+```shell
+yarn add styled-components sinoui-components
+```
+
+在 `App` 组件中创建主题上下文：
+
+```tsx
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import defaultTheme from 'sinoui-components/styles/defaultTheme';
+
+function App() {
+  return (
+    <ThemeProvider value={defaultTheme}>/* 这里是应用程序内容 */</ThemeProvider>
+  );
+}
+```
+
+## 禁用
+
+禁用某些标签页：
+
+<Playground>
+  <TabGroup>
+    <Tab title="标签1">标签内容1</Tab>
+    <Tab title="标签2" disabled>
+      标签内容2
+    </Tab>
+    <Tab title="标签3">标签内容3</Tab>
+    <Tab title="标签4" disabled>
+      标签内容4
+    </Tab>
+    <Tab title="标签5">标签内容5</Tab>
+    <Tab title="标签6">标签内容6</Tab>
+  </TabGroup>
+</Playground>
+
+禁用当前标签页：
+
+<Playground>
+  <TabGroup>
+    <Tab title="标签1" disabled>
+      标签内容1
+    </Tab>
+    <Tab title="标签2">标签内容2</Tab>
+    <Tab title="标签3">标签内容3</Tab>
+  </TabGroup>
+</Playground>
+
+## 嵌套
+
+TabGroup 可以嵌套使用。
+
+<Playground>
+  <TabGroup>
+    <Tab title="标签1">
+      <TabGroup>
+        <Tab title="标签1--二级标签">这是嵌套标签内容1</Tab>
+        <Tab title="标签2--二级标签">这是嵌套标签内容2</Tab>
+        <Tab title="标签3--二级标签">这是嵌套标签内容3</Tab>
+      </TabGroup>
+    </Tab>
+    <Tab title="标签2">标签内容2</Tab>
+    <Tab title="标签3">标签内容3</Tab>
+  </TabGroup>
+</Playground>
+
+## 内容高度自适应
+
+`TabGroup` 组件在切换时内容高度是自适应的。
+
+<Playground>
+  <TabGroup>
+    <Tab title="标签1">
+      人人都忙于自己的欢喜与悲伤，哪有空顾你的孤独。时间是最公平的资源，你浇灌在哪里，哪里就可能长出灿烂的花朵。无论走到哪里，都要鼓励自己，给自己一些肯定，别总把那些挫败当成痛的诉说。
+    </Tab>
+    <Tab title="标签2">标签内容2</Tab>
+    <Tab title="标签3">
+      将一颗花生投到漏斗里，很快就落下去了，而把一把花生投到漏斗里，花生相互挤在一起，竟然一颗也落不下去了。成功的人之所以成功，是因为将有限的精力专注到一个领域，每天做好一件事，日积月累成就伟业。而把所有事挤在一起，缺乏核心竞争力，则最终会一事无成。
+    </Tab>
+  </TabGroup>
+</Playground>
+
+## 单独使用标签
+
+`TabHeader` 组件允许我们单独使用标签。
+
+> 注意，`TabHeader` 组件是受控的，所以必须指定 `selectedIndex` 和 `onSelect` 属性。
+
+```tsx
+import React, { useState } from 'react';
+import { TabHeader, TabHeaderItem } from '@sinouiincubator/tab-group';
+
+function TabHeaderDemo() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <TabHeader selectedIndex={active} onSelect={setActive}>
+      <TabHeaderItem title="标签1">标签内容1</TabHeaderItem>
+      <Tab title="标签2">标签内容2</Tab>
+      <Tab title="标签3">标签内容3</Tab>
+    </TabHeader>
+  );
+}
+```
+
+<Playground>
+  {() => {
+    const [active, setActive] = useState(0);
+
+    return <TabHeader selectedIndex={active} onSelect={setActive}>
+      <TabHeaderItem title="标签1" />
+      <TabHeaderItem title="标签2" />
+      <TabHeaderItem title="标签3" />
+    </TabHeader>;
+
+}}
+
+</Playground>
+
+可以自定义标签的样式，或者与其它组件组合使用。如下面的示例，在标签之间加上了一个方向分隔符：
+
+<Playground>
+  {() => {
+    const [active, setActive] = useState(0);
+    const NextIcon = () => <div style={{ display: 'inline-block', padding: "12px 8px 0px 8px", color: 'rgba(0, 0, 0, 0.54)'}}>></div>;
+    return <TabHeader selectedIndex={active} onSelect={setActive}>
+      <TabHeaderItem title="标签1" />
+      <NextIcon />
+      <TabHeaderItem title="标签2" />
+      <NextIcon />
+      <TabHeaderItem title="标签3" />
+    </TabHeader>;
+
+}}
+
+</Playground>
+
+## 单独使用标签内容
+
+`TabContent` 组件允许我们单独使用标签内容。
+
+```tsx
+import React from 'react';
+import Button from 'sinoui-components/Button';
+import { TabContent, TabPanel } from '@sinouiincubator/tab-group';
+
+function TabContentDemo() {
+  const [active, setActive] = useState(0);
+  const handlePrevClick = useCallback(() => {
+    if (active === 0) {
+      return;
+    }
+
+    setActive(active - 1);
+  }, [active]);
+
+  const handleNextClick = useCallback(() => {
+    if (active === 2) {
+      return;
+    }
+    setActive(active + 1);
+  }, [active]);
+
+  return (
+    <>
+      <TabContent selectedIndex={active}>
+        <TabPanel>内容1</TabPanel>
+        <TabPanel>内容2</TabPanel>
+        <TabPanel>内容3</TabPanel>
+      </TabContent>
+      <Button onClick={handlePrevClick}>上一页</Button>
+      <Button onClick={handleNextClick}>下一页</Button>
+    </>
+  );
+}
+```
+
+<Playground>
+  {() => {
+    const [active, setActive] = useState(0);
+    const handlePrevClick = useCallback(() => {
+      if (active === 0) {
+        return;
+      }
+
+      setActive(active - 1);
+    }, [active]);
+
+    const handleNextClick = useCallback(() => {
+      if (active === 2) {
+        return;
+      }
+      setActive(active + 1);
+    }, [active]);
+
+    return (
+      <>
+        <TabContent selectedIndex={active}>
+          <TabPanel>内容1</TabPanel>
+          <TabPanel>内容2</TabPanel>
+          <TabPanel>内容3</TabPanel>
+        </TabContent>
+        <Button onClick={handlePrevClick}>上一页</Button>
+        <Button onClick={handleNextClick}>下一页</Button>
+      </>
+    );
+
+}}
+
+</Playground>
+
+## 高度动画
+
+`TabGroup` 和 `TabContent` 组件均支持标签切换时内容高度变化的动画。因为高度动画对于页面性能影响较大，所以默认是禁用高度动画的。可以通过 `animateHeight` 属性启用。如下所示：
+
+<Playground>
+  <TabGroup animateHeight>
+    <Tab title="标签1">
+      人人都忙于自己的欢喜与悲伤，哪有空顾你的孤独。时间是最公平的资源，你浇灌在哪里，哪里就可能长出灿烂的花朵。无论走到哪里，都要鼓励自己，给自己一些肯定，别总把那些挫败当成痛的诉说。
+    </Tab>
+    <Tab title="标签2">标签内容2</Tab>
+    <Tab title="标签3">
+      将一颗花生投到漏斗里，很快就落下去了，而把一把花生投到漏斗里，花生相互挤在一起，竟然一颗也落不下去了。成功的人之所以成功，是因为将有限的精力专注到一个领域，每天做好一件事，日积月累成就伟业。而把所有事挤在一起，缺乏核心竞争力，则最终会一事无成。
+    </Tab>
+  </TabGroup>
+</Playground>
+
 ## 可访问性
+
+TabGroup 组件的可访问性实现参考的是：
+
+- [MDN: tab role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role)
+- [ARIA: tab role](https://www.w3.org/TR/wai-aria-1.1/#tab)
+
+通过 `Tab` 组件的 `id` 属性可以指定标签与标签面板之间的对应关系，进一步实现 TabGroup 组件的可访问性，如下所示：
 
 ```tsx
 import React from 'react';
@@ -88,104 +332,9 @@ function Demo() {
   </TabGroup>
 </Playground>
 
-## 标签头部 - TabHeader
-
-```tsx
-import React from 'react';
-import { TabHeader, TabHeaderItem } from '@sinouiincubator/tab-group';
-
-function TabHeaderDemo() {
-  return (
-    <TabHeader>
-      <TabHeaderItem title="标签1">标签内容1</TabHeaderItem>
-      <Tab title="标签2">标签内容2</Tab>
-      <Tab title="标签3">标签内容3</Tab>
-    </TabHeader>
-  );
-}
-```
-
-<Playground>
-  {() => {
-    const [active, setActive] = useState(0);
-
-    return <TabHeader selectedIndex={active} onSelect={setActive}>
-      <TabHeaderItem title="标签1" />
-      <TabHeaderItem title="标签2" />
-      <TabHeaderItem title="标签3" />
-    </TabHeader>;
-
-}}
-
-</Playground>
-
-<Playground>
-  {() => {
-    const [active, setActive] = useState(0);
-    const NextIcon = () => <div style={{ display: 'inline-block', padding: "12px 8px 0px 8px", color: 'rgba(0, 0, 0, 0.54)'}}>></div>;
-    return <TabHeader selectedIndex={active} onSelect={setActive}>
-      <TabHeaderItem title="标签1" />
-      <NextIcon />
-      <TabHeaderItem title="标签2" />
-      <NextIcon />
-      <TabHeaderItem title="标签3" />
-    </TabHeader>;
-
-}}
-
-</Playground>
-
-## TabContent
-
-<Playground>
-  {() => {
-    const [active, setActive] = useState(0);
-    const handlePrevClick = useCallback(() => {
-      if (active === 0) {
-        return;
-      }
-
-      setActive(active - 1);
-    }, [active]);
-
-    const handleNextClick = useCallback(() => {
-      if (active === 2) {
-        return;
-      }
-      setActive(active + 1);
-    }, [active]);
-
-    return (
-      <>
-        <TabContent selectedIndex={active}>
-          <TabPanel>内容1</TabPanel>
-          <TabPanel>内容2</TabPanel>
-          <TabPanel>内容3</TabPanel>
-        </TabContent>
-        <Button onClick={handlePrevClick}>上一页</Button>
-        <Button onClick={handleNextClick}>下一页</Button>
-      </>
-    );
-
-}}
-
-</Playground>
-
-## 内容高度自适应
-
-<Playground>
-  <TabGroup>
-    <Tab title="标签1">
-      人人都忙于自己的欢喜与悲伤，哪有空顾你的孤独。时间是最公平的资源，你浇灌在哪里，哪里就可能长出灿烂的花朵。无论走到哪里，都要鼓励自己，给自己一些肯定，别总把那些挫败当成痛的诉说。
-    </Tab>
-    <Tab title="标签2">标签内容2</Tab>
-    <Tab title="标签3">
-      将一颗花生投到漏斗里，很快就落下去了，而把一把花生投到漏斗里，花生相互挤在一起，竟然一颗也落不下去了。成功的人之所以成功，是因为将有限的精力专注到一个领域，每天做好一件事，日积月累成就伟业。而把所有事挤在一起，缺乏核心竞争力，则最终会一事无成。
-    </Tab>
-  </TabGroup>
-</Playground>
-
 ## 维护标签页
+
+可以动态新增、删除标签页。
 
 <Playground>
   {() => {
@@ -230,49 +379,59 @@ function TabHeaderDemo() {
 
 </Playground>
 
-## 嵌套的 tabGroup
+## 受控模式
 
-<Playground>
-  <TabGroup>
-    <Tab title="标签1">
-      <TabGroup>
-        <Tab title="标签1--二级标签">这是嵌套标签内容1</Tab>
-        <Tab title="标签2--二级标签">这是嵌套标签内容2</Tab>
-        <Tab title="标签3--二级标签">这是嵌套标签内容3</Tab>
+`TabGroup` 支持非受控和受控模式。指定 `selectedIndex` 属性，`TabGroup` 则是受控模式，需要指定 `onSelect` 属性监听标签页切换。否则是非受控模式。
+
+在受控模式下，需要在 `TabGroup` 组件之外维护状态，如下所示：
+
+```tsx
+import React, { useState } from 'react';
+import TabGroup, { Tab } from '@sinouiincubator/tab-group';
+
+function Demo() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  return (
+    <>
+      <div>当前选中的标签是：{selectedIndex}</div>
+      <TabGroup selectedIndex={selectedIndex} onSelect={setSelectedIndex}>
+        <Tab title="标签1">标签内容1</Tab>
+        <Tab title="标签2">标签内容2</Tab>
+        <Tab title="标签3">标签内容3</Tab>
       </TabGroup>
-    </Tab>
-    <Tab title="标签2">标签内容2</Tab>
-    <Tab title="标签3">标签内容3</Tab>
-  </TabGroup>
-</Playground>
-
-## 高度动画
+    </>
+  );
+}
+```
 
 <Playground>
-  <TabGroup animateHeight>
-    <Tab title="标签1">
-      人人都忙于自己的欢喜与悲伤，哪有空顾你的孤独。时间是最公平的资源，你浇灌在哪里，哪里就可能长出灿烂的花朵。无论走到哪里，都要鼓励自己，给自己一些肯定，别总把那些挫败当成痛的诉说。
-    </Tab>
-    <Tab title="标签2">标签内容2</Tab>
-    <Tab title="标签3">
-      将一颗花生投到漏斗里，很快就落下去了，而把一把花生投到漏斗里，花生相互挤在一起，竟然一颗也落不下去了。成功的人之所以成功，是因为将有限的精力专注到一个领域，每天做好一件事，日积月累成就伟业。而把所有事挤在一起，缺乏核心竞争力，则最终会一事无成。
-    </Tab>
-  </TabGroup>
+  {() => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    return (
+      <>
+      <div>当前选中的标签是：{selectedIndex}</div>
+      <TabGroup selectedIndex={selectedIndex} onSelect={setSelectedIndex}>
+        <Tab title="标签1">标签内容 1</Tab>
+        <Tab title="标签2">标签内容 2</Tab>
+        <Tab title="标签3">标签内容 3</Tab>
+      </TabGroup>
+      </>
+    );
+
+}}
+
 </Playground>
 
-## 方向键切换标签页
+## 阻止标签页切换
+
+`TabGroup` 组件在非受控模式下，`onSelect` 函数如果返回 `false`，则不会切换标签页。如下所示，不让切换到“标签 2”：
 
 <Playground>
-  <TabGroup>
+  <TabGroup onSelect={(index) => index !== 1}>
     <Tab title="标签1">标签内容1</Tab>
-    <Tab title="标签2" disabled>
-      标签内容2
-    </Tab>
+    <Tab title="标签2">标签内容2</Tab>
     <Tab title="标签3">标签内容3</Tab>
-    <Tab title="标签4" disabled>
-      标签内容4
-    </Tab>
-    <Tab title="标签5">标签内容5</Tab>
-    <Tab title="标签6">标签内容6</Tab>
   </TabGroup>
 </Playground>

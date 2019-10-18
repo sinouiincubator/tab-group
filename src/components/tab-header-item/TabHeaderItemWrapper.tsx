@@ -11,6 +11,11 @@ const activeCss = css`
   opacity: 1;
 `;
 
+const disabledCss = css`
+  cursor: not-allowed;
+  color: ${(props) => props.theme.palette.text.disabled};
+`;
+
 interface TabHeaderItemWrapperProps {
   disabled?: boolean;
   active?: boolean;
@@ -47,6 +52,7 @@ const TabHeaderItemWrapper = styled.div<TabHeaderItemWrapperProps>`
   }
 
   ${(props) => !props.disabled && hoverCss};
+  ${(props) => props.disabled && disabledCss};
   ${(props) => props.active && activeCss};
 `;
 

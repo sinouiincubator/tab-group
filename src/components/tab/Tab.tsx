@@ -15,7 +15,7 @@ interface Props {
   children: React.ReactNode;
 
   /**
-   * 指定标签不可用。默认为 `false`。
+   * 设置为 `true` 则禁用标签。默认为 `false`。
    */
   disabled?: boolean;
 

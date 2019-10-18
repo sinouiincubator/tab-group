@@ -8,7 +8,14 @@ import TabListContext from '../TabListContext';
 
 export interface Props {
   children?: React.ReactNode;
+  /**
+   * 指定自定义样式名
+   */
   className?: string;
+  /**
+   * 指定自定义样式
+   */
+  style?: React.CSSProperties;
   /**
    * 设置当前选中的标签页。这是一个从 `0` 开始的索引，第一个标签页的索引为 `0`，第二个标签页的索引为 `1`，……
    */

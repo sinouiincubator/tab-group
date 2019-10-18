@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef, useState, useCallback } from 'react';
 import classNames from 'classnames';
 import useRefValue from '../helpers/useRefValue';
@@ -19,7 +20,11 @@ interface Props {
   /**
    * 每次标签页切换时调用的事件处理器。这个函数的 `index` 参数是新的选中标签页索引，`lastIndex` 参数是变更之前选中的标签页索引，`event` 参数是引起页签切换的事件，可能是 `keydown` 或者 `click` 事件。如果 `index` 和 `lastIndex` 相同时，表示用户在当前选中的标签页上点击。
    */
-  onSelect?: TabSelectCallback;
+  onSelect?: (
+    index: number,
+    lastIndex: number,
+    event: React.MouseEvent | React.KeyboardEvent,
+  ) => boolean | undefined | void;
   /**
    * 设置标签。可以是多个 `<Tab />` 元素。
    */

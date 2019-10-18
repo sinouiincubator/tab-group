@@ -7,16 +7,14 @@ import useTabList from '../../commons/useTabList';
 import TabHeaderContext from '../../TabHeaderContext';
 import TabHeaderItem from '../TabHeaderItem';
 import TabListContext from '../../TabListContext';
+import mockTabListContext from '../../commons/__tests__/mockTabListContext';
 
 it('选项卡是选中状态', () => {
   const context = {
     onSelect: jest.fn(),
   };
-  const tabListContext = {
-    selectedIndex: 0,
-    register: () => 0,
-    unregister: jest.fn(),
-  };
+  const tabListContext = mockTabListContext();
+  tabListContext.register.mockReturnValue(0);
 
   const { getByTestId } = render(
     <ThemeProvider theme={defaultTheme}>
@@ -36,11 +34,8 @@ it('点击标签时，调用 onChange 方法', () => {
   const context = {
     onSelect: jest.fn(),
   };
-  const tabListContext = {
-    selectedIndex: 0,
-    register: () => 0,
-    unregister: jest.fn(),
-  };
+  const tabListContext = mockTabListContext();
+  tabListContext.register.mockReturnValue(0);
 
   const { getByTestId } = render(
     <ThemeProvider theme={defaultTheme}>
@@ -63,11 +58,8 @@ it('不可用时不能点击', () => {
   const context = {
     onSelect: jest.fn(),
   };
-  const tabListContext = {
-    selectedIndex: 0,
-    register: () => 0,
-    unregister: jest.fn(),
-  };
+  const tabListContext = mockTabListContext();
+  tabListContext.register.mockReturnValue(0);
 
   const { getByTestId } = render(
     <ThemeProvider theme={defaultTheme}>

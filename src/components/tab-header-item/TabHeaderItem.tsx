@@ -26,7 +26,7 @@ interface Props {
    */
   style?: React.CSSProperties;
   /**
-   * 是否可用
+   * 设置为 `true`，则禁用标签。
    */
   disabled?: boolean;
   /**
@@ -110,7 +110,7 @@ function TabHeaderItem({
   const selectedIndex = tabListContext ? tabListContext.selectedIndex : -1;
   const isActive = index === selectedIndex;
 
-  const rippleRef = useRipple<HTMLDivElement>();
+  const rippleRef = useRipple<HTMLDivElement>(undefined, disabled);
 
   const handleClick = useCallback(
     (event: React.MouseEvent) => {
