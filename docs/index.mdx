@@ -380,7 +380,7 @@ function Demo() {
     };
 
     const handleAdd = () => {
-      const index = Math.max(...tabs.map(tab => tab.id)) + 1;
+      const index = Math.max(...tabs.map(tab => tab.id), -1) + 1;
       const newTabs = [...tabs, { id: index, title: `标签${index + 1}`, content: `内容${index + 1}` }];
 
       setTabs(newTabs);
