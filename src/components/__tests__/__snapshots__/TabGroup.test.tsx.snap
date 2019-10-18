@@ -21,6 +21,7 @@ exports[`正确渲染TabGroup 1`] = `
             aria-selected={true}
             className="sc-ifAKCX gAgPRm sinoui-tab-label sinoui-tab-label-active"
             data-testid="tab-header-item-0"
+            id="tab-0"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="tab"
@@ -36,6 +37,7 @@ exports[`正确渲染TabGroup 1`] = `
             aria-selected={false}
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-1"
+            id="tab-1"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="tab"
@@ -51,6 +53,7 @@ exports[`正确渲染TabGroup 1`] = `
             aria-selected={false}
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-2"
+            id="tab-2"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="tab"
@@ -85,6 +88,7 @@ exports[`正确渲染TabGroup 1`] = `
         aria-hidden={false}
         className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-active"
         data-testid="tab-panel-0"
+        id="tab-3"
         role="tabpanel"
       >
         内容1
@@ -93,12 +97,14 @@ exports[`正确渲染TabGroup 1`] = `
         aria-hidden={true}
         className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-hidden"
         data-testid="tab-panel-1"
+        id="tab-4"
         role="tabpanel"
       />
       <div
         aria-hidden={true}
         className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-hidden"
         data-testid="tab-panel-2"
+        id="tab-5"
         role="tabpanel"
       />
     </div>
@@ -127,6 +133,7 @@ exports[`选中第二个标签页 1`] = `
             aria-selected={false}
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-0"
+            id="tab-6"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="tab"
@@ -142,6 +149,7 @@ exports[`选中第二个标签页 1`] = `
             aria-selected={true}
             className="sc-ifAKCX gAgPRm sinoui-tab-label sinoui-tab-label-active"
             data-testid="tab-header-item-1"
+            id="tab-7"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="tab"
@@ -157,6 +165,7 @@ exports[`选中第二个标签页 1`] = `
             aria-selected={false}
             className="sc-ifAKCX haDPwE sinoui-tab-label"
             data-testid="tab-header-item-2"
+            id="tab-8"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="tab"
@@ -191,12 +200,14 @@ exports[`选中第二个标签页 1`] = `
         aria-hidden={true}
         className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-hidden"
         data-testid="tab-panel-0"
+        id="tab-9"
         role="tabpanel"
       />
       <div
         aria-hidden={false}
         className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-active"
         data-testid="tab-panel-1"
+        id="tab-10"
         role="tabpanel"
       >
         内容2
@@ -205,6 +216,7 @@ exports[`选中第二个标签页 1`] = `
         aria-hidden={true}
         className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-hidden"
         data-testid="tab-panel-2"
+        id="tab-11"
         role="tabpanel"
       />
     </div>

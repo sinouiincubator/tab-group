@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import classNames from 'classnames';
-import useRefValue from 'src/helpers/useRefValue';
+import useRefValue from '../helpers/useRefValue';
 import { TabSelectCallback } from '../types';
 import TabHeader from './tab-header';
 import TabContent from './tab-content';

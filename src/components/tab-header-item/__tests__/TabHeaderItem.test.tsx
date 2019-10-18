@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'sinoui-components/styles/defaultTheme';
 import React from 'react';
-import useTabList from 'src/components/commons/useTabList';
+import useTabList from '../../commons/useTabList';
 import TabHeaderContext from '../../TabHeaderContext';
 import TabHeaderItem from '../TabHeaderItem';
 import TabListContext from '../../TabListContext';

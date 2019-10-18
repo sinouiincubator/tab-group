@@ -6,7 +6,7 @@ import useTabId from './useTabId';
 /**
  * 注册标签页
  */
-function useTabRegister() {
+function useTabRegister(): [string, number] {
   const context = useContext(TabListContext);
   const tabId = useTabId();
   const index = context ? context.register(tabId) : -1;
@@ -21,7 +21,7 @@ function useTabRegister() {
     return undefined;
   }, [tabId, unregisterRef]);
 
-  return index;
+  return [tabId, index];
 }
 
 export default useTabRegister;
