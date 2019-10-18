@@ -92,10 +92,17 @@ function getPrevTabIndex(
 /**
  * 头部选项卡项组件
  */
-function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
+function TabHeaderItem({
+  title,
+  className,
+  style,
+  disabled,
+  id,
+  ...rest
+}: Props) {
   const tabListContext = useContext(TabListContext);
   const tabHeaderContext = useContext(TabHeaderContext);
-  const index = useTabRegister({ disabled });
+  const [tabId, index] = useTabRegister({ disabled });
   const selectedIndex = tabListContext ? tabListContext.selectedIndex : -1;
   const isActive = index === selectedIndex;
 
@@ -152,6 +159,7 @@ function TabHeaderItem({ title, className, style, disabled, ...rest }: Props) {
       aria-disabled={disabled}
       aria-selected={isActive}
       onKeyDown={disabled ? undefined : handleKeyDown}
+      id={id || tabId}
       {...rest}
     >
       <div className="sinoui-tab-label-content">{title}</div>

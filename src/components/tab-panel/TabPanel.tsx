@@ -119,7 +119,7 @@ export default function TabPanel(props: TabPanelProps) {
     cacheable,
     ...other
   } = props;
-  const index = useTabRegister();
+  const [tabId, index] = useTabRegister();
   const isActive = useIsActive(index);
   const isCacheable = useIsCacheable(cacheable);
   const isNeedRendered = useIsNeedRendered(isCacheable, isActive);
@@ -136,6 +136,7 @@ export default function TabPanel(props: TabPanelProps) {
       role="tabpanel"
       aria-hidden={!isActive}
       aria-labelledby={props.tabId}
+      id={tabId}
       {...other}
       className={classNames(
         'sinoui-tab-panel',

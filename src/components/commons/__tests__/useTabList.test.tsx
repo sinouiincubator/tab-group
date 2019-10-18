@@ -20,7 +20,7 @@ const Wrapper: React.SFC = ({ children }) => {
 
 let tabs: number[] = [];
 const Tab: React.SFC = () => {
-  const index = useTabRegister();
+  const [, index] = useTabRegister();
 
   tabs.push(index);
 
@@ -82,7 +82,7 @@ it('重绘组件时，依然能够获取到正确的索引位置', () => {
 it('自顶向下的改变标签顺序，各标签页能够获取到正确的索引位置', () => {
   const tabsIdAndIndex: { [tabId: string]: number } = {};
   const TabWithId: React.SFC<{ id: string }> = ({ id }) => {
-    const index = useTabRegister();
+    const [, index] = useTabRegister();
 
     tabsIdAndIndex[id] = index;
 
@@ -163,7 +163,7 @@ it('自定向下的删除标签页，各标签页能够获取到正确的索引�
 it('不引起Wrapper重绘的情况下新增了标签页，会引起Wrapper重绘，并且各标签页能够获取到正确索引位置', () => {
   let testTabIndex = 0;
   const TestTab = () => {
-    testTabIndex = useTabRegister();
+    [, testTabIndex] = useTabRegister();
     if (testTabIndex !== -1) {
       tabs.push(testTabIndex);
     }
