@@ -6,6 +6,14 @@
   "umd:main": "dist/sinouiincubator-tab-group.umd.production.js",
   "module": "dist/sinouiincubator-tab-group.esm.js",
   "typings": "dist/index.d.ts",
+  "homepage": "https://sinouiincubator.github.io/tab-group",
+  "bugs": {
+    "url": "https://github.com/sinouiincubator/tab-group/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinouiincubator/tab-group.git"
+  },
   "scripts": {
     "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",

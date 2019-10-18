@@ -1,6 +1,36 @@
 # @sinouiincubator/tab-group
 
-这是由[ts-lib-scripts](https://github.com/sinoui/ts-lib-scripts)创建的TypeScript库项目。
+[![npm version](https://img.shields.io/npm/v/@sinouiincubator/tab-group)](https://www.npmjs.com/package/@sinouiincubator/tab-group)
+[![downloads](https://img.shields.io/npm/dm/@sinouiincubator/tab-group)](https://www.npmjs.com/package/@sinouiincubator/tab-group)
+
+选项卡切换组件。
+
+[官方文档](https://sinouiincubator.github.io/tab-group)
+
+## 安装
+
+```shell
+yarn add @sinouiincubator/tab-group
+```
+
+## 示例
+
+```tsx
+import React from 'react';
+import TabGroup, { Tab } from '@sinouiincubator/tab-group';
+
+function Demo() {
+  return (
+    <TabGroup>
+      <Tab title="标签1">内容1</Tab>
+      <Tab title="标签2">内容2</Tab>
+      <Tab title="标签3">内容3</Tab>
+    </TabGroup>
+  );
+}
+```
+
+更多示例请查看[官方文档](https://sinouiincubator.github.io/tab-group)。
 
 ## 本地开发
 
@@ -43,16 +73,6 @@ yarn doc:publish
 ```
 
 ### 发布文档
-
-在发布文档之前，在`package.json`中配置好`homepage`，如下所示：
-
-```json
-{
-  "homepage": "https://sinouiincubator.github.io/editable-data-table"
-}
-```
-
-配置完之后就可以执行下面的命令行发布文档：
 
 ```shell
 yarn doc:publish
