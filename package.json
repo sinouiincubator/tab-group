@@ -1,6 +1,6 @@
 {
   "name": "@sinouiincubator/tab-group",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "license": "MIT",
   "main": "dist/index.js",
   "umd:main": "dist/sinouiincubator-tab-group.umd.production.js",
