@@ -47,7 +47,7 @@ function getNextTabIndex(
   selectedIndex: number,
   tabs: string[],
   getTabProps: (tabId: string) => { disabled?: boolean },
-) {
+): number {
   let i = selectedIndex + 1;
   for (; i < tabs.length; i += 1) {
     const tabId = tabs[i];
@@ -60,6 +60,8 @@ function getNextTabIndex(
   if (i === tabs.length) {
     return getNextTabIndex(-1, tabs, getTabProps);
   }
+
+  return 0;
 }
 
 /**
@@ -74,7 +76,7 @@ function getPrevTabIndex(
   selectedIndex: number,
   tabs: string[],
   getTabProps: (tabId: string) => { disabled?: boolean },
-) {
+): number {
   let i = selectedIndex - 1;
   for (; i > 0; i -= 1) {
     const tabId = tabs[i];
@@ -87,6 +89,8 @@ function getPrevTabIndex(
   if (selectedIndex === 0) {
     return getPrevTabIndex(tabs.length, tabs, getTabProps);
   }
+
+  return 0;
 }
 
 /**
