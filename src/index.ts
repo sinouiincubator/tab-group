@@ -6,6 +6,13 @@ import TabGroup from './components/TabGroup';
 import Tab from './components/tab';
 import { reset } from './helpers/uuid';
 
-export { Tab, TabHeader, TabHeaderItem, TabContent, TabPanel, reset };
+export {
+  Tab,
+  TabHeader,
+  TabHeaderItem,
+  TabContent,
+  TabPanel,
+  reset as resetIdCounter,
+};
 
 export default TabGroup;
