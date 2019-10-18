@@ -115,18 +115,17 @@ it('方向键切换标签页', () => {
   }
 
   const { getByTestId } = render(<Demo />);
-  act(() => {
-    fireEvent.click(getByTestId('tab1'));
-  });
+
   fireEvent.keyDown(getByTestId('tab1'), { keyCode: 37 });
 
-  expect(context.onSelect).toHaveBeenCalledTimes(2);
+  expect(context.onSelect).toHaveBeenCalledTimes(1);
+  expect(context.onSelect).toHaveBeenCalledWith(2, expect.anything());
 
   fireEvent.keyDown(getByTestId('tab1'), { keyCode: 50 });
 
-  expect(context.onSelect).toHaveBeenCalledTimes(2);
+  expect(context.onSelect).toHaveBeenCalledTimes(1);
 
   fireEvent.keyDown(getByTestId('tab2'), { keyCode: 39 });
 
-  expect(context.onSelect).toHaveBeenCalledTimes(2);
+  expect(context.onSelect).toHaveBeenCalledTimes(1);
 });
