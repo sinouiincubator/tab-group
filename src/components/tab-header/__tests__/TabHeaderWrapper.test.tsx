@@ -16,3 +16,15 @@ it('正确渲染TabHeaderWrapper', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it('不显示底部线条', () => {
+  const tree = renderer
+    .create(
+      <ThemeProvider theme={defaultTheme}>
+        <TabHeaderWrapper borderless />
+      </ThemeProvider>,
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

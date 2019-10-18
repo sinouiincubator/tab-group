@@ -27,6 +27,10 @@ interface Props {
    * 在标签右侧添加附件内容。
    */
   extraContent?: React.ReactNode;
+  /**
+   * 设置不显示底部线条。默认为 `false`。
+   */
+  borderless?: boolean;
 }
 
 /**
@@ -39,6 +43,7 @@ function TabHeader({
   selectedIndex = 0,
   onSelect,
   extraContent,
+  borderless,
 }: Props) {
   const tabList = useTabList(selectedIndex);
 
@@ -62,7 +67,9 @@ function TabHeader({
   return (
     <TabListContext.Provider value={tabList}>
       <TabHeaderContext.Provider value={context}>
-        <InnerTabHeader extraContent={extraContent}>{children}</InnerTabHeader>
+        <InnerTabHeader extraContent={extraContent} borderless={borderless}>
+          {children}
+        </InnerTabHeader>
       </TabHeaderContext.Provider>
     </TabListContext.Provider>
   );

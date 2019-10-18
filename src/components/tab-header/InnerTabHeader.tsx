@@ -9,9 +9,13 @@ interface Props {
    * 在标签右侧添加附件内容。
    */
   extraContent?: React.ReactNode;
+  /**
+   * 设置不显示底部线条。默认为 `false`。
+   */
+  borderless?: boolean;
 }
 
-function InnerTabHeader({ children, extraContent }: Props) {
+function InnerTabHeader({ children, extraContent, borderless }: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
   const inkBarRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +37,11 @@ function InnerTabHeader({ children, extraContent }: Props) {
   });
 
   return (
-    <TabHeaderWrapper className="sinoui-tab-header" role="tablist">
+    <TabHeaderWrapper
+      className="sinoui-tab-header"
+      role="tablist"
+      borderless={borderless}
+    >
       <div className="sinoui-tab-label-container">
         <div className="sinoui-tab-list" ref={tabListRef}>
           <div className="sinoui-tab-labels">{children}</div>

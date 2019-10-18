@@ -1,12 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const TabHeaderWrapper = styled.div`
+interface Props {
+  borderless?: boolean;
+}
+
+const borderCss = css`
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+`;
+
+const TabHeaderWrapper = styled.div<Props>`
   display: flex;
   overflow: hidden;
   flex-shrink: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   font-size: 1rem;
   color: ${(props) => props.theme.palette.text.primary};
+
+  ${(props) => !props.borderless && borderCss}
 
   .sinoui-tab-label-container {
     display: flex;

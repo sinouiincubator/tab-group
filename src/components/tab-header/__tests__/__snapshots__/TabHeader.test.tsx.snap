@@ -10,9 +10,9 @@ exports[`正确渲染TabHeader 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
   font-size: 1rem;
   color: rgba(0,0,0,0.87);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
 .c0 .sinoui-tab-label-container {
@@ -105,9 +105,9 @@ exports[`附件内容 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
   font-size: 1rem;
   color: rgba(0,0,0,0.87);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
 .c0 .sinoui-tab-label-container {

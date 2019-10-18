@@ -59,6 +59,11 @@ interface Props {
    * 在标签右侧添加附件内容。
    */
   tabHeaderExtraContent?: React.ReactNode;
+
+  /**
+   * 设置不显示标签条底部线条。
+   */
+  borderless?: boolean;
 }
 
 function InnerTabGroup({
@@ -71,6 +76,7 @@ function InnerTabGroup({
   cacheable,
   animateHeight,
   tabHeaderExtraContent,
+  borderless,
   ...rest
 }: Props) {
   return (
@@ -80,6 +86,7 @@ function InnerTabGroup({
         dense={dense}
         onSelect={onSelect}
         extraContent={tabHeaderExtraContent}
+        borderless={borderless}
       >
         {children}
       </TabHeader>

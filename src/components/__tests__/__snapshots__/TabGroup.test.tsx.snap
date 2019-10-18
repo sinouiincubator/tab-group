@@ -1,11 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`不显示标签条底部线条 1`] = `
+<div
+  className="sinoui-tab-group"
+>
+  <div
+    className="sc-bdVaJa ivHmNN sinoui-tab-header"
+    role="tablist"
+  >
+    <div
+      className="sinoui-tab-label-container"
+    >
+      <div
+        className="sinoui-tab-list"
+      >
+        <div
+          className="sinoui-tab-labels"
+        >
+          <div
+            aria-selected={true}
+            className="sc-ifAKCX hMdkfR sinoui-tab-label sinoui-tab-label-active"
+            data-testid="tab-header-item-0"
+            id="tab-48"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="tab"
+            tabIndex={0}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页1
+            </div>
+          </div>
+          <div
+            aria-selected={false}
+            className="sc-ifAKCX kSqBwK sinoui-tab-label"
+            data-testid="tab-header-item-1"
+            id="tab-49"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="tab"
+            tabIndex={-1}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页2
+            </div>
+          </div>
+          <div
+            aria-selected={false}
+            className="sc-ifAKCX kSqBwK sinoui-tab-label"
+            data-testid="tab-header-item-2"
+            id="tab-50"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="tab"
+            tabIndex={-1}
+          >
+            <div
+              className="sinoui-tab-label-content"
+            >
+              标签页3
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-bwzfXH fmPQiX sinoui-ink-bar"
+          data-testid="inkbar"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-htpNat dROSTM sinoui-tab-content"
+  >
+    <div
+      className="sc-bxivhb flnhqc sinoui-tab-panel-list"
+      style={
+        Object {
+          "transform": "translate3d(-0%, 0px, 0px)",
+        }
+      }
+    >
+      <div
+        aria-hidden={false}
+        className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-active"
+        data-testid="tab-panel-0"
+        id="tab-51"
+        role="tabpanel"
+      >
+        内容1
+      </div>
+      <div
+        aria-hidden={true}
+        className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-hidden"
+        data-testid="tab-panel-1"
+        id="tab-52"
+        role="tabpanel"
+      />
+      <div
+        aria-hidden={true}
+        className="sc-EHOje blOAlZ sinoui-tab-panel sinoui-tab-panel-hidden"
+        data-testid="tab-panel-2"
+        id="tab-53"
+        role="tabpanel"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`正确渲染TabGroup 1`] = `
 <div
   className="sinoui-tab-group"
 >
   <div
-    className="sc-bdVaJa cFuoRk sinoui-tab-header"
+    className="sc-bdVaJa daqCDH sinoui-tab-header"
     role="tablist"
   >
     <div
@@ -117,7 +229,7 @@ exports[`选中第二个标签页 1`] = `
   className="sinoui-tab-group"
 >
   <div
-    className="sc-bdVaJa cFuoRk sinoui-tab-header"
+    className="sc-bdVaJa daqCDH sinoui-tab-header"
     role="tablist"
   >
     <div
@@ -229,7 +341,7 @@ exports[`附件内容 1`] = `
   className="sinoui-tab-group"
 >
   <div
-    className="sc-bdVaJa cFuoRk sinoui-tab-header"
+    className="sc-bdVaJa daqCDH sinoui-tab-header"
     role="tablist"
   >
     <div

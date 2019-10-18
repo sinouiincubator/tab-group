@@ -35,6 +35,8 @@ exports[`不可用且选中状态下的TabHeaderItemWrapper 1`] = `
   position: relative;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
+  cursor: not-allowed;
+  color: rgba(0,0,0,0.38);
   color: #3f51b5;
   opacity: 1;
 }
@@ -96,6 +98,8 @@ exports[`不可用状态下的TabHeaderItemWrapper 1`] = `
   position: relative;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
+  cursor: not-allowed;
+  color: rgba(0,0,0,0.38);
 }
 
 .c0 > .sinoui-tab-label-content {
