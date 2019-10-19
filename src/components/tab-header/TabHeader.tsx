@@ -67,7 +67,11 @@ function TabHeader({
   return (
     <TabListContext.Provider value={tabList}>
       <TabHeaderContext.Provider value={context}>
-        <InnerTabHeader extraContent={extraContent} borderless={borderless}>
+        <InnerTabHeader
+          extraContent={extraContent}
+          borderless={borderless}
+          selectedIndex={selectedIndex}
+        >
           {children}
         </InnerTabHeader>
       </TabHeaderContext.Provider>

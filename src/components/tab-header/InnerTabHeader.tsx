@@ -1,7 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import usePreventTransitionWhenMount from '../../helpers/usePreventTransitionWhenMount';
+import React, { useRef } from 'react';
 import TabHeaderWrapper from './TabHeaderWrapper';
 import InkBar from '../InkBar';
+import TabHeaderScrollButton from './TabHeaderScrollButton';
+import NextIcon from './NextIcon';
+import PrevIcon from './PrevIcon';
+import useInkbarPositionSync from './useInkbarPositionSync';
+import useScrollState from './useScrollState';
 
 interface Props {
   children: React.ReactNode;
@@ -13,28 +17,29 @@ interface Props {
    * 设置不显示底部线条。默认为 `false`。
    */
   borderless?: boolean;
+  /**
+   * 设置当前选中的标签页。这是一个从 `0` 开始的索引，第一个标签页的索引为 `0`，第二个标签页的索引为 `1`，……
+   */
+  selectedIndex: number;
 }
 
-function InnerTabHeader({ children, extraContent, borderless }: Props) {
+function InnerTabHeader({
+  children,
+  extraContent,
+  borderless,
+  selectedIndex,
+}: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
   const inkBarRef = useRef<HTMLDivElement>(null);
 
-  usePreventTransitionWhenMount(inkBarRef);
-
-  useEffect(() => {
-    const inkBar = inkBarRef.current;
-    const tabList = tabListRef.current;
-    if (inkBar && tabList) {
-      const activeTab = tabList.querySelector('.sinoui-tab-label-active');
-      if (activeTab) {
-        const { width, left } = activeTab.getBoundingClientRect();
-        const { left: containerLeft } = tabList.getBoundingClientRect();
-        inkBar.style.width = `${width}px`;
-        inkBar.style.transform = `translate3d(${left -
-          containerLeft}px, 0px, 0px)`;
-      }
-    }
-  });
+  useInkbarPositionSync(inkBarRef, tabListRef, selectedIndex);
+  const {
+    showScrollButtons,
+    isPrevDisabled,
+    isNextDisabled,
+    prev,
+    next,
+  } = useScrollState(tabListRef);
 
   return (
     <TabHeaderWrapper
@@ -43,10 +48,20 @@ function InnerTabHeader({ children, extraContent, borderless }: Props) {
       borderless={borderless}
     >
       <div className="sinoui-tab-label-container">
+        {showScrollButtons && (
+          <TabHeaderScrollButton disabled={isPrevDisabled} onClick={prev}>
+            <PrevIcon />
+          </TabHeaderScrollButton>
+        )}
         <div className="sinoui-tab-list" ref={tabListRef}>
-          <div className="sinoui-tab-labels">{children}</div>
+          {children}
           <InkBar ref={inkBarRef} data-testid="inkbar" />
         </div>
+        {showScrollButtons && (
+          <TabHeaderScrollButton disabled={isNextDisabled} onClick={next}>
+            <NextIcon />
+          </TabHeaderScrollButton>
+        )}
         {extraContent ? (
           <div className="sinoui-tab-header-extra-content">{extraContent}</div>
         ) : null}

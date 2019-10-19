@@ -12,6 +12,7 @@ exports[`不显示底部线条 1`] = `
   flex-shrink: 0;
   font-size: 1rem;
   color: rgba(0,0,0,0.87);
+  white-space: nowrap;
 }
 
 .c0 .sinoui-tab-label-container {
@@ -19,31 +20,36 @@ exports[`不显示底部线条 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   overflow: hidden;
   z-index: 1;
 }
 
 .c0 .sinoui-tab-list {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   position: relative;
   -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.35,0,0.25,1);
   -webkit-transition: transform 0.5s cubic-bezier(0.35,0,0.25,1);
   transition: transform 0.5s cubic-bezier(0.35,0,0.25,1);
-}
-
-.c0 .sinoui-tab-labels {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  overflow-x: scroll;
+}
+
+.c0 .sinoui-tab-list::-webkit-scrollbar {
+  display: none;
 }
 
 .c0 .sinoui-tab-header-extra-content {
@@ -67,6 +73,7 @@ exports[`正确渲染TabHeaderWrapper 1`] = `
   flex-shrink: 0;
   font-size: 1rem;
   color: rgba(0,0,0,0.87);
+  white-space: nowrap;
   border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
@@ -75,31 +82,36 @@ exports[`正确渲染TabHeaderWrapper 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   overflow: hidden;
   z-index: 1;
 }
 
 .c0 .sinoui-tab-list {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   position: relative;
   -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.35,0,0.25,1);
   -webkit-transition: transform 0.5s cubic-bezier(0.35,0,0.25,1);
   transition: transform 0.5s cubic-bezier(0.35,0,0.25,1);
-}
-
-.c0 .sinoui-tab-labels {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  overflow-x: scroll;
+}
+
+.c0 .sinoui-tab-list::-webkit-scrollbar {
+  display: none;
 }
 
 .c0 .sinoui-tab-header-extra-content {

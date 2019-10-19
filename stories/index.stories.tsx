@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import range from 'lodash/range';
 import TabGroup, {
   Tab,
   TabHeader,
@@ -10,6 +11,7 @@ import TabGroup, {
   TabContent,
   TabPanel,
 } from '../src';
+import HideScrollbarDemo from './HideScrollbarDemo';
 
 const TabbarDemo = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -20,6 +22,22 @@ const TabbarDemo = () => {
         <TabHeaderItem title="标签2" />
         <TabHeaderItem title="标签3" />
       </TabHeader>
+    </ThemeProvider>
+  );
+};
+
+const ScrollableTabsDemo = () => {
+  const tabs = range(0, 20);
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <TabGroup tabHeaderExtraContent={<div>这是其他内容</div>}>
+        {tabs.map((id) => (
+          <Tab key={id} title={`标签${id}`}>
+            标签内容{id}
+          </Tab>
+        ))}
+      </TabGroup>
     </ThemeProvider>
   );
 };
@@ -60,4 +78,6 @@ storiesOf('TabGroup', module)
     </ThemeProvider>
   ))
   .add('tabbar', () => <TabbarDemo />)
-  .add('tabcontent', () => <TabContentDemo />);
+  .add('tabcontent', () => <TabContentDemo />)
+  .add('HideScrollbarDemo', () => <HideScrollbarDemo />)
+  .add('自动滚动的tabgroup', () => <ScrollableTabsDemo />);
