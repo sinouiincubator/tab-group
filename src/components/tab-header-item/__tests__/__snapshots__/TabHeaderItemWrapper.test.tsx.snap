@@ -27,6 +27,9 @@ exports[`不可用且选中状态下的TabHeaderItemWrapper 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-letter-spacing: 1.25px;
   -moz-letter-spacing: 1.25px;
   -ms-letter-spacing: 1.25px;
@@ -90,6 +93,9 @@ exports[`不可用状态下的TabHeaderItemWrapper 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-letter-spacing: 1.25px;
   -moz-letter-spacing: 1.25px;
   -ms-letter-spacing: 1.25px;
@@ -151,6 +157,9 @@ exports[`正确渲染TabHeaderItemWrapper 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-letter-spacing: 1.25px;
   -moz-letter-spacing: 1.25px;
   -ms-letter-spacing: 1.25px;
@@ -213,6 +222,9 @@ exports[`选中状态下的TabTabHeaderItemWrapper 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-letter-spacing: 1.25px;
   -moz-letter-spacing: 1.25px;
   -ms-letter-spacing: 1.25px;

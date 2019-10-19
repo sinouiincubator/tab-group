@@ -35,6 +35,7 @@ const TabHeaderItemWrapper = styled.div<TabHeaderItemWrapperProps>`
   color: ${(props) => props.theme.palette.text.primary};
   outline: none;
   user-select: none;
+  flex-shrink: 0;
 
   letter-spacing: 1.25px;
   font-weight: 500;

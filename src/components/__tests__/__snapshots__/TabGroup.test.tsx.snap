@@ -16,7 +16,7 @@ exports[`不显示标签条底部线条 1`] = `
       >
         <div
           aria-selected={true}
-          className="sc-EHOje cLYKcA sinoui-tab-label sinoui-tab-label-active"
+          className="sc-EHOje krXsRs sinoui-tab-label sinoui-tab-label-active"
           data-testid="tab-header-item-0"
           id="tab-48"
           onClick={[Function]}
@@ -32,7 +32,7 @@ exports[`不显示标签条底部线条 1`] = `
         </div>
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-1"
           id="tab-49"
           onClick={[Function]}
@@ -48,7 +48,7 @@ exports[`不显示标签条底部线条 1`] = `
         </div>
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-2"
           id="tab-50"
           onClick={[Function]}
@@ -124,7 +124,7 @@ exports[`正确渲染TabGroup 1`] = `
       >
         <div
           aria-selected={true}
-          className="sc-EHOje cLYKcA sinoui-tab-label sinoui-tab-label-active"
+          className="sc-EHOje krXsRs sinoui-tab-label sinoui-tab-label-active"
           data-testid="tab-header-item-0"
           id="tab-0"
           onClick={[Function]}
@@ -140,7 +140,7 @@ exports[`正确渲染TabGroup 1`] = `
         </div>
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-1"
           id="tab-1"
           onClick={[Function]}
@@ -156,7 +156,7 @@ exports[`正确渲染TabGroup 1`] = `
         </div>
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-2"
           id="tab-2"
           onClick={[Function]}
@@ -232,7 +232,7 @@ exports[`选中第二个标签页 1`] = `
       >
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-0"
           id="tab-6"
           onClick={[Function]}
@@ -248,7 +248,7 @@ exports[`选中第二个标签页 1`] = `
         </div>
         <div
           aria-selected={true}
-          className="sc-EHOje cLYKcA sinoui-tab-label sinoui-tab-label-active"
+          className="sc-EHOje krXsRs sinoui-tab-label sinoui-tab-label-active"
           data-testid="tab-header-item-1"
           id="tab-7"
           onClick={[Function]}
@@ -264,7 +264,7 @@ exports[`选中第二个标签页 1`] = `
         </div>
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-2"
           id="tab-8"
           onClick={[Function]}
@@ -340,7 +340,7 @@ exports[`附件内容 1`] = `
       >
         <div
           aria-selected={true}
-          className="sc-EHOje cLYKcA sinoui-tab-label sinoui-tab-label-active"
+          className="sc-EHOje krXsRs sinoui-tab-label sinoui-tab-label-active"
           data-testid="tab-header-item-0"
           id="tab-42"
           onClick={[Function]}
@@ -356,7 +356,7 @@ exports[`附件内容 1`] = `
         </div>
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-1"
           id="tab-43"
           onClick={[Function]}
@@ -372,7 +372,7 @@ exports[`附件内容 1`] = `
         </div>
         <div
           aria-selected={false}
-          className="sc-EHOje kmOcGo sinoui-tab-label"
+          className="sc-EHOje gKJQLv sinoui-tab-label"
           data-testid="tab-header-item-2"
           id="tab-44"
           onClick={[Function]}
