@@ -21,10 +21,6 @@ interface Props {
    */
   borderless?: boolean;
   /**
-   * 设置当前选中的标签页。这是一个从 `0` 开始的索引，第一个标签页的索引为 `0`，第二个标签页的索引为 `1`，……
-   */
-  selectedIndex: number;
-  /**
    * 标签列表上下文状态
    */
   tabListContextState: TabListContextState;
