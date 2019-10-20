@@ -47,25 +47,23 @@ function InnerTabHeader({
       role="tablist"
       borderless={borderless}
     >
-      <div className="sinoui-tab-label-container">
-        {showScrollButtons && (
-          <TabHeaderScrollButton disabled={isPrevDisabled} onClick={prev}>
-            <PrevIcon />
-          </TabHeaderScrollButton>
-        )}
-        <div className="sinoui-tab-list" ref={tabListRef}>
-          {children}
-          <InkBar ref={inkBarRef} data-testid="inkbar" />
-        </div>
-        {showScrollButtons && (
-          <TabHeaderScrollButton disabled={isNextDisabled} onClick={next}>
-            <NextIcon />
-          </TabHeaderScrollButton>
-        )}
-        {extraContent ? (
-          <div className="sinoui-tab-header-extra-content">{extraContent}</div>
-        ) : null}
+      {showScrollButtons && (
+        <TabHeaderScrollButton disabled={isPrevDisabled} onClick={prev}>
+          <PrevIcon />
+        </TabHeaderScrollButton>
+      )}
+      <div className="sinoui-tab-list" ref={tabListRef}>
+        {children}
+        <InkBar ref={inkBarRef} data-testid="inkbar" />
       </div>
+      {showScrollButtons && (
+        <TabHeaderScrollButton disabled={isNextDisabled} onClick={next}>
+          <NextIcon />
+        </TabHeaderScrollButton>
+      )}
+      {extraContent ? (
+        <div className="sinoui-tab-header-extra-content">{extraContent}</div>
+      ) : null}
     </TabHeaderWrapper>
   );
 }

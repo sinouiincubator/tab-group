@@ -15,14 +15,8 @@ const TabHeaderWrapper = styled.div<Props>`
   font-size: 1rem;
   color: ${(props) => props.theme.palette.text.primary};
   white-space: nowrap;
+  align-items: stretch;
   ${(props) => !props.borderless && borderCss}
-
-  .sinoui-tab-label-container {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-    z-index: 1;
-  }
 
   .sinoui-tab-list {
     flex: 1;

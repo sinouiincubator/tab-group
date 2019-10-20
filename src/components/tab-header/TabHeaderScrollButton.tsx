@@ -4,7 +4,6 @@ import { useRipple } from '@sinoui/ripple/build';
 
 const TabHeaderScrollButtonWrapper = styled.div`
   width: 40px;
-  height: 100%;
   overflow: hidden;
   position: relative;
   text-align: center;
