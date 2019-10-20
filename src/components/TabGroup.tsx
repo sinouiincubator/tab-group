@@ -56,7 +56,7 @@ interface Props {
    */
   animateHeight?: boolean;
   /**
-   * 在标签右侧添加附件内容。
+   * 在标签右侧添加附加内容。
    */
   tabHeaderExtraContent?: React.ReactNode;
 

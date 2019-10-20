@@ -10,7 +10,7 @@ import useScrollState from './useScrollState';
 interface Props {
   children: React.ReactNode;
   /**
-   * 在标签右侧添加附件内容。
+   * 在标签右侧添加附加内容。
    */
   extraContent?: React.ReactNode;
   /**

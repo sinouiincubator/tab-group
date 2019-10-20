@@ -324,7 +324,7 @@ exports[`选中第二个标签页 1`] = `
 </div>
 `;
 
-exports[`附件内容 1`] = `
+exports[`附加内容 1`] = `
 <div
   className="sinoui-tab-group"
 >
@@ -395,7 +395,7 @@ exports[`附件内容 1`] = `
         className="sinoui-tab-header-extra-content"
       >
         <div>
-          附件内容
+          附加内容
         </div>
       </div>
     </div>

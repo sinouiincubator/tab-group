@@ -159,11 +159,11 @@ it('不缓存标签内容', () => {
   expect(container).not.toHaveTextContent('内容1');
 });
 
-it('附件内容', () => {
+it('附加内容', () => {
   const tree = renderer
     .create(
       <ThemeProvider theme={defaultTheme}>
-        <TabGroup tabHeaderExtraContent={<div>附件内容</div>}>
+        <TabGroup tabHeaderExtraContent={<div>附加内容</div>}>
           <Tab title="标签页1">内容1</Tab>
           <Tab title="标签页2">内容2</Tab>
           <Tab title="标签页3">内容3</Tab>
