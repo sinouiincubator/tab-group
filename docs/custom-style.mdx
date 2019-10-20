@@ -1,0 +1,123 @@
+---
+name: 样式定制
+route: /custom-style
+---
+
+import { Playground } from 'docz';
+import styled from 'styled-components';
+import TabGroup, { Tab } from '../src';
+
+# 样式定制
+
+TabGroup 采用 [styled-components](https://www.styled-components.com/) 封装的组件样式，并且有完整的 css class。我们可以采取几乎任何主流方式来定制 TabGroup 的样式。
+
+要想定制样式，先了解一下组件的 DOM 结构和对应的 css class。
+
+## DOM 结构与 css class
+
+```html
+<div class="sinoui-tab-group">
+  <div class="sinoui-tab-header">
+    <!--向前滚动按钮-->
+    <div class="sinoui-tab-header-scroll-button"></div>
+
+    <div class="sinoui-tab-list">
+      <div class="sinoui-tab sinoui-tab--active">
+        <div class="sinoui-tab__content">
+          标签标题1
+        </div>
+      </div>
+      <div class="sinoui-tab sinoui-tab--disabled">
+        <div class="sinoui-tab__content">
+          标签标题2
+        </div>
+      </div>
+      <div class="sinoui-tab">
+        <div class="sinoui-tab__content">
+          标签标题3
+        </div>
+      </div>
+      <!--...-->
+
+      <!--当前标签选项指示器-->
+      <div class="sinoui-ink-bar"></div>
+    </div>
+
+    <!--向后滚动按钮-->
+    <div class="sinoui-tab-header-scroll-button"></div>
+
+    <!--附加内容-->
+    <div class="sinoui-tab-header-extra-content"></div>
+  </div>
+  <div class="sinoui-tab-content">
+    <div class="sinoui-tab-panel-list">
+      <div class="sinoui-tab-panel sinoui-tab-panel--active">标签内容1</div>
+      <div class="sinoui-tab-panel">标签内容2</div>
+      <div class="sinoui-tab-panel">标签内容3</div>
+      <!--...-->
+    </div>
+  </div>
+</div>
+```
+
+## 定制指示器样式
+
+```tsx
+import React from 'react';
+import styled from 'styled-components';
+import TabGroup, { Tab } from '../src';
+
+const CustomTabGroup = styled(TabGroup)`
+  .sinoui-ink-bar {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: ${(props) => props.theme.palette.primary[500]};
+    }
+  }
+`;
+
+function CustomInkbarDemo() {
+  return (
+    <CustomTabGroup>
+      <Tab title="标签1">标签内容1</Tab>
+      <Tab title="标签2">标签内容2</Tab>
+      <Tab title="标签3">标签内容3</Tab>
+    </CustomTabGroup>
+  );
+}
+```
+
+<Playground>
+  {() => {
+    const CustomTabGroup = styled(TabGroup)((props) => ({
+      '.sinoui-ink-bar': {
+        background: 'transparent',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        '::after': {
+          content: '""',
+          display: 'block',
+          width: 30,
+          height: 2,
+          background: props.theme.palette.primary[500],
+        },
+      },
+    }));
+
+    return <CustomTabGroup>
+      <Tab title="标签1">标签内容1</Tab>
+      <Tab title="标签2">标签内容2</Tab>
+      <Tab title="标签3">标签内容3</Tab>
+    </CustomTabGroup>;
+
+}}
+
+</Playground>
