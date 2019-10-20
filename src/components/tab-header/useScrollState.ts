@@ -83,6 +83,20 @@ function useScrollState(
     tabListContextState.selectedIndex,
   ]);
 
+  useEffect(() => {
+    const handleResize = debounce(() => {
+      updateScrollButtonsState();
+      scrollSelectedTabIntoView();
+    }, DEBOUNCE_WAIT);
+
+    window.addEventListener('resize', handleResize, false);
+
+    return () => {
+      handleResize.cancel();
+      window.removeEventListener('resize', handleResize, false);
+    };
+  }, [scrollSelectedTabIntoView, updateScrollButtonsState]);
+
   /**
    * 向前（左）滚动
    */

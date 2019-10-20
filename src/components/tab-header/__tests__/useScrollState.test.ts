@@ -243,3 +243,26 @@ describe('scrollSelectedTabIntoView', () => {
     expect(scrollLeft).toBe(1000);
   });
 });
+
+it('监听窗口大小变化，更新滚动按钮状态', () => {
+  const mockTabList = {
+    clientWidth: 100,
+    scrollWidth: 150,
+    scrollLeft: 0,
+  };
+  const tabList = mockTabListContext();
+
+  const { result } = renderHook(() => {
+    const tabListRef = useRef<any>(mockTabList);
+    return useScrollState(tabListRef, tabList);
+  });
+
+  mockTabList.clientWidth = 200;
+
+  act(() => {
+    window.dispatchEvent(new Event('resize'));
+    jest.runAllTimers();
+  });
+
+  expect(result.current.showScrollButtons).toBe(false);
+});
