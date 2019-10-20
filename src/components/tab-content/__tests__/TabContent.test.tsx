@@ -43,7 +43,7 @@ describe('TabContent + TabPanel 组合使用', () => {
       </TabContent>,
     );
 
-    expect(getByTestId('tab-panel-1')).toHaveClass('sinoui-tab-panel-active');
+    expect(getByTestId('tab-panel-1')).toHaveClass('sinoui-tab-panel--active');
   });
 
   it('更换选中的标签页', () => {
@@ -65,7 +65,7 @@ describe('TabContent + TabPanel 组合使用', () => {
       );
     });
 
-    expect(getByTestId('tab-panel-2')).toHaveClass('sinoui-tab-panel-active');
+    expect(getByTestId('tab-panel-2')).toHaveClass('sinoui-tab-panel--active');
   });
 
   it('立即渲染所有标签内容', () => {

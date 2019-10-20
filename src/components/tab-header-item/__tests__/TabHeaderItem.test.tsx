@@ -26,7 +26,7 @@ it('选项卡是选中状态', () => {
     </ThemeProvider>,
   );
 
-  expect(getByTestId('tab')).toHaveClass('sinoui-tab-label-active');
+  expect(getByTestId('tab')).toHaveClass('sinoui-tab--active');
   expect(getByTestId('tab')).toHaveTextContent('标签1');
 });
 

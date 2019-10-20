@@ -36,21 +36,12 @@ const TabHeaderItemWrapper = styled.div<TabHeaderItemWrapperProps>`
   outline: none;
   user-select: none;
   flex-shrink: 0;
-
   letter-spacing: 1.25px;
   font-weight: 500;
-
   position: relative;
-
+  white-space: nowrap;
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
-  & > .sinoui-tab-label-content {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-  }
 
   ${(props) => !props.disabled && hoverCss};
   ${(props) => props.disabled && disabledCss};

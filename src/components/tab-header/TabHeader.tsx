@@ -31,6 +31,16 @@ interface Props {
    * 设置不显示底部线条。默认为 `false`。
    */
   borderless?: boolean;
+
+  /**
+   * 设置自定义的 css 类名
+   */
+  className?: string;
+
+  /**
+   * 设置自定义的 css 样式
+   */
+  style?: React.CSSProperties;
 }
 
 /**
@@ -44,6 +54,7 @@ function TabHeader({
   onSelect,
   extraContent,
   borderless,
+  ...rest
 }: Props) {
   const tabList = useTabList(selectedIndex);
 
@@ -71,6 +82,7 @@ function TabHeader({
           extraContent={extraContent}
           borderless={borderless}
           selectedIndex={selectedIndex}
+          {...rest}
         >
           {children}
         </InnerTabHeader>

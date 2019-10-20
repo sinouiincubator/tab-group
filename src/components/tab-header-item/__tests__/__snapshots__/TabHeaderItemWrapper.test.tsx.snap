@@ -36,28 +36,13 @@ exports[`不可用且选中状态下的TabHeaderItemWrapper 1`] = `
   letter-spacing: 1.25px;
   font-weight: 500;
   position: relative;
+  white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   cursor: not-allowed;
   color: rgba(0,0,0,0.38);
   color: #3f51b5;
   opacity: 1;
-}
-
-.c0 > .sinoui-tab-label-content {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
 }
 
 <div
@@ -102,26 +87,11 @@ exports[`不可用状态下的TabHeaderItemWrapper 1`] = `
   letter-spacing: 1.25px;
   font-weight: 500;
   position: relative;
+  white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   cursor: not-allowed;
   color: rgba(0,0,0,0.38);
-}
-
-.c0 > .sinoui-tab-label-content {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
 }
 
 <div
@@ -166,24 +136,9 @@ exports[`正确渲染TabHeaderItemWrapper 1`] = `
   letter-spacing: 1.25px;
   font-weight: 500;
   position: relative;
+  white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
-}
-
-.c0 > .sinoui-tab-label-content {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
 }
 
 .c0:hover {
@@ -231,26 +186,11 @@ exports[`选中状态下的TabTabHeaderItemWrapper 1`] = `
   letter-spacing: 1.25px;
   font-weight: 500;
   position: relative;
+  white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   color: #3f51b5;
   opacity: 1;
-}
-
-.c0 > .sinoui-tab-label-content {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
 }
 
 .c0:hover {

@@ -64,7 +64,7 @@ it('点击标签页3，则显示标签页3的内容', () => {
     fireEvent.click(tabHeaderItem);
   });
 
-  expect(tabHeaderItem).toHaveClass('sinoui-tab-label-active');
+  expect(tabHeaderItem).toHaveClass('sinoui-tab--active');
   expect(getByTestId('tab-panel-2')).toHaveTextContent('内容3');
 });
 
@@ -79,18 +79,14 @@ it('受控模式的标签页切换', () => {
     </ThemeProvider>,
   );
 
-  expect(getByTestId('tab-header-item-0')).toHaveClass(
-    'sinoui-tab-label-active',
-  );
+  expect(getByTestId('tab-header-item-0')).toHaveClass('sinoui-tab--active');
   expect(getByTestId('tab-panel-0')).toHaveTextContent('内容1');
 
   act(() => {
     fireEvent.click(getByTestId('tab-header-item-2'));
   });
 
-  expect(getByTestId('tab-header-item-2')).toHaveClass(
-    'sinoui-tab-label-active',
-  );
+  expect(getByTestId('tab-header-item-2')).toHaveClass('sinoui-tab--active');
   expect(getByTestId('tab-panel-2')).toHaveTextContent('内容3');
 });
 
@@ -105,18 +101,14 @@ it('阻止受控组件切换标签页', () => {
     </ThemeProvider>,
   );
 
-  expect(getByTestId('tab-header-item-0')).toHaveClass(
-    'sinoui-tab-label-active',
-  );
+  expect(getByTestId('tab-header-item-0')).toHaveClass('sinoui-tab--active');
   expect(getByTestId('tab-panel-0')).toHaveTextContent('内容1');
 
   act(() => {
     fireEvent.click(getByTestId('tab-header-item-2'));
   });
 
-  expect(getByTestId('tab-header-item-0')).toHaveClass(
-    'sinoui-tab-label-active',
-  );
+  expect(getByTestId('tab-header-item-0')).toHaveClass('sinoui-tab--active');
 });
 
 it('立即渲染所有标签内容', () => {

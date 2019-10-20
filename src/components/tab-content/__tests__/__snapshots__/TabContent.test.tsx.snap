@@ -22,10 +22,6 @@ exports[`TabContent 镜像测试 渲染 TabContent 1`] = `
   will-change: transform;
 }
 
-.c1 > .sinoui-tab-panel-hidden {
-  height: 0px;
-}
-
 <div
   className="c0 sinoui-tab-content"
 >

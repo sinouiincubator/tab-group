@@ -20,7 +20,18 @@ exports[`正确渲染TabHeader 1`] = `
   border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
-.c0 .sinoui-tab-list {
+.c2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
+  -webkit-transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
+  transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
+  height: 2px;
+  background-color: #3f51b5;
+}
+
+.c1 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -41,23 +52,8 @@ exports[`正确渲染TabHeader 1`] = `
   overflow-x: scroll;
 }
 
-.c0 .sinoui-tab-list::-webkit-scrollbar {
+.c1::-webkit-scrollbar {
   display: none;
-}
-
-.c0 .sinoui-tab-header-extra-content {
-  line-height: 48px;
-}
-
-.c1 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
-  -webkit-transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
-  transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
-  height: 2px;
-  background-color: #3f51b5;
 }
 
 <div
@@ -65,7 +61,7 @@ exports[`正确渲染TabHeader 1`] = `
   role="tablist"
 >
   <div
-    className="sinoui-tab-list"
+    className="c1 sinoui-tab-list"
   >
     <div
       className="sinoui-tab-label"
@@ -78,7 +74,7 @@ exports[`正确渲染TabHeader 1`] = `
       标签内容2
     </div>
     <div
-      className="c1 sinoui-ink-bar"
+      className="c2 sinoui-ink-bar"
       data-testid="inkbar"
     />
   </div>
@@ -105,7 +101,22 @@ exports[`附加内容 1`] = `
   border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
-.c0 .sinoui-tab-list {
+.c2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
+  -webkit-transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
+  transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
+  height: 2px;
+  background-color: #3f51b5;
+}
+
+.c3 {
+  line-height: 48px;
+}
+
+.c1 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -126,23 +137,8 @@ exports[`附加内容 1`] = `
   overflow-x: scroll;
 }
 
-.c0 .sinoui-tab-list::-webkit-scrollbar {
+.c1::-webkit-scrollbar {
   display: none;
-}
-
-.c0 .sinoui-tab-header-extra-content {
-  line-height: 48px;
-}
-
-.c1 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
-  -webkit-transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
-  transition: transform 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms,width 300ms cubic-bezier(0.4,0.0,0.2,1) 0ms;
-  height: 2px;
-  background-color: #3f51b5;
 }
 
 <div
@@ -150,7 +146,7 @@ exports[`附加内容 1`] = `
   role="tablist"
 >
   <div
-    className="sinoui-tab-list"
+    className="c1 sinoui-tab-list"
   >
     <div
       className="sinoui-tab-label"
@@ -163,12 +159,12 @@ exports[`附加内容 1`] = `
       标签内容2
     </div>
     <div
-      className="c1 sinoui-ink-bar"
+      className="c2 sinoui-ink-bar"
       data-testid="inkbar"
     />
   </div>
   <div
-    className="sinoui-tab-header-extra-content"
+    className="c3 sinoui-tab-header__extra-content"
   >
     <div>
       附加内容

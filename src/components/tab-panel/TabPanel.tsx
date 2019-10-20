@@ -147,11 +147,11 @@ export default function TabPanel(props: TabPanelProps) {
       className={classNames(
         'sinoui-tab-panel',
         {
-          'sinoui-tab-panel-active': isActive,
-          'sinoui-tab-panel-hidden': !isActive,
+          'sinoui-tab-panel--active': isActive,
         },
         className,
       )}
+      hidden={!isActive}
     >
       {isNeedRendered || isForceRenderContent ? renderingChildren : null}
     </TabPanelWrapper>

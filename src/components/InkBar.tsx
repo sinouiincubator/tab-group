@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import classNames from 'classnames';
 
 const topCss = css`
   top: 0;
@@ -11,9 +12,9 @@ interface Props {
 /**
  * 选择指示器
  */
-const InkBar = styled.div.attrs({
-  className: 'sinoui-ink-bar',
-})<Props>`
+const InkBar = styled.div.attrs((props) => ({
+  className: classNames('sinoui-ink-bar', props.className),
+}))<Props>`
   position: absolute;
   bottom: 0;
   ${(props) => props.top && topCss};

@@ -59,10 +59,8 @@ it('inkBar显示在正确的位置上', () => {
   const { getByTestId } = render(
     <ThemeProvider theme={defaultTheme}>
       <TabHeader selectedIndex={0}>
-        <div className="sinoui-tab-label">标签内容1</div>
-        <div className="sinoui-tab-label sinoui-tab-label-active">
-          标签内容2
-        </div>
+        <div className="sinoui-tab">标签内容1</div>
+        <div className="sinoui-tab sinoui-tab--active">标签内容2</div>
       </TabHeader>
     </ThemeProvider>,
   );
@@ -92,15 +90,11 @@ it('TabHeader 与 TabHeaderItem 组合使用', () => {
 
   const { getByTestId } = render(<Demo />);
 
-  expect(getByTestId('tab-header-item-0')).toHaveClass(
-    'sinoui-tab-label-active',
-  );
+  expect(getByTestId('tab-header-item-0')).toHaveClass('sinoui-tab--active');
 
   act(() => {
     fireEvent.click(getByTestId('tab-header-item-1'));
   });
 
-  expect(getByTestId('tab-header-item-1')).toHaveClass(
-    'sinoui-tab-label-active',
-  );
+  expect(getByTestId('tab-header-item-1')).toHaveClass('sinoui-tab--active');
 });

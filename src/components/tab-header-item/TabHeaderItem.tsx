@@ -149,8 +149,9 @@ function TabHeaderItem({
 
   return (
     <TabHeaderItemWrapper
-      className={classNames('sinoui-tab-label', className, {
-        'sinoui-tab-label-active': isActive,
+      className={classNames('sinoui-tab', className, {
+        'sinoui-tab--active': isActive,
+        'sinoui-tab--disabled': disabled,
       })}
       style={style}
       disabled={disabled}
@@ -166,7 +167,7 @@ function TabHeaderItem({
       id={id || tabId}
       {...rest}
     >
-      <div className="sinoui-tab-label-content">{title}</div>
+      {title}
     </TabHeaderItemWrapper>
   );
 }

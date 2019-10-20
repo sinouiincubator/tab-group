@@ -19,7 +19,7 @@ function useInkbarPositionSync(
     const inkBar = inkBarRef.current;
     const tabList = tabListRef.current;
     if (inkBar && tabList) {
-      const activeTab = tabList.querySelector('.sinoui-tab-label-active');
+      const activeTab = tabList.querySelector('.sinoui-tab--active');
       if (activeTab) {
         const { width, left } = activeTab.getBoundingClientRect();
         const { left: containerLeft } = tabList.getBoundingClientRect();

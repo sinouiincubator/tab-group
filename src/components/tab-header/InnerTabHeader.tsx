@@ -6,6 +6,8 @@ import NextIcon from './NextIcon';
 import PrevIcon from './PrevIcon';
 import useInkbarPositionSync from './useInkbarPositionSync';
 import useScrollState from './useScrollState';
+import TabHeaderExtraContent from './TabHeaderExtraContent';
+import TabList from './TabList';
 
 interface Props {
   children: React.ReactNode;
@@ -28,6 +30,7 @@ function InnerTabHeader({
   extraContent,
   borderless,
   selectedIndex,
+  ...rest
 }: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
   const inkBarRef = useRef<HTMLDivElement>(null);
@@ -46,23 +49,26 @@ function InnerTabHeader({
       className="sinoui-tab-header"
       role="tablist"
       borderless={borderless}
+      {...rest}
     >
       {showScrollButtons && (
         <TabHeaderScrollButton disabled={isPrevDisabled} onClick={prev}>
           <PrevIcon />
         </TabHeaderScrollButton>
       )}
-      <div className="sinoui-tab-list" ref={tabListRef}>
+      <TabList className="sinoui-tab-list" ref={tabListRef}>
         {children}
         <InkBar ref={inkBarRef} data-testid="inkbar" />
-      </div>
+      </TabList>
       {showScrollButtons && (
         <TabHeaderScrollButton disabled={isNextDisabled} onClick={next}>
           <NextIcon />
         </TabHeaderScrollButton>
       )}
       {extraContent ? (
-        <div className="sinoui-tab-header-extra-content">{extraContent}</div>
+        <TabHeaderExtraContent className="sinoui-tab-header__extra-content">
+          {extraContent}
+        </TabHeaderExtraContent>
       ) : null}
     </TabHeaderWrapper>
   );
