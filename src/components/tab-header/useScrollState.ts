@@ -3,6 +3,7 @@ import debounce from 'lodash/debounce';
 import { DEBOUNCE_WAIT } from '../../constants';
 import { TabListContextState } from '../TabListContext';
 import useEventCallback from '../../helpers/useEventCallback';
+import animate from '../../helpers/animate';
 
 /**
  * 使用滚动状态的hook
@@ -15,6 +16,24 @@ function useScrollState(
   const [showScrollButtons, setShowScrollButtons] = useState(false); // 是否显示滚动按钮
   const [isPrevDisabled, setIsPrevDisabled] = useState(true); // 向前滚动按钮是否禁用
   const [isNextDisabled, setIsNextDisabled] = useState(false); // 向后滚动按钮是否禁用
+
+  /**
+   * 滚动指定距离
+   */
+  const scrollBy = useCallback(
+    (delta: number) => {
+      const tabList = tabListRef.current;
+
+      if (tabList) {
+        const { scrollLeft } = tabList;
+        const newScrollLeft = scrollLeft + delta;
+        animate(scrollLeft, newScrollLeft, 300, (value) => {
+          tabList.scrollLeft = value;
+        });
+      }
+    },
+    [tabListRef],
+  );
 
   /**
    * 更新滚动按钮的状态
@@ -45,9 +64,9 @@ function useScrollState(
       const tabRect = selectedTab.getBoundingClientRect();
 
       if (tabRect.left < tabListRect.left) {
-        tabList.scrollLeft += tabRect.left - tabListRect.left;
+        scrollBy(tabRect.left - tabListRect.left);
       } else if (tabRect.right > tabListRect.right) {
-        tabList.scrollLeft += tabRect.right - tabListRect.right;
+        scrollBy(tabRect.right - tabListRect.right);
       }
     }
   });
@@ -71,10 +90,10 @@ function useScrollState(
     const tabList = tabListRef.current;
 
     if (tabList) {
-      const { scrollLeft, clientWidth } = tabList;
-      tabList.scrollLeft = scrollLeft - clientWidth;
+      const { clientWidth } = tabList;
+      scrollBy(-clientWidth);
     }
-  }, [tabListRef]);
+  }, [scrollBy, tabListRef]);
 
   /**
    * 向后（右）滚动
@@ -83,10 +102,10 @@ function useScrollState(
     const tabList = tabListRef.current;
 
     if (tabList) {
-      const { scrollLeft, clientWidth } = tabList;
-      tabList.scrollLeft = scrollLeft + clientWidth;
+      const { clientWidth } = tabList;
+      scrollBy(clientWidth);
     }
-  }, [tabListRef]);
+  }, [scrollBy, tabListRef]);
 
   // 处理标签列表的滚动事件
   const handleTabListScroll = useMemo(

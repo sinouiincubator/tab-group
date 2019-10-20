@@ -3,6 +3,20 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { useRef } from 'react';
 import useScrollState from '../useScrollState';
 import mockTabListContext from '../../commons/__tests__/mockTabListContext';
+import animate from '../../../helpers/animate';
+
+jest.mock('../../../helpers/animate');
+
+(animate as jest.Mock).mockImplementation(
+  (
+    _start: number,
+    end: number,
+    _duration: number,
+    callback: (value: number) => void,
+  ) => {
+    callback(end);
+  },
+);
 
 jest.useFakeTimers();
 
