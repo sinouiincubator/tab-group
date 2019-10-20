@@ -121,3 +121,51 @@ function CustomInkbarDemo() {
 }}
 
 </Playground>
+
+## 从教培项目中的 TabGroup 迁移样式
+
+教培项目中的 TabGroup 的 DOM 结构如下：
+
+```html
+<div class="sinoui-tab-group">
+  <div class="sinoui-tab-header">
+    <div class="sinoui-tab-label-container">
+      <div class="sinoui-tab-list">
+        <div class="sinoui-tab-labels">
+          <div class="sinoui-tab-label sinoui-tab-label-active">
+            <div class="sinoui-tab-label-content">标签1</div>
+          </div>
+          <div class="sinoui-tab-label sinoui-tab-label-disabled">
+            <div class="sinoui-tab-label-content">标签2</div>
+          </div>
+          <div class="sinoui-tab-label">
+            <div class="sinoui-tab-label-content">标签3</div>
+          </div>
+        </div>
+        <div class="sinoui-ink-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sinoui-tab-group-actions"></div>
+
+  <div class="sinoui-tab-group-actions-swiper">
+    <div class="sinoui-tab-content">标签内容1</div>
+    <div class="sinoui-tab-content">标签内容2</div>
+    <div class="sinoui-tab-content">标签内容3</div>
+  </div>
+</div>
+```
+
+变化：
+
+- 去掉了 `div.sinoui-tab-label-container` 这一层
+- 去掉了 `div.sinoui-tab-labels` 这一层
+- `.sinoui-tab-label` -> `.sinoui-tab`
+- `.sinoui-tab-label-active` -> `.sinoui-tab--active`
+- `.sinoui-tab-label-disabled` -> `.sinoui-tab--disabled`
+- `.sinoui-tab-group-actions` -> `.sinoui-tab-header-extra-content`
+- `.sinoui-tab-group-actions-swiper` -> `.sinoui-tab-content`
+- `.sinoui-tab-content` -> `.sinoui-tab-panel`
+
+教培团队的同事可以按照上面的变化来调整自定义样式。
