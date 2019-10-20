@@ -1,12 +1,17 @@
 import { useEffect, useCallback, useState, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 import { DEBOUNCE_WAIT } from '../../constants';
+import { TabListContextState } from '../TabListContext';
+import useEventCallback from '../../helpers/useEventCallback';
 
 /**
  * 使用滚动状态的hook
  * @param tabListRef 标签列表元素引用
  */
-function useScrollState(tabListRef: React.RefObject<HTMLDivElement>) {
+function useScrollState(
+  tabListRef: React.RefObject<HTMLDivElement>,
+  tabListContextState: TabListContextState,
+) {
   const [showScrollButtons, setShowScrollButtons] = useState(false); // 是否显示滚动按钮
   const [isPrevDisabled, setIsPrevDisabled] = useState(true); // 向前滚动按钮是否禁用
   const [isNextDisabled, setIsNextDisabled] = useState(false); // 向后滚动按钮是否禁用
@@ -25,7 +30,39 @@ function useScrollState(tabListRef: React.RefObject<HTMLDivElement>) {
     }
   }, [tabListRef]);
 
-  useEffect(updateScrollButtonsState, [updateScrollButtonsState]);
+  /**
+   * 滚动标签条以使选中的标签出现在视口中
+   */
+  const scrollSelectedTabIntoView = useEventCallback(() => {
+    const selectedTabId = tabListContextState.getTabs()[
+      tabListContextState.selectedIndex
+    ];
+    const selectedTab = document.querySelector(`#${selectedTabId}`);
+    const tabList = tabListRef.current;
+
+    if (selectedTab && tabList) {
+      const tabListRect = tabList.getBoundingClientRect();
+      const tabRect = selectedTab.getBoundingClientRect();
+
+      if (tabRect.left < tabListRect.left) {
+        tabList.scrollLeft += tabRect.left - tabListRect.left;
+      } else if (tabRect.right > tabListRect.right) {
+        tabList.scrollLeft += tabRect.right - tabListRect.right;
+      }
+    }
+  });
+
+  useEffect(() => {
+    updateScrollButtonsState();
+  }, [updateScrollButtonsState]);
+
+  useEffect(() => {
+    scrollSelectedTabIntoView();
+  }, [
+    scrollSelectedTabIntoView,
+    showScrollButtons,
+    tabListContextState.selectedIndex,
+  ]);
 
   /**
    * 向前（左）滚动

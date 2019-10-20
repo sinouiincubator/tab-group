@@ -81,7 +81,7 @@ function TabHeader({
         <InnerTabHeader
           extraContent={extraContent}
           borderless={borderless}
-          selectedIndex={selectedIndex}
+          tabListContextState={tabList}
           {...rest}
         >
           {children}

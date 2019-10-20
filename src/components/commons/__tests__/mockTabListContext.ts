@@ -4,6 +4,8 @@ function mockTabListContext(selectedIndex = 0) {
   const getTabs = jest.fn();
   const getTabProps = jest.fn();
 
+  getTabs.mockReturnValue(['tab-0', 'tab-1', 'tab-2', 'tab-3']);
+
   const context = { register, unregister, selectedIndex, getTabs, getTabProps };
 
   return context;

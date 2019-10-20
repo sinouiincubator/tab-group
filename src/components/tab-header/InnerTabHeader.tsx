@@ -8,6 +8,7 @@ import useInkbarPositionSync from './useInkbarPositionSync';
 import useScrollState from './useScrollState';
 import TabHeaderExtraContent from './TabHeaderExtraContent';
 import TabList from './TabList';
+import { TabListContextState } from '../TabListContext';
 
 interface Props {
   children: React.ReactNode;
@@ -23,19 +24,27 @@ interface Props {
    * 设置当前选中的标签页。这是一个从 `0` 开始的索引，第一个标签页的索引为 `0`，第二个标签页的索引为 `1`，……
    */
   selectedIndex: number;
+  /**
+   * 标签列表上下文状态
+   */
+  tabListContextState: TabListContextState;
 }
 
 function InnerTabHeader({
   children,
   extraContent,
   borderless,
-  selectedIndex,
+  tabListContextState,
   ...rest
 }: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
   const inkBarRef = useRef<HTMLDivElement>(null);
 
-  useInkbarPositionSync(inkBarRef, tabListRef, selectedIndex);
+  useInkbarPositionSync(
+    inkBarRef,
+    tabListRef,
+    tabListContextState.selectedIndex,
+  );
   const {
     showScrollButtons,
     isPrevDisabled,
@@ -43,7 +52,7 @@ function InnerTabHeader({
     prev,
     next,
     onTabListScroll,
-  } = useScrollState(tabListRef);
+  } = useScrollState(tabListRef, tabListContextState);
 
   return (
     <TabHeaderWrapper

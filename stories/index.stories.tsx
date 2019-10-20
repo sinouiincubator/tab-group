@@ -31,7 +31,10 @@ const ScrollableTabsDemo = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <TabGroup tabHeaderExtraContent={<div>这是其他内容</div>}>
+      <TabGroup
+        defaultIndex={18}
+        tabHeaderExtraContent={<div>这是其他内容</div>}
+      >
         {tabs.map((id) => (
           <Tab key={id} title={`标签${id}`}>
             标签内容{id}
