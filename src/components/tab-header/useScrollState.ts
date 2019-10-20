@@ -1,4 +1,6 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState, useMemo } from 'react';
+import debounce from 'lodash/debounce';
+import { DEBOUNCE_WAIT } from '../../constants';
 
 /**
  * 使用滚动状态的hook
@@ -32,11 +34,10 @@ function useScrollState(tabListRef: React.RefObject<HTMLDivElement>) {
     const tabList = tabListRef.current;
 
     if (tabList) {
-      tabList.scrollLeft -= 500;
-
-      updateScrollButtonsState();
+      const { scrollLeft, clientWidth } = tabList;
+      tabList.scrollLeft = scrollLeft - clientWidth;
     }
-  }, [tabListRef, updateScrollButtonsState]);
+  }, [tabListRef]);
 
   /**
    * 向后（右）滚动
@@ -45,11 +46,20 @@ function useScrollState(tabListRef: React.RefObject<HTMLDivElement>) {
     const tabList = tabListRef.current;
 
     if (tabList) {
-      tabList.scrollLeft += 500;
-
-      updateScrollButtonsState();
+      const { scrollLeft, clientWidth } = tabList;
+      tabList.scrollLeft = scrollLeft + clientWidth;
     }
-  }, [tabListRef, updateScrollButtonsState]);
+  }, [tabListRef]);
+
+  // 处理标签列表的滚动事件
+  const handleTabListScroll = useMemo(
+    () => debounce(updateScrollButtonsState, DEBOUNCE_WAIT),
+    [updateScrollButtonsState],
+  );
+
+  useEffect(() => {
+    return () => handleTabListScroll.cancel();
+  }, [handleTabListScroll]);
 
   return {
     showScrollButtons,
@@ -57,6 +67,7 @@ function useScrollState(tabListRef: React.RefObject<HTMLDivElement>) {
     isNextDisabled,
     prev,
     next,
+    onTabListScroll: handleTabListScroll,
   };
 }
 

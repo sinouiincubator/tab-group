@@ -10,6 +10,7 @@ exports[`不显示标签条底部线条 1`] = `
   >
     <div
       className="sc-ifAKCX kZrSXT sinoui-tab-list"
+      onScroll={[Function]}
     >
       <div
         aria-selected={true}
@@ -102,6 +103,7 @@ exports[`正确渲染TabGroup 1`] = `
   >
     <div
       className="sc-ifAKCX kZrSXT sinoui-tab-list"
+      onScroll={[Function]}
     >
       <div
         aria-selected={true}
@@ -194,6 +196,7 @@ exports[`选中第二个标签页 1`] = `
   >
     <div
       className="sc-ifAKCX kZrSXT sinoui-tab-list"
+      onScroll={[Function]}
     >
       <div
         aria-selected={false}
@@ -286,6 +289,7 @@ exports[`附加内容 1`] = `
   >
     <div
       className="sc-ifAKCX kZrSXT sinoui-tab-list"
+      onScroll={[Function]}
     >
       <div
         aria-selected={true}

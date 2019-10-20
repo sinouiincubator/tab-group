@@ -42,6 +42,7 @@ function InnerTabHeader({
     isNextDisabled,
     prev,
     next,
+    onTabListScroll,
   } = useScrollState(tabListRef);
 
   return (
@@ -56,7 +57,11 @@ function InnerTabHeader({
           <PrevIcon />
         </TabHeaderScrollButton>
       )}
-      <TabList className="sinoui-tab-list" ref={tabListRef}>
+      <TabList
+        className="sinoui-tab-list"
+        ref={tabListRef}
+        onScroll={onTabListScroll}
+      >
         {children}
         <InkBar ref={inkBarRef} data-testid="inkbar" />
       </TabList>

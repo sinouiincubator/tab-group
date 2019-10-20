@@ -3,6 +3,8 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { useRef } from 'react';
 import useScrollState from '../useScrollState';
 
+jest.useFakeTimers();
+
 it('容器宽度小于滚动宽度，出现滚动条', () => {
   const mockTabList = {
     clientWidth: 100,
@@ -88,8 +90,6 @@ it('向右滚动', () => {
   });
 
   expect(scrollLeft).toBe(50);
-  expect(result.current.isPrevDisabled).toBe(false);
-  expect(result.current.isNextDisabled).toBe(true);
 });
 
 it('向左滚动', () => {
@@ -115,6 +115,32 @@ it('向左滚动', () => {
   });
 
   expect(scrollLeft).toBe(0);
-  expect(result.current.isPrevDisabled).toBe(true);
-  expect(result.current.isNextDisabled).toBe(false);
+});
+
+it('发生滚动时，重新计算滚动按钮状态', () => {
+  let scrollLeft = 50;
+  const mockTabList = {
+    clientWidth: 100,
+    scrollWidth: 150,
+    get scrollLeft() {
+      return scrollLeft;
+    },
+    set scrollLeft(_scrollLeft: number) {
+      scrollLeft = Math.max(0, Math.min(50, _scrollLeft));
+    },
+  };
+
+  const { result } = renderHook(() => {
+    const tabListRef = useRef<any>(mockTabList);
+    return useScrollState(tabListRef);
+  });
+
+  act(() => {
+    result.current.next();
+    result.current.onTabListScroll();
+    jest.runAllTimers();
+  });
+
+  expect(result.current.isPrevDisabled).toBe(false);
+  expect(result.current.isNextDisabled).toBe(true);
 });
