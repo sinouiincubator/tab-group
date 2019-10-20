@@ -12,6 +12,10 @@ const TabHeaderScrollButtonWrapper = styled.div`
   align-items: center;
   justify-content: center;
   color: ${(props) => props.theme.palette.text.primary};
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 /**
