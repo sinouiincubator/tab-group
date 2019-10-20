@@ -151,7 +151,7 @@ export default function TabPanel(props: TabPanelProps) {
         },
         className,
       )}
-      hidden={!isActive}
+      active={isActive}
     >
       {isNeedRendered || isForceRenderContent ? renderingChildren : null}
     </TabPanelWrapper>

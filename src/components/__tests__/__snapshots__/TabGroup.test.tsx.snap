@@ -68,7 +68,6 @@ exports[`不显示标签条底部线条 1`] = `
         aria-hidden={false}
         className="sc-htoDjs ahPlL sinoui-tab-panel sinoui-tab-panel--active"
         data-testid="tab-panel-0"
-        hidden={false}
         id="tab-51"
         role="tabpanel"
       >
@@ -78,7 +77,6 @@ exports[`不显示标签条底部线条 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-1"
-        hidden={true}
         id="tab-52"
         role="tabpanel"
       />
@@ -86,7 +84,6 @@ exports[`不显示标签条底部线条 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-2"
-        hidden={true}
         id="tab-53"
         role="tabpanel"
       />
@@ -163,7 +160,6 @@ exports[`正确渲染TabGroup 1`] = `
         aria-hidden={false}
         className="sc-htoDjs ahPlL sinoui-tab-panel sinoui-tab-panel--active"
         data-testid="tab-panel-0"
-        hidden={false}
         id="tab-3"
         role="tabpanel"
       >
@@ -173,7 +169,6 @@ exports[`正确渲染TabGroup 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-1"
-        hidden={true}
         id="tab-4"
         role="tabpanel"
       />
@@ -181,7 +176,6 @@ exports[`正确渲染TabGroup 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-2"
-        hidden={true}
         id="tab-5"
         role="tabpanel"
       />
@@ -258,7 +252,6 @@ exports[`选中第二个标签页 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-0"
-        hidden={true}
         id="tab-9"
         role="tabpanel"
       />
@@ -266,7 +259,6 @@ exports[`选中第二个标签页 1`] = `
         aria-hidden={false}
         className="sc-htoDjs ahPlL sinoui-tab-panel sinoui-tab-panel--active"
         data-testid="tab-panel-1"
-        hidden={false}
         id="tab-10"
         role="tabpanel"
       >
@@ -276,7 +268,6 @@ exports[`选中第二个标签页 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-2"
-        hidden={true}
         id="tab-11"
         role="tabpanel"
       />
@@ -360,7 +351,6 @@ exports[`附加内容 1`] = `
         aria-hidden={false}
         className="sc-htoDjs ahPlL sinoui-tab-panel sinoui-tab-panel--active"
         data-testid="tab-panel-0"
-        hidden={false}
         id="tab-45"
         role="tabpanel"
       >
@@ -370,7 +360,6 @@ exports[`附加内容 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-1"
-        hidden={true}
         id="tab-46"
         role="tabpanel"
       />
@@ -378,7 +367,6 @@ exports[`附加内容 1`] = `
         aria-hidden={true}
         className="sc-htoDjs fSyAZh sinoui-tab-panel"
         data-testid="tab-panel-2"
-        hidden={true}
         id="tab-47"
         role="tabpanel"
       />
