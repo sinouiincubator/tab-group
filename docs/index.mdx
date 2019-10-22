@@ -298,6 +298,60 @@ function TabContentDemo() {
 
 </Playground>
 
+## simple 模式
+
+`simple`模式的`TabGroup`不再必须与`Tab`结合使用，而是可以与`TabHeader`和`TabContent`结合使用。
+
+```tsx
+import React, { useState } from 'react';
+import {
+  TabHeader,
+  TabHeaderItem,
+  TabGroup,
+  TabContent,
+  TabPanel,
+} from '@sinouiincubator/tab-group';
+
+function TabGroupDemo() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <TabGroup simple>
+      <TabHeader selectedIndex={active} onSelect={setActive}>
+        <TabHeaderItem title="标签1" />
+        <TabHeaderItem title="标签2" />
+        <TabHeaderItem title="标签3" />
+      </TabHeader>
+      <TabContent selectedIndex={active}>
+        <TabPanel>标签内容1</TabPanel>
+        <TabPanel>标签内容2</TabPanel>
+        <TabPanel>标签内容3</TabPanel>
+      </TabContent>
+    </TabGroup>
+  );
+}
+```
+
+<Playground>
+  {() => {
+    const [active, setActive] = useState(0);
+    return (
+      <TabGroup simple>
+        <TabHeader selectedIndex={active} onSelect={setActive}>
+          <TabHeaderItem title="标签1" />
+          <TabHeaderItem title="标签2" />
+          <TabHeaderItem title="标签3" />
+        </TabHeader>
+        <TabContent selectedIndex={active}>
+          <TabPanel>标签内容1</TabPanel>
+          <TabPanel>标签内容2</TabPanel>
+          <TabPanel>标签内容3</TabPanel>
+        </TabContent>
+      </TabGroup>
+    );
+  }}
+</Playground>
+
 ## 高度动画
 
 `TabGroup` 和 `TabContent` 组件均支持标签切换时内容高度变化的动画。因为高度动画对于页面性能影响较大，所以默认是禁用高度动画的。可以通过 `animateHeight` 属性启用。如下所示：

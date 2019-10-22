@@ -64,6 +64,10 @@ interface Props {
    * 设置不显示标签条底部线条。
    */
   borderless?: boolean;
+  /**
+   * simple模式，可以使用`TabGroup`+`TabHeader`+`TabContent`组合形式
+   */
+  simple?: boolean;
 }
 
 function InnerTabGroup({
@@ -77,9 +81,14 @@ function InnerTabGroup({
   animateHeight,
   tabHeaderExtraContent,
   borderless,
+  simple,
   ...rest
 }: Props) {
-  return (
+  return simple ? (
+    <div className={classNames('sinoui-tab-group', className)} {...rest}>
+      {children}
+    </div>
+  ) : (
     <div className={classNames('sinoui-tab-group', className)} {...rest}>
       <TabHeader
         selectedIndex={selectedIndex}
