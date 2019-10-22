@@ -41,6 +41,14 @@ interface Props {
    * 设置自定义的 css 样式
    */
   style?: React.CSSProperties;
+  /**
+   * 标签文本颜色
+   */
+  textColor?: string;
+  /**
+   * 指示条颜色
+   */
+  inkBarColor?: string;
 }
 
 /**
@@ -54,6 +62,8 @@ function TabHeader({
   onSelect,
   extraContent,
   borderless,
+  textColor,
+  inkBarColor,
   ...rest
 }: Props) {
   const tabList = useTabList(selectedIndex);
@@ -71,8 +81,9 @@ function TabHeader({
           onSelectRef.current(tabIndex, selectedIndex, event);
         }
       },
+      textColor,
     }),
-    [dense, onSelectRef, selectedIndex],
+    [dense, onSelectRef, selectedIndex, textColor],
   );
 
   return (
@@ -82,6 +93,7 @@ function TabHeader({
           extraContent={extraContent}
           borderless={borderless}
           tabListContextState={tabList}
+          inkBarColor={inkBarColor}
           {...rest}
         >
           {children}

@@ -13,6 +13,10 @@ interface TabHeaderContextState {
     tabIndex: number,
     event: React.MouseEvent | React.KeyboardEvent,
   ) => void;
+  /**
+   * 标签文本颜色
+   */
+  textColor?: string;
 }
 
 /**

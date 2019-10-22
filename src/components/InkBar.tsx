@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import classNames from 'classnames';
+import { getColorFromTheme } from 'sinoui-components/utils/colors';
 
 const topCss = css`
   top: 0;
@@ -7,6 +8,7 @@ const topCss = css`
 
 interface Props {
   top?: boolean;
+  color?: string;
 }
 
 /**
@@ -22,7 +24,8 @@ const InkBar = styled.div.attrs((props) => ({
   transition: ${(props) =>
     props.theme.transitions.create(['transform', 'width'])};
   height: 2px;
-  background-color: ${(props) => props.theme.palette.primary[500]};
+  background-color: ${(props) =>
+    getColorFromTheme(props, props.theme.palette.primary[500])};
 `;
 
 export default InkBar;

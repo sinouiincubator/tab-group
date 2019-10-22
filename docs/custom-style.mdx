@@ -3,9 +3,17 @@ name: 样式定制
 route: /custom-style
 ---
 
+import { useState, useCallback } from 'react';
 import { Playground } from 'docz';
 import styled from 'styled-components';
-import TabGroup, { Tab } from '../src';
+import AppBar from 'sinoui-components/AppBar';
+import TabGroup, {
+  Tab,
+  TabHeader,
+  TabContent,
+  TabHeaderItem,
+  TabPanel,
+} from '../src';
 
 # 样式定制
 
@@ -293,6 +301,45 @@ function CustomInkbarDemo() {
 
 }}
 
+</Playground>
+
+## 定制文本和指示条颜色
+
+<Playground>
+  <TabGroup textColor="accent" inkBarColor="warning">
+    <Tab title="标签1">标签内容1</Tab>
+    <Tab title="标签2">标签内容2</Tab>
+    <Tab title="标签3">标签内容3</Tab>
+  </TabGroup>
+</Playground>
+
+<Playground>
+  {() => {
+    const [active, setActive] = useState(0);
+    return (
+      <TabGroup simple>
+        <AppBar position="static">
+          <TabHeader
+            selectedIndex={active}
+            onSelect={setActive}
+            style={{ width: '100%' }}
+            inkBarColor="accent"
+            textColor="inherit"
+            borderless
+          >
+            <TabHeaderItem title="标签1" />
+            <TabHeaderItem title="标签2" />
+            <TabHeaderItem title="标签3" />
+          </TabHeader>
+        </AppBar>
+        <TabContent selectedIndex={active}>
+          <TabPanel>标签内容1</TabPanel>
+          <TabPanel>标签内容2</TabPanel>
+          <TabPanel>标签内容3</TabPanel>
+        </TabContent>
+      </TabGroup>
+    );
+  }}
 </Playground>
 
 ## 从教培项目中的 TabGroup 迁移样式

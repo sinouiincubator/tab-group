@@ -13,7 +13,6 @@ const TabHeaderWrapper = styled.div<Props>`
   overflow: hidden;
   flex-shrink: 0;
   font-size: 1rem;
-  color: ${(props) => props.theme.palette.text.primary};
   white-space: nowrap;
   align-items: stretch;
   ${(props) => !props.borderless && borderCss}

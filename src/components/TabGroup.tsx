@@ -68,6 +68,14 @@ interface Props {
    * simple模式，可以使用`TabGroup`+`TabHeader`+`TabContent`组合形式
    */
   simple?: boolean;
+  /**
+   * 标签文本颜色
+   */
+  textColor?: string;
+  /**
+   * 指示条颜色
+   */
+  inkBarColor?: string;
 }
 
 function InnerTabGroup({
@@ -82,6 +90,8 @@ function InnerTabGroup({
   tabHeaderExtraContent,
   borderless,
   simple,
+  textColor,
+  inkBarColor,
   ...rest
 }: Props) {
   return simple ? (
@@ -96,6 +106,8 @@ function InnerTabGroup({
         onSelect={onSelect}
         extraContent={tabHeaderExtraContent}
         borderless={borderless}
+        textColor={textColor}
+        inkBarColor={inkBarColor}
       >
         {children}
       </TabHeader>

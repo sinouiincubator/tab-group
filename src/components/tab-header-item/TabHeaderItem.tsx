@@ -164,6 +164,7 @@ function TabHeaderItem({
       aria-disabled={disabled}
       aria-selected={isActive}
       onKeyDown={disabled ? undefined : handleKeyDown}
+      color={tabHeaderContext ? tabHeaderContext.textColor : undefined}
       id={id || tabId}
       {...rest}
     >

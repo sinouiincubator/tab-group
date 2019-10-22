@@ -24,6 +24,10 @@ interface Props {
    * 标签列表上下文状态
    */
   tabListContextState: TabListContextState;
+  /**
+   * 指示条颜色
+   */
+  inkBarColor?: string;
 }
 
 function InnerTabHeader({
@@ -31,6 +35,7 @@ function InnerTabHeader({
   extraContent,
   borderless,
   tabListContextState,
+  inkBarColor,
   ...rest
 }: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
@@ -68,7 +73,7 @@ function InnerTabHeader({
         onScroll={onTabListScroll}
       >
         {children}
-        <InkBar ref={inkBarRef} data-testid="inkbar" />
+        <InkBar ref={inkBarRef} data-testid="inkbar" color={inkBarColor} />
       </TabList>
       {showScrollButtons && (
         <TabHeaderScrollButton disabled={isNextDisabled} onClick={next}>
