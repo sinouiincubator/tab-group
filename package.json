@@ -1,6 +1,6 @@
 {
   "name": "@sinouiincubator/tab-group",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "选项卡切换组件",
   "license": "MIT",
   "main": "dist/index.js",
@@ -66,7 +66,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
-    "@sinoui/ripple": "^0.2.0",
+    "@sinoui/ripple": "^1.0.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "lodash-es": "^4.17.15"
