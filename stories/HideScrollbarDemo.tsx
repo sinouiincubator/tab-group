@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import IconButton from 'sinoui-components/IconButton';
 import SvgIcon from 'sinoui-components/SvgIcon';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import { defaultTheme } from '@sinoui/theme';
 import range from 'lodash/range';
 
 const Wrapper = styled.div`

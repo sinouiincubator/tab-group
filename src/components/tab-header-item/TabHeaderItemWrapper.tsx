@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { getColorFromTheme } from 'sinoui-components/utils/colors';
-import { Theme } from 'sinoui-components/styles';
+import { Theme } from '@sinoui/theme';
 
 interface TabHeaderItemWrapperProps {
   disabled?: boolean;

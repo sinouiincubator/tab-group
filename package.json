@@ -67,9 +67,11 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
     "@sinoui/ripple": "^1.0.1",
+    "@sinoui/theme": "^0.3.2",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
-    "lodash-es": "^4.17.15"
+    "lodash-es": "^4.17.15",
+    "styled-components-breakpoint": "^2.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

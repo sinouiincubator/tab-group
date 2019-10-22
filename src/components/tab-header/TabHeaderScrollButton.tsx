@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useRipple } from '@sinoui/ripple';
+import breakpoint from 'styled-components-breakpoint';
 
 const TabHeaderScrollButtonWrapper = styled.div`
   width: 40px;
@@ -13,7 +14,7 @@ const TabHeaderScrollButtonWrapper = styled.div`
   justify-content: center;
   color: ${(props) => props.theme.palette.text.primary};
 
-  @media (max-width: 600px) {
+  ${breakpoint('sm')} {
     display: none;
   }
 `;
