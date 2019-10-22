@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useRipple } from '@sinoui/ripple/build';
+import { useRipple } from '@sinoui/ripple';
 
 const TabHeaderScrollButtonWrapper = styled.div`
   width: 40px;

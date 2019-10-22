@@ -1401,6 +1401,18 @@
     tslib "^1.10.0"
     warning "^4.0.1"
 
+"@sinoui/ripple@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sinoui/ripple/-/ripple-1.0.1.tgz#8cdc70fa2ec611eb3f373d813f266a119b922b33"
+  integrity sha512-ePKb5K/xfhgi/xbiwaGVfKIw4pS8Wc9npYfOjvQLoQi/SzqU0KcMOg0ndrNjdfv10W8zuT95ROXMo92nJ7UQHg==
+  dependencies:
+    "@babel/polyfill" "^7.6.0"
+    "@babel/runtime" "^7.6.3"
+    dom-helpers "^3.4.0"
+    keycode "^2.2.0"
+    styled-components "^4.4.0"
+    warning "^4.0.3"
+
 "@storybook/addon-actions@^5.2.4":
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.2.4.tgz#79d13c1b6e58c75dd548eb162aa6626a93dfd041"
