@@ -14,9 +14,9 @@ const TabHeaderScrollButtonWrapper = styled.div`
   justify-content: center;
   color: ${(props) => props.theme.palette.text.primary};
 
-  ${breakpoint('sm')} {
+  ${breakpoint('sm')`
     display: none;
-  }
+  `}
 `;
 
 /**
