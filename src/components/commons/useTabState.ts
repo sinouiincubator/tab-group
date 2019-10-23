@@ -5,7 +5,17 @@ import TabPanelContext from '../TabPanelContext';
 import TabListContext from '../TabListContext';
 import TabContentContext from '../TabContentContext';
 
-export default function useTabState() {
+export interface TabState {
+  isFirst: boolean;
+  isLast: boolean;
+  prev: (event: React.MouseEvent) => void;
+  next: (event: React.MouseEvent) => void;
+}
+
+/**
+ * 使用标签页状态
+ */
+export default function useTabState(): TabState {
   const tabId = useContext(TabPanelContext);
   const tabListContext = useContext(TabListContext);
   const tabContentContext = useContext(TabContentContext);

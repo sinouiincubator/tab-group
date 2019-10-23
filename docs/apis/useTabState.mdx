@@ -1,0 +1,37 @@
+---
+name: useTabState
+route: /api-use-tab-state
+menu: API
+---
+
+# useTabState
+
+`useTabState`是在标签内容页中使用，从上下文中获取状态的 Hook。主要使用场景为：** 在标签内容中添加切换标签页的功能。**
+
+## 引用
+
+```tsx
+import { useTabState } from '@sinouiincubator/tab-group';
+```
+
+## 简单使用
+
+```tsx
+import React from 'react';
+import Button from 'sinoui-components/Button';
+import { useTabState } from '@sinouiincubator/tab-group';
+
+export default function PrevButton() {
+  const { isFirst, prev } = useTabState();
+  return isFirst ? null : <Button onClick={prev}>上一页</Button>;
+}
+```
+
+## 返回值数据结构
+
+| 属性或方法 | 类型                             | 描述                       |
+| ---------- | -------------------------------- | -------------------------- |
+| isFirst    | `boolean`                        | 是否为第一个页签           |
+| isLast     | `boolean`                        | 是否为最后一个页签         |
+| prev       | `(event:React.MouseEvent)=>void` | 切换上一个页签时的回调函数 |
+| next       | `(event:React.MouseEvent)=>void` | 切换下一个页签时的回调函数 |

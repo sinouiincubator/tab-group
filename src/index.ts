@@ -5,6 +5,7 @@ import TabPanel from './components/tab-panel';
 import TabGroup from './components/TabGroup';
 import Tab from './components/tab';
 import { reset } from './helpers/uuid';
+import useTabState from './components/commons/useTabState';
 
 export {
   Tab,
@@ -13,6 +14,7 @@ export {
   TabContent,
   TabPanel,
   reset as resetIdCounter,
+  useTabState,
 };
 
 export default TabGroup;
