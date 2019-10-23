@@ -10,6 +10,13 @@ interface TabContentContextState {
    * 设置启动标签面板渲染到 DOM 的缓存特性。
    */
   cacheable?: boolean;
+  /**
+   * 变更当前选项卡
+   */
+  onSelect: (
+    tabIndex: number,
+    event: React.MouseEvent | React.KeyboardEvent,
+  ) => void;
 }
 
 /**

@@ -6,6 +6,7 @@ route: /
 import { useState, useCallback } from 'react';
 import { Playground, Props } from 'docz';
 import { MdDelete } from 'react-icons/md';
+import styled from 'styled-components';
 import TabGroup, {
   Tab,
   TabHeader,
@@ -14,6 +15,7 @@ import TabGroup, {
   TabPanel,
 } from '../src';
 import Button from 'sinoui-components/Button';
+import useTabState from '../src/components/commons/useTabState';
 
 # TabGroup 标签页
 
@@ -514,4 +516,52 @@ function Demo() {
     <Tab title="标签2">标签内容2</Tab>
     <Tab title="标签3">标签内容3</Tab>
   </TabGroup>
+</Playground>
+
+## 页签切换按钮
+
+<Playground>
+  {() => {
+    function PrevButton() {
+      const { isFirst, prev } = useTabState();
+      return isFirst ? null : <Button onClick={prev}>上一页</Button>;
+    }
+
+    function NextButton() {
+      const { isLast, next } = useTabState();
+      return isLast ? null : <Button onClick={next}>下一页</Button>;
+    }
+
+    const Actions = styled.div((props)=>({
+      textAlign: 'center'
+    }))
+
+    return (
+      <TabGroup>
+        <Tab title="标签1">
+          标签内容1
+          <Actions>
+            <PrevButton/>
+            <NextButton/>
+          </Actions>
+        </Tab>
+        <Tab title="标签2">
+          标签内容2
+          <Actions>
+            <PrevButton/>
+            <NextButton/>
+          </Actions>
+        </Tab>
+        <Tab title="标签3">
+          标签内容3
+          <Actions>
+            <PrevButton/>
+            <NextButton/>
+          </Actions>
+        </Tab>
+      </TabGroup>
+    )
+
+}}
+
 </Playground>

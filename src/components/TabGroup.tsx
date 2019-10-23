@@ -113,6 +113,7 @@ function InnerTabGroup({
       </TabHeader>
       <TabContent
         selectedIndex={selectedIndex}
+        onSelect={onSelect}
         forceRenderTabPanel={forceRenderTabPanel}
         cacheable={cacheable}
         animateHeight={animateHeight}

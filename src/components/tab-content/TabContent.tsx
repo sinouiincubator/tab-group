@@ -5,6 +5,7 @@ import TabContentWrapper from './TabContentWrapper';
 import TabPanelListWrapper from './TabPanelListWrapper';
 import useTabList from '../commons/useTabList';
 import TabListContext, { TabListContextState } from '../TabListContext';
+import useRefValue from '../../helpers/useRefValue';
 
 export interface Props {
   children?: React.ReactNode;
@@ -32,6 +33,14 @@ export interface Props {
    * 设置启用标签面板切换时内容高度过渡动画。默认为 `false`，不启用。设置为 `true`，启用高度过渡动画，但是可能会影响性能。
    */
   animateHeight?: boolean;
+  /**
+   * 每次标签页切换时调用的事件处理器。这个函数的 `index` 参数是新的选中标签页索引，`lastIndex` 参数是变更之前选中的标签页索引，`event` 参数是引起页签切换的事件，可能是 `keydown` 或者 `click` 事件。如果 `index` 和 `lastIndex` 相同时，表示用户在当前选中的标签页上点击。
+   */
+  onSelect?: (
+    index: number,
+    lastIndex: number,
+    event: React.MouseEvent | React.KeyboardEvent,
+  ) => boolean | undefined | void;
 }
 
 /**
@@ -110,16 +119,26 @@ export default function TabContent(props: Props) {
     forceRenderTabPanel,
     cacheable,
     animateHeight = false,
+    onSelect,
     ...rest
   } = props;
   const tabListContext = useTabList(selectedIndex);
+  const onSelectRef = useRefValue(onSelect);
   const context = useMemo(
     () => ({
       inTabContent: true,
       forceRenderTabPanel,
       cacheable,
+      onSelect: (
+        tabIndex: number,
+        event: React.MouseEvent | React.KeyboardEvent,
+      ) => {
+        if (onSelectRef.current) {
+          onSelectRef.current(tabIndex, selectedIndex, event);
+        }
+      },
     }),
-    [cacheable, forceRenderTabPanel],
+    [cacheable, forceRenderTabPanel, onSelectRef, selectedIndex],
   );
   const transform = useMemo(
     () => `translate3d(-${100 * selectedIndex}%, 0px, 0px)`,

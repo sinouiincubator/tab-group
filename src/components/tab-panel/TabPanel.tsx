@@ -5,6 +5,7 @@ import TabPanelWrapper from './TabPanelWrapper';
 import TabListContext from '../TabListContext';
 import useTabRegister from '../commons/useTabRegister';
 import TabContentContext from '../TabContentContext';
+import TabPanelContext from '../TabPanelContext';
 
 interface TabPanelProps {
   children: React.ReactNode;
@@ -137,23 +138,25 @@ export default function TabPanel(props: TabPanelProps) {
   }
 
   return (
-    <TabPanelWrapper
-      data-testid={`tab-panel-${index}`}
-      role="tabpanel"
-      aria-hidden={!isActive}
-      aria-labelledby={props.tabId}
-      id={tabId}
-      {...other}
-      className={classNames(
-        'sinoui-tab-panel',
-        {
-          'sinoui-tab-panel--active': isActive,
-        },
-        className,
-      )}
-      active={isActive}
-    >
-      {isNeedRendered || isForceRenderContent ? renderingChildren : null}
-    </TabPanelWrapper>
+    <TabPanelContext.Provider value={tabId}>
+      <TabPanelWrapper
+        data-testid={`tab-panel-${index}`}
+        role="tabpanel"
+        aria-hidden={!isActive}
+        aria-labelledby={props.tabId}
+        id={tabId}
+        {...other}
+        className={classNames(
+          'sinoui-tab-panel',
+          {
+            'sinoui-tab-panel--active': isActive,
+          },
+          className,
+        )}
+        active={isActive}
+      >
+        {isNeedRendered || isForceRenderContent ? renderingChildren : null}
+      </TabPanelWrapper>
+    </TabPanelContext.Provider>
   );
 }

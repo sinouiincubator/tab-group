@@ -1,6 +1,8 @@
 import React, { useContext, useCallback } from 'react';
 import classNames from 'classnames';
 import { useRipple } from '@sinoui/ripple';
+import getNextTabIndex from '../../helpers/getNextTabIndex';
+import getPrevTabIndex from '../../helpers/getPrevTabIndex';
 import {
   LEFT_KEY_CODE,
   TOP_KEY_CODE,
@@ -33,64 +35,6 @@ interface Props {
    * 指定标签页id
    */
   id?: string;
-}
-
-/**
- * 获取下一个可用的tab索引
- *
- * @param {number} selectedIndex
- * @param {string[]} tabs
- * @param {(tabId: string) => { disabled?: boolean }} getTabProps
- * @returns
- */
-function getNextTabIndex(
-  selectedIndex: number,
-  tabs: string[],
-  getTabProps: (tabId: string) => { disabled?: boolean },
-): number {
-  let i = selectedIndex + 1;
-  for (; i < tabs.length; i += 1) {
-    const tabId = tabs[i];
-    const tabDisabled = getTabProps(tabId).disabled;
-    if (!tabDisabled) {
-      return i;
-    }
-  }
-
-  if (i === tabs.length) {
-    return getNextTabIndex(-1, tabs, getTabProps);
-  }
-
-  return 0;
-}
-
-/**
- * 获取上一个可用标签页的索引
- *
- * @param {number} selectedIndex
- * @param {string[]} tabs
- * @param {(tabId: string) => { disabled?: boolean }} getTabProps
- * @returns
- */
-function getPrevTabIndex(
-  selectedIndex: number,
-  tabs: string[],
-  getTabProps: (tabId: string) => { disabled?: boolean },
-): number {
-  let i = selectedIndex - 1;
-  for (; i > 0; i -= 1) {
-    const tabId = tabs[i];
-    const tabDisabled = getTabProps(tabId).disabled;
-    if (!tabDisabled) {
-      return i;
-    }
-  }
-
-  if (selectedIndex === 0) {
-    return getPrevTabIndex(tabs.length, tabs, getTabProps);
-  }
-
-  return 0;
 }
 
 /**
