@@ -6,6 +6,8 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import TabGroup from '../TabGroup';
 import Tab from '../tab';
+import TabHeaderItem from '../tab-header-item';
+import TabHeader from '../tab-header';
 
 it('正确渲染TabGroup', () => {
   const tree = renderer
@@ -28,6 +30,40 @@ it('选中第二个标签页', () => {
     .create(
       <ThemeProvider theme={defaultTheme}>
         <TabGroup selectedIndex={1}>
+          <Tab title="标签页1">内容1</Tab>
+          <Tab title="标签页2">内容2</Tab>
+          <Tab title="标签页3">内容3</Tab>
+        </TabGroup>
+      </ThemeProvider>,
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('simple模式下的TabGroup', () => {
+  const tree = renderer
+    .create(
+      <ThemeProvider theme={defaultTheme}>
+        <TabGroup simple>
+          <TabHeader selectedIndex={1}>
+            <TabHeaderItem title="标签1" />
+            <TabHeaderItem title="标签2" />
+            <TabHeaderItem title="标签3" />
+          </TabHeader>
+        </TabGroup>
+      </ThemeProvider>,
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('定制标签文本及指示条颜色', () => {
+  const tree = renderer
+    .create(
+      <ThemeProvider theme={defaultTheme}>
+        <TabGroup inkBarColor="warming" textColor="accent">
           <Tab title="标签页1">内容1</Tab>
           <Tab title="标签页2">内容2</Tab>
           <Tab title="标签页3">内容3</Tab>
