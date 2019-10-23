@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useState, useMemo } from 'react';
-import debounce from 'lodash/debounce';
+import { debounce } from '@sinoui/utils';
 import { DEBOUNCE_WAIT } from '../../constants';
 import { TabListContextState } from '../TabListContext';
 import useEventCallback from '../../helpers/useEventCallback';
