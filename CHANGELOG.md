@@ -1,5 +1,13 @@
 # 版本变更说明
 
+## v1.0.0 - 2019.10.23
+
+- feat: 定制标签页文本和指示条颜色
+- feat: TabGroup 可以直接与 TabHeader、 TabContent 组合使用
+- feat: 支持页签切换按钮
+- feat: 支持断点的主题定制
+- refactor: debounce 替换
+
 ## v1.0.0-beta.1 - 2019.10.22
 
 - chore: 升级 @sinoui/ripple@1.0.1
