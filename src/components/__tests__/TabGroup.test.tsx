@@ -218,3 +218,19 @@ it('不显示标签条底部线条', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it('全宽模式', () => {
+  const tree = renderer
+    .create(
+      <ThemeProvider theme={defaultTheme}>
+        <TabGroup fullWidth>
+          <Tab title="标签页1">内容1</Tab>
+          <Tab title="标签页2">内容2</Tab>
+          <Tab title="标签页3">内容3</Tab>
+        </TabGroup>
+      </ThemeProvider>,
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

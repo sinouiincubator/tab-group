@@ -98,3 +98,18 @@ it('TabHeader 与 TabHeaderItem 组合使用', () => {
 
   expect(getByTestId('tab-header-item-1')).toHaveClass('sinoui-tab--active');
 });
+
+it('全宽模式', () => {
+  const tree = renderer
+    .create(
+      <ThemeProvider theme={defaultTheme}>
+        <TabHeader selectedIndex={0} fullWidth>
+          <TabHeaderItem title="标签1" />
+          <TabHeaderItem title="标签2" />
+        </TabHeader>
+      </ThemeProvider>,
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
