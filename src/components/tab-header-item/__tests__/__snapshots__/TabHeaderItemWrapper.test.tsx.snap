@@ -21,7 +21,7 @@ exports[`不可用且选中状态下的TabHeaderItemWrapper 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
-  color: rgba(0,0,0,0.87);
+  color: rgba(0,0,0,0.26);
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -39,9 +39,8 @@ exports[`不可用且选中状态下的TabHeaderItemWrapper 1`] = `
   white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
+  -webkit-tap-highlight-color: transparent;
   cursor: not-allowed;
-  color: rgba(0,0,0,0.38);
-  color: #3f51b5;
   opacity: 1;
 }
 
@@ -72,7 +71,7 @@ exports[`不可用状态下的TabHeaderItemWrapper 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
-  color: rgba(0,0,0,0.87);
+  color: rgba(0,0,0,0.38);
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -90,8 +89,8 @@ exports[`不可用状态下的TabHeaderItemWrapper 1`] = `
   white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
+  -webkit-tap-highlight-color: transparent;
   cursor: not-allowed;
-  color: rgba(0,0,0,0.38);
 }
 
 <div
@@ -139,6 +138,7 @@ exports[`正确渲染TabHeaderItemWrapper 1`] = `
   white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .c0:hover {
@@ -171,7 +171,7 @@ exports[`选中状态下的TabTabHeaderItemWrapper 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
-  color: rgba(0,0,0,0.87);
+  color: #3f51b5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -189,7 +189,7 @@ exports[`选中状态下的TabTabHeaderItemWrapper 1`] = `
   white-space: nowrap;
   -webkit-transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
   transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), color 0.25s cubic-bezier(0.4,0,0.2,1);
-  color: #3f51b5;
+  -webkit-tap-highlight-color: transparent;
   opacity: 1;
 }
 
