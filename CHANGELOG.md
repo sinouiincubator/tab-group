@@ -4,6 +4,7 @@
 
 - fix: 修复引用此模块时 ts 类型报错的缺陷
 - chore: 去掉 lodash, lodash-es 依赖 ( #6 )
+- fix: 在 Android Chrome 中点击时出现高亮背景 ( #7 )
 
 ## v1.0.0 - 2019.10.23
 

@@ -61,6 +61,7 @@ const TabHeaderItemWrapper = styled.div<TabHeaderItemWrapperProps>`
   white-space: nowrap;
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
 
   ${(props) => !props.disabled && hoverCss};
   ${(props) => props.disabled && disabledCss};
