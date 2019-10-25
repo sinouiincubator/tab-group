@@ -9,14 +9,13 @@ const TabHeaderScrollButtonWrapper = styled.div`
   position: relative;
   text-align: center;
   font-size: 1.25rem;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   color: ${(props) => props.theme.palette.text.primary};
 
   display: none;
   ${breakpoint('sm')`
-    display: block;
+    display: inline-flex;
   `}
 `;
 
