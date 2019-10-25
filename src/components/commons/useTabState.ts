@@ -1,15 +1,30 @@
 import { useContext, useState, useEffect, useCallback } from 'react';
-import getNextTabIndex from 'src/helpers/getNextTabIndex';
-import getPrevTabIndex from 'src/helpers/getPrevTabIndex';
+import getNextTabIndex from '../../helpers/getNextTabIndex';
+import getPrevTabIndex from '../../helpers/getPrevTabIndex';
 import TabPanelContext from '../TabPanelContext';
 import TabListContext from '../TabListContext';
 import TabContentContext from '../TabContentContext';
 
 export interface TabState {
+  /**
+   * 是否是第一个标签页
+   */
   isFirst: boolean;
+  /**
+   * 是否是最后一个标签页
+   */
   isLast: boolean;
-  prev: (event: React.MouseEvent) => void;
-  next: (event: React.MouseEvent) => void;
+  /**
+   * 跳转到上一页
+   *
+   * @param event 触发事件
+   */
+  prev(event?: React.MouseEvent): void;
+  /**
+   * 调整到下一页
+   * @param event 触发事件
+   */
+  next(event?: React.MouseEvent): void;
 }
 
 /**
