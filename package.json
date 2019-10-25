@@ -70,8 +70,6 @@
     "@sinoui/theme": "^0.3.3",
     "@sinoui/utils": "^0.1.0",
     "classnames": "^2.2.6",
-    "lodash": "^4.17.15",
-    "lodash-es": "^4.17.15",
     "styled-components-breakpoint": "^2.1.1"
   },
   "devDependencies": {
