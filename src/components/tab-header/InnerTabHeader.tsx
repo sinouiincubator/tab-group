@@ -28,6 +28,11 @@ interface Props {
    * 指示条颜色
    */
   inkBarColor?: string;
+
+  /**
+   * 全宽模式
+   */
+  fullWidth?: boolean;
 }
 
 function InnerTabHeader({
@@ -36,6 +41,7 @@ function InnerTabHeader({
   borderless,
   tabListContextState,
   inkBarColor,
+  fullWidth,
   ...rest
 }: Props) {
   const tabListRef = useRef<HTMLDivElement>(null);
@@ -71,6 +77,7 @@ function InnerTabHeader({
         className="sinoui-tab-list"
         ref={tabListRef}
         onScroll={onTabListScroll}
+        fullWidth={fullWidth}
       >
         {children}
         <InkBar ref={inkBarRef} data-testid="inkbar" color={inkBarColor} />

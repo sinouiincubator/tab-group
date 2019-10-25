@@ -1,6 +1,19 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const TabList = styled.div`
+interface Props {
+  /**
+   * 全宽模式
+   */
+  fullWidth?: boolean;
+}
+
+const fullWidthCss = css`
+  & > * {
+    flex: 1;
+  }
+`;
+
+const TabList = styled.div<Props>`
   flex: 1;
   position: relative;
   transition: transform 0.5s cubic-bezier(0.35, 0, 0.25, 1);
@@ -15,6 +28,8 @@ const TabList = styled.div`
   overflow: -moz-scrollbars-none; /* old firefox */
 
   overflow-x: scroll;
+
+  ${(props) => props.fullWidth && fullWidthCss};
 `;
 
 export default TabList;

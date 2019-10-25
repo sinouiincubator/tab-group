@@ -76,6 +76,11 @@ interface Props {
    * 指示条颜色
    */
   inkBarColor?: string;
+
+  /**
+   * 全宽模式。页签条上的页签平分页签条的宽度。
+   */
+  fullWidth?: boolean;
 }
 
 function InnerTabGroup({
@@ -92,6 +97,7 @@ function InnerTabGroup({
   simple,
   textColor,
   inkBarColor,
+  fullWidth,
   ...rest
 }: Props) {
   return simple ? (
@@ -108,6 +114,7 @@ function InnerTabGroup({
         borderless={borderless}
         textColor={textColor}
         inkBarColor={inkBarColor}
+        fullWidth={fullWidth}
       >
         {children}
       </TabHeader>

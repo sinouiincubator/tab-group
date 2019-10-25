@@ -49,6 +49,11 @@ interface Props {
    * 指示条颜色
    */
   inkBarColor?: string;
+
+  /**
+   * 全宽模式
+   */
+  fullWidth?: boolean;
 }
 
 /**
