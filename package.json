@@ -1,6 +1,6 @@
 {
   "name": "@sinouiincubator/tab-group",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "选项卡切换组件",
   "license": "MIT",
   "main": "dist/index.js",
