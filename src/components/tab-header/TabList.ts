@@ -9,9 +9,15 @@ interface Props {
 
 const fullWidthCss = css`
   && {
-    & > * {
+    overflow: hidden;
+
+    & > .sinoui-tab {
       flex: 1;
-      padding: 0px;
+      padding: 10px 8px;
+      overflow: hidden;
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 `;
