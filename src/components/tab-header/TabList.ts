@@ -8,8 +8,11 @@ interface Props {
 }
 
 const fullWidthCss = css`
-  & > * {
-    flex: 1;
+  && {
+    & > * {
+      flex: 1;
+      padding: 0px;
+    }
   }
 `;
 
