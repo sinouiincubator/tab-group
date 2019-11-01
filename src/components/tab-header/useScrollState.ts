@@ -1,9 +1,9 @@
 import { useEffect, useCallback, useState, useMemo } from 'react';
-import { debounce, animate } from '@sinoui/utils';
+import { debounce } from '@sinoui/utils';
 import { DEBOUNCE_WAIT } from '../../constants';
 import { TabListContextState } from '../TabListContext';
 import useEventCallback from '../../helpers/useEventCallback';
-import easeInOut from '../../helpers/easeInOut';
+import animate from '../../helpers/animate';
 
 /**
  * 使用滚动状态的hook
@@ -27,15 +27,9 @@ function useScrollState(
       if (tabList) {
         const { scrollLeft } = tabList;
         const newScrollLeft = scrollLeft + delta;
-        animate(
-          scrollLeft,
-          newScrollLeft,
-          300,
-          (value) => {
-            tabList.scrollLeft = value;
-          },
-          easeInOut,
-        );
+        animate(scrollLeft, newScrollLeft, 300, (value) => {
+          tabList.scrollLeft = value;
+        });
       }
     },
     [tabListRef],

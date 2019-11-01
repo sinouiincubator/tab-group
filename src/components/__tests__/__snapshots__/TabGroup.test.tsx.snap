@@ -159,7 +159,7 @@ exports[`全宽模式 1`] = `
     role="tablist"
   >
     <div
-      className="sc-ifAKCX dkEgqo sinoui-tab-list"
+      className="sc-ifAKCX feaNrE sinoui-tab-list"
       onScroll={[Function]}
     >
       <div
