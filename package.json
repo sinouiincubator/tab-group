@@ -68,7 +68,7 @@
     "@babel/runtime": "^7.6.3",
     "@sinoui/ripple": "^1.0.2",
     "@sinoui/theme": "^0.3.3",
-    "@sinoui/utils": "^0.1.0",
+    "@sinoui/utils": "^0.2.1",
     "classnames": "^2.2.6",
     "styled-components-breakpoint": "^2.1.1"
   },

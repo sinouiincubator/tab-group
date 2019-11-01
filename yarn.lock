@@ -1425,10 +1425,10 @@
     polished "^3.4.1"
     warning "^4.0.3"
 
-"@sinoui/utils@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@sinoui/utils/-/utils-0.1.0.tgz#372586e4c47b490f78e4b5706911d99aa4423348"
-  integrity sha512-Zu2FzKsFuMcSm3kf3WalkIyRwAVmcqgVCU4Rmqpthu3gnAL5jnLX8D2hJAThtKTylgTLAo+wSLysXJO7v4qbjA==
+"@sinoui/utils@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@sinoui/utils/-/utils-0.2.1.tgz#a772a3ddc3ce137069d578db95df75eaa0ce31a6"
+  integrity sha512-BqT66TKlNy+hLUvGa7aeHy3/ZVGyNDiF6Zc/qvc2AOybl99IQS0iutRzCA8f9Z7hZKSJPwN+S6dThucH3itzCw==
   dependencies:
     "@babel/polyfill" "^7.6.0"
     "@babel/runtime" "^7.6.3"
@@ -8580,11 +8580,6 @@ locate-path@^5.0.0:
   integrity sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==
   dependencies:
     p-locate "^4.1.0"
-
-lodash-es@^4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
-  integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
