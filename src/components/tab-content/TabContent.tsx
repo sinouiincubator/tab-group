@@ -34,6 +34,10 @@ export interface Props {
    */
   animateHeight?: boolean;
   /**
+   * 默认为 `true`。设置为 `false`，禁止内容切换时的过度动画。
+   */
+  animateTransitions?: boolean;
+  /**
    * 每次标签页切换时调用的事件处理器。这个函数的 `index` 参数是新的选中标签页索引，`lastIndex` 参数是变更之前选中的标签页索引，`event` 参数是引起页签切换的事件，可能是 `keydown` 或者 `click` 事件。如果 `index` 和 `lastIndex` 相同时，表示用户在当前选中的标签页上点击。
    */
   onSelect?: (
@@ -119,6 +123,7 @@ export default function TabContent(props: Props) {
     forceRenderTabPanel,
     cacheable,
     animateHeight = false,
+    animateTransitions = true,
     onSelect,
     ...rest
   } = props;
@@ -140,10 +145,7 @@ export default function TabContent(props: Props) {
     }),
     [cacheable, forceRenderTabPanel, onSelectRef, selectedIndex],
   );
-  const transform = useMemo(
-    () => `translate3d(-${100 * selectedIndex}%, 0px, 0px)`,
-    [selectedIndex],
-  );
+  const left = `-${100 * selectedIndex}%`;
 
   const tabContentRef = useRef<HTMLDivElement>(null);
   useAnimateHeight(animateHeight, selectedIndex, tabContentRef, tabListContext);
@@ -157,8 +159,9 @@ export default function TabContent(props: Props) {
           ref={tabContentRef}
         >
           <TabPanelListWrapper
-            style={{ transform }}
+            style={{ left }}
             className="sinoui-tab-panel-list"
+            animateTransitions={animateTransitions}
           >
             {children}
           </TabPanelListWrapper>

@@ -17,7 +17,7 @@ it('渲染TabContent', () => {
   ) as HTMLElement;
 
   expect(tabContent).toBeInTheDocument();
-  expect(tabContent).toHaveStyle('transform: translate3d(-100%, 0px, 0px);');
+  expect(tabContent).toHaveStyle('left: -100%;');
 });
 
 /* 镜像测试 */
@@ -26,6 +26,18 @@ describe('TabContent 镜像测试', () => {
   it('渲染 TabContent', () => {
     const tree = renderer
       .create(<TabContent selectedIndex={1}>内容</TabContent>)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('禁止内容切换过度动画', () => {
+    const tree = renderer
+      .create(
+        <TabContent selectedIndex={1} animateTransitions={false}>
+          内容
+        </TabContent>,
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

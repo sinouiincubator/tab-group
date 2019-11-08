@@ -56,6 +56,10 @@ interface Props {
    */
   animateHeight?: boolean;
   /**
+   * 默认为 `true`。设置为 `false` 则会禁止内容切换时的过渡动画。
+   */
+  animateTransitions?: boolean;
+  /**
    * 在标签右侧添加附加内容。
    */
   tabHeaderExtraContent?: React.ReactNode;
@@ -98,6 +102,7 @@ function InnerTabGroup({
   textColor,
   inkBarColor,
   fullWidth,
+  animateTransitions,
   ...rest
 }: Props) {
   return simple ? (
@@ -124,6 +129,7 @@ function InnerTabGroup({
         forceRenderTabPanel={forceRenderTabPanel}
         cacheable={cacheable}
         animateHeight={animateHeight}
+        animateTransitions={animateTransitions}
       >
         {children}
       </TabContent>

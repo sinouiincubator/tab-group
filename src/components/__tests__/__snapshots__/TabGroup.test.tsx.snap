@@ -115,10 +115,10 @@ exports[`不显示标签条底部线条 1`] = `
     className="sc-EHOje cDIvNs sinoui-tab-content"
   >
     <div
-      className="sc-bZQynM jWIhci sinoui-tab-panel-list"
+      className="sc-bZQynM iDhpMC sinoui-tab-panel-list"
       style={
         Object {
-          "transform": "translate3d(-0%, 0px, 0px)",
+          "left": "-0%",
         }
       }
     >
@@ -208,10 +208,10 @@ exports[`全宽模式 1`] = `
     className="sc-EHOje cDIvNs sinoui-tab-content"
   >
     <div
-      className="sc-bZQynM jWIhci sinoui-tab-panel-list"
+      className="sc-bZQynM iDhpMC sinoui-tab-panel-list"
       style={
         Object {
-          "transform": "translate3d(-0%, 0px, 0px)",
+          "left": "-0%",
         }
       }
     >
@@ -305,10 +305,10 @@ exports[`定制标签文本及指示条颜色 1`] = `
     className="sc-EHOje cDIvNs sinoui-tab-content"
   >
     <div
-      className="sc-bZQynM jWIhci sinoui-tab-panel-list"
+      className="sc-bZQynM iDhpMC sinoui-tab-panel-list"
       style={
         Object {
-          "transform": "translate3d(-0%, 0px, 0px)",
+          "left": "-0%",
         }
       }
     >
@@ -398,10 +398,10 @@ exports[`正确渲染TabGroup 1`] = `
     className="sc-EHOje cDIvNs sinoui-tab-content"
   >
     <div
-      className="sc-bZQynM jWIhci sinoui-tab-panel-list"
+      className="sc-bZQynM iDhpMC sinoui-tab-panel-list"
       style={
         Object {
-          "transform": "translate3d(-0%, 0px, 0px)",
+          "left": "-0%",
         }
       }
     >
@@ -491,10 +491,10 @@ exports[`选中第二个标签页 1`] = `
     className="sc-EHOje cDIvNs sinoui-tab-content"
   >
     <div
-      className="sc-bZQynM jWIhci sinoui-tab-panel-list"
+      className="sc-bZQynM iDhpMC sinoui-tab-panel-list"
       style={
         Object {
-          "transform": "translate3d(-100%, 0px, 0px)",
+          "left": "-100%",
         }
       }
     >
@@ -591,10 +591,10 @@ exports[`附加内容 1`] = `
     className="sc-EHOje cDIvNs sinoui-tab-content"
   >
     <div
-      className="sc-bZQynM jWIhci sinoui-tab-panel-list"
+      className="sc-bZQynM iDhpMC sinoui-tab-panel-list"
       style={
         Object {
-          "transform": "translate3d(-0%, 0px, 0px)",
+          "left": "-0%",
         }
       }
     >

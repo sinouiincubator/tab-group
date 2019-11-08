@@ -16,10 +16,9 @@ exports[`TabContent 镜像测试 渲染 TabContent 1`] = `
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
-  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
-  -webkit-transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
-  transition: transform 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
-  will-change: transform;
+  position: relative;
+  -webkit-transition: left 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
+  transition: left 0.35s cubic-bezier(0.15,0.3,0.25,1) 0s;
 }
 
 <div
@@ -29,7 +28,42 @@ exports[`TabContent 镜像测试 渲染 TabContent 1`] = `
     className="c1 sinoui-tab-panel-list"
     style={
       Object {
-        "transform": "translate3d(-100%, 0px, 0px)",
+        "left": "-100%",
+      }
+    }
+  >
+    内容
+  </div>
+</div>
+`;
+
+exports[`TabContent 镜像测试 禁止内容切换过度动画 1`] = `
+.c0 {
+  overflow-x: hidden;
+  -webkit-transition: height 0.5s cubic-bezier(0.15,0.3,0.25,1) 0s;
+  transition: height 0.5s cubic-bezier(0.15,0.3,0.25,1) 0s;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+<div
+  className="c0 sinoui-tab-content"
+>
+  <div
+    className="c1 sinoui-tab-panel-list"
+    style={
+      Object {
+        "left": "-100%",
       }
     }
   >
