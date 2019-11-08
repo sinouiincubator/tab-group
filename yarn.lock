@@ -1403,10 +1403,10 @@
     styled-components "^4.4.0"
     warning "^4.0.3"
 
-"@sinoui/ripple@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@sinoui/ripple/-/ripple-1.0.3.tgz#75bfded96697471e6910270745f2c6b21ebea2c6"
-  integrity sha512-GwFSqFsfbfXaCqTkFTlOq1ayawFOOlURC+mOjRB8BvNlMsLeo2hbmtn3ah+v7sZ+OTJY0gdSjpk1+HksthJZ6A==
+"@sinoui/ripple@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@sinoui/ripple/-/ripple-1.0.4.tgz#41e21b24b384168da88d883590163f8850f5ca77"
+  integrity sha512-2pxX/8XW2VzU1c/tNn4FrX99i2VyC01zk2ceXxKxaa1Rmp72T+lKr5xpqTsyBXuV+xjulSj+CqflGGE9LFhhxA==
   dependencies:
     "@babel/polyfill" "^7.6.0"
     "@babel/runtime" "^7.6.3"
