@@ -1,0 +1,18 @@
+---
+name: resetIdCount
+route: /api-reset-id-count
+menu: API
+---
+
+# `resetIdCount()`
+
+在服务端渲染时，必须调用 `resetIdCount()` 方法。此方法会将 id 计数器重置为 `0`。在服务器端渲染每个页面之前调用此方法，会保证服务器端和浏览器端的 id 能够匹配上。
+
+注意，千万别在浏览器端使用。
+
+```tsx
+import { resetIdCount } from '@sinouiincubator/tab-group';
+
+resetIdCount();
+ReactDOMServer.renderToString(...);
+```
