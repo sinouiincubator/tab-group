@@ -13,7 +13,7 @@ const fullWidthCss = css`
 
     & > .sinoui-tab {
       flex: 1;
-      padding: 10px 8px;
+      padding: 12px 8px;
       overflow: hidden;
       display: inline-block;
       text-overflow: ellipsis;
