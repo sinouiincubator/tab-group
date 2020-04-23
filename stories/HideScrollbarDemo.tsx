@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useCallback, useRef } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import IconButton from 'sinoui-components/IconButton';
-import SvgIcon from 'sinoui-components/SvgIcon';
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import IconButton from '@sinoui/core/IconButton';
+import SvgIcon from '@sinoui/core/SvgIcon';
+import NavigateBefore from '@sinoui/icons/NavigateBefore';
+import NavigateNext from '@sinoui/icons/NavigateNext';
 import { defaultTheme } from '@sinoui/theme';
 import range from 'lodash/range';
 
@@ -48,7 +49,7 @@ function HideScrollbarDemo() {
       <Wrapper>
         <IconButton>
           <SvgIcon>
-            <MdNavigateBefore />
+            <NavigateBefore />
           </SvgIcon>
         </IconButton>
 
@@ -60,7 +61,7 @@ function HideScrollbarDemo() {
 
         <IconButton onClick={next}>
           <SvgIcon>
-            <MdNavigateNext />
+            <NavigateNext />
           </SvgIcon>
         </IconButton>
       </Wrapper>

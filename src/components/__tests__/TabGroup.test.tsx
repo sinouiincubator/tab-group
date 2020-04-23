@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import renderer, { act } from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import { defaultTheme } from '@sinoui/theme';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import TabGroup from '../TabGroup';

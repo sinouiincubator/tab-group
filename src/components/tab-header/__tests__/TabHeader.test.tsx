@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import { defaultTheme } from '@sinoui/theme';
 import 'jest-styled-components';
 import '@testing-library/jest-dom/extend-expect';
 import { render, cleanup, fireEvent } from '@testing-library/react';

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import { defaultTheme } from '@sinoui/theme';
 import '@testing-library/jest-dom/extend-expect';
 import Tab from '../Tab';
 import TabHeader from '../../tab-header';

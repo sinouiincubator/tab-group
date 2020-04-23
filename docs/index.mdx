@@ -5,7 +5,7 @@ route: /
 
 import { useState, useCallback } from 'react';
 import { Playground, Props } from 'docz';
-import { MdDelete } from 'react-icons/md';
+import Delete from '@sinoui/core/Delete';
 import styled from 'styled-components';
 import TabGroup, {
   Tab,
@@ -14,7 +14,7 @@ import TabGroup, {
   TabContent,
   TabPanel,
 } from '../src';
-import Button from 'sinoui-components/Button';
+import Button from '@sinoui/core/Button';
 import useTabState from '../src/components/commons/useTabState';
 
 # TabGroup 标签页
@@ -66,7 +66,7 @@ TabGroup 组件通过 styled-components 支持主题切换。所以在项目中�
 安装依赖：
 
 ```shell
-yarn add styled-components sinoui-components
+yarn add styled-components @sinoui/core
 ```
 
 在 `App` 组件中创建主题上下文：
@@ -74,7 +74,7 @@ yarn add styled-components sinoui-components
 ```tsx
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import { defaultTheme } from '@sinoui/theme';
 
 function App() {
   return (
@@ -244,7 +244,7 @@ function TabHeaderDemo() {
 
 ```tsx
 import React from 'react';
-import Button from 'sinoui-components/Button';
+import Button from '@sinoui/core/Button';
 import { TabContent, TabPanel } from '@sinouiincubator/tab-group';
 
 function TabContentDemo() {
@@ -459,7 +459,7 @@ function Demo() {
       <TabGroup>
         {tabs.map((tab) => (
           <Tab key={tab.id} title={<div>
-              {tab.title}<MdDelete onClick={(event) => handleTabRemove(event, tab.id)}></MdDelete>
+              {tab.title}<Delete onClick={(event) => handleTabRemove(event, tab.id)}></Delete>
             </div>}>
             {tab.content}
           </Tab>

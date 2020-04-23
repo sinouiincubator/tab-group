@@ -1,5 +1,11 @@
 # 版本变更说明
 
+## v2.0.0 - 2020.4.23
+
+- fix: 升级 @sinoui/theme
+- fix: sinoui-components 库调整为引用 @sinoui/core
+- fix: react-icons 库调整为引用 @sinoui/icons
+
 ## v1.1.5 - 2019.12.3
 
 - fix: 修复全宽模式下文字垂直方向不居中的 bug

@@ -1,7 +1,7 @@
 import { render, act, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import { defaultTheme } from '@sinoui/theme';
 import React from 'react';
 import useTabList from '../../commons/useTabList';
 import TabHeaderContext from '../../TabHeaderContext';

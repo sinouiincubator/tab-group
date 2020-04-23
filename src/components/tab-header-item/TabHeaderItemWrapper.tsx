@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { getColorFromTheme } from 'sinoui-components/utils/colors';
+import getColorFromTheme from '@sinoui/core/utils/getColorFromTheme';
 import { Theme } from '@sinoui/theme';
 
 interface TabHeaderItemWrapperProps {
@@ -10,13 +10,13 @@ interface TabHeaderItemWrapperProps {
 }
 
 const getTextColor = (props: TabHeaderItemWrapperProps) => {
-  const { disabled, active, color } = props;
+  const { disabled, active, color='primary' } = props;
 
   if (color === 'inherit') {
     return color;
   }
   if (active) {
-    return getColorFromTheme(props, props.theme.palette.primary[500]);
+    return getColorFromTheme(props.theme, color);
   }
 
   if (disabled) {

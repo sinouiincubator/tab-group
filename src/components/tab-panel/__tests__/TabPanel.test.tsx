@@ -1,9 +1,9 @@
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
+import { defaultTheme } from '@sinoui/theme';
 import '@testing-library/jest-dom/extend-expect';
-import Button from 'sinoui-components/Button';
+import Button from '@sinoui/core/Button';
 import TabContentContext from '../../TabContentContext';
 import TabPanel from '../TabPanel';
 import TabListContext from '../../TabListContext';
