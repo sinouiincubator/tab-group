@@ -47,8 +47,11 @@ it('附加内容', () => {
 });
 
 let clientRectFn: jest.Mock | undefined;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let getBoundingClientRect: any;
 beforeEach(() => {
   clientRectFn = jest.fn();
+  getBoundingClientRect = Element.prototype.getBoundingClientRect;
   Element.prototype.getBoundingClientRect = clientRectFn;
 });
 

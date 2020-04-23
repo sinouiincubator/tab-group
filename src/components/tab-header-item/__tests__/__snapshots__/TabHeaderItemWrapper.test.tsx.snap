@@ -21,7 +21,7 @@ exports[`不可用且选中状态下的TabHeaderItemWrapper 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   white-space: nowrap;
-  color: rgba(0,0,0,0.26);
+  color: #3f51b5;
   outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
