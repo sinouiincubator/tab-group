@@ -114,7 +114,6 @@
     "access": "public"
   },
   "resolutions": {
-    "styled-components": "^5.1.0",
-    "react-dom": "^16.10.2"
+    "styled-components": "^5.1.0"
   }
 }
