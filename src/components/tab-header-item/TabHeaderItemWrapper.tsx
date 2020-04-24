@@ -10,7 +10,7 @@ interface TabHeaderItemWrapperProps {
 }
 
 const getTextColor = (props: TabHeaderItemWrapperProps) => {
-  const { disabled, active, color='primary' } = props;
+  const { disabled, active, color = 'primary' } = props;
 
   if (color === 'inherit') {
     return color;
