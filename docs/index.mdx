@@ -209,15 +209,14 @@ function TabHeaderDemo() {
 <Playground>
   {() => {
     const [active, setActive] = useState(0);
-
-    return <TabHeader selectedIndex={active} onSelect={setActive}>
-      <TabHeaderItem title="标签1" />
-      <TabHeaderItem title="标签2" />
-      <TabHeaderItem title="标签3" />
-    </TabHeader>;
-
-}}
-
+    return (
+      <TabHeader selectedIndex={active} onSelect={setActive}>
+        <TabHeaderItem title="标签1" />
+        <TabHeaderItem title="标签2" />
+        <TabHeaderItem title="标签3" />
+      </TabHeader>
+    );
+  }}
 </Playground>
 
 可以自定义标签的样式，或者与其它组件组合使用。如下面的示例，在标签之间加上了一个方向分隔符：
@@ -225,17 +224,27 @@ function TabHeaderDemo() {
 <Playground>
   {() => {
     const [active, setActive] = useState(0);
-    const NextIcon = () => <div style={{ display: 'inline-block', padding: "12px 8px 0px 8px", color: 'rgba(0, 0, 0, 0.54)'}}>></div>;
-    return <TabHeader selectedIndex={active} onSelect={setActive} borderless>
-      <TabHeaderItem title="标签1" />
-      <NextIcon />
-      <TabHeaderItem title="标签2" />
-      <NextIcon />
-      <TabHeaderItem title="标签3" />
-    </TabHeader>;
-
-}}
-
+    const NextIcon = () => (
+      <div
+        style={{
+          display: 'inline-block',
+          padding: '12px 8px 0px 8px',
+          color: 'rgba(0, 0, 0, 0.54)',
+        }}
+      >
+        >
+      </div>
+    );
+    return (
+      <TabHeader selectedIndex={active} onSelect={setActive} borderless>
+        <TabHeaderItem title="标签1" />
+        <NextIcon />
+        <TabHeaderItem title="标签2" />
+        <NextIcon />
+        <TabHeaderItem title="标签3" />
+      </TabHeader>
+    );
+  }}
 </Playground>
 
 ## 单独使用标签内容
@@ -285,17 +294,14 @@ function TabContentDemo() {
       if (active === 0) {
         return;
       }
-
       setActive(active - 1);
     }, [active]);
-
     const handleNextClick = useCallback(() => {
       if (active === 2) {
         return;
       }
       setActive(active + 1);
     }, [active]);
-
     return (
       <>
         <TabContent selectedIndex={active}>
@@ -307,9 +313,7 @@ function TabContentDemo() {
         <Button onClick={handleNextClick}>下一页</Button>
       </>
     );
-
-}}
-
+  }}
 </Playground>
 
 ## simple 模式
@@ -439,38 +443,44 @@ function Demo() {
       }
       return items;
     });
-
     const handleTabRemove = (event, tabId) => {
       event.stopPropagation();
-      const newTabs = tabs.filter(tab => tab.id !== tabId);
-
+      const newTabs = tabs.filter((tab) => tab.id !== tabId);
       setTabs(newTabs);
     };
-
     const handleAdd = () => {
-      const index = Math.max(...tabs.map(tab => tab.id), -1) + 1;
-      const newTabs = [...tabs, { id: index, title: `标签${index + 1}`, content: `内容${index + 1}` }];
-
+      const index = Math.max(...tabs.map((tab) => tab.id), -1) + 1;
+      const newTabs = [
+        ...tabs,
+        { id: index, title: `标签${index + 1}`, content: `内容${index + 1}` },
+      ];
       setTabs(newTabs);
-    }
-
+    };
     return (
       <>
-      <TabGroup>
-        {tabs.map((tab) => (
-          <Tab key={tab.id} title={<div>
-              {tab.title}<Delete onClick={(event) => handleTabRemove(event, tab.id)}></Delete>
-            </div>}>
-            {tab.content}
-          </Tab>
-        ))}
-      </TabGroup>
-      <Button raised onClick={handleAdd}>新增</Button>
+        <TabGroup>
+          {tabs.map((tab) => (
+            <Tab
+              key={tab.id}
+              title={
+                <div>
+                  {tab.title}
+                  <Delete
+                    onClick={(event) => handleTabRemove(event, tab.id)}
+                  ></Delete>
+                </div>
+              }
+            >
+              {tab.content}
+            </Tab>
+          ))}
+        </TabGroup>
+        <Button raised onClick={handleAdd}>
+          新增
+        </Button>
       </>
     );
-
-}}
-
+  }}
 </Playground>
 
 ## 受控模式
@@ -502,20 +512,17 @@ function Demo() {
 <Playground>
   {() => {
     const [selectedIndex, setSelectedIndex] = useState(0);
-
     return (
       <>
-      <div>当前选中的标签是：{selectedIndex}</div>
-      <TabGroup selectedIndex={selectedIndex} onSelect={setSelectedIndex}>
-        <Tab title="标签1">标签内容 1</Tab>
-        <Tab title="标签2">标签内容 2</Tab>
-        <Tab title="标签3">标签内容 3</Tab>
-      </TabGroup>
+        <div>当前选中的标签是：{selectedIndex}</div>
+        <TabGroup selectedIndex={selectedIndex} onSelect={setSelectedIndex}>
+          <Tab title="标签1">标签内容 1</Tab>
+          <Tab title="标签2">标签内容 2</Tab>
+          <Tab title="标签3">标签内容 3</Tab>
+        </TabGroup>
       </>
     );
-
-}}
-
+  }}
 </Playground>
 
 ## 阻止标签页切换
@@ -540,42 +547,37 @@ function Demo() {
       const { isFirst, prev } = useTabState();
       return isFirst ? null : <Button onClick={prev}>上一页</Button>;
     }
-
     function NextButton() {
       const { isLast, next } = useTabState();
       return isLast ? null : <Button onClick={next}>下一页</Button>;
     }
-
-    const Actions = styled.div((props)=>({
-      textAlign: 'center'
-    }))
-
+    const Actions = styled.div((props) => ({
+      textAlign: 'center',
+    }));
     return (
       <TabGroup>
         <Tab title="标签1">
           标签内容1
           <Actions>
-            <PrevButton/>
-            <NextButton/>
+            <PrevButton />
+            <NextButton />
           </Actions>
         </Tab>
         <Tab title="标签2">
           标签内容2
           <Actions>
-            <PrevButton/>
-            <NextButton/>
+            <PrevButton />
+            <NextButton />
           </Actions>
         </Tab>
         <Tab title="标签3">
           标签内容3
           <Actions>
-            <PrevButton/>
-            <NextButton/>
+            <PrevButton />
+            <NextButton />
           </Actions>
         </Tab>
       </TabGroup>
-    )
-
-}}
-
+    );
+  }}
 </Playground>

@@ -165,67 +165,59 @@ function CustomInkbarDemo() {
       '.sinoui-tab-header': {
         background: 'rgb(230, 232, 235)',
         minHeight: 64,
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
       },
       '.sinoui-tab-list': {
         paddingLeft: 24,
-        paddingRight: 24
+        paddingRight: 24,
       },
-      ".sinoui-ink-bar": {
-        display: 'none'
+      '.sinoui-ink-bar': {
+        display: 'none',
       },
-      ".sinoui-tab": {
+      '.sinoui-tab': {
         color: 'rgba(0,0,0,0.87)',
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
         overflow: 'hidden',
-
-        "&:hover": {
-         background: 'rgb(242,242,242)',
-
-         "&::before": {
-           opacity: 0
-         },
-
-        "& + .sinoui-tab::before": {
-        opacity: 0
-        }
-
-        }
-      },
-      ".sinoui-tab--active": {
-        background:'white',
-
-        "&::before": {
-          opacity: 0
+        '&:hover': {
+          background: 'rgb(242,242,242)',
+          '&::before': {
+            opacity: 0,
+          },
+          '& + .sinoui-tab::before': {
+            opacity: 0,
+          },
         },
-
-        "&:hover": {
-         background: 'white'
-        },
-
-        "& + .sinoui-tab::before": {
-        opacity: 0
-        }
       },
-      ".sinoui-tab:not(:first-of-type)": {
-        "&::before": {
+      '.sinoui-tab--active': {
+        background: 'white',
+        '&::before': {
+          opacity: 0,
+        },
+        '&:hover': {
+          background: 'white',
+        },
+        '& + .sinoui-tab::before': {
+          opacity: 0,
+        },
+      },
+      '.sinoui-tab:not(:first-of-type)': {
+        '&::before': {
           content: '" "',
-          position: "absolute",
+          position: 'absolute',
           left: 0,
-          display: "block",
+          display: 'block',
           height: 20,
           width: 1,
           zIndex: 1,
           marginTop: 4,
-          backgroundColor: 'rgb(158, 158, 158)'
+          backgroundColor: 'rgb(158, 158, 158)',
         },
       },
-      ".sinoui-ripple-layout": {
-        display:'none',
-      }
+      '.sinoui-ripple-layout': {
+        display: 'none',
+      },
     }));
-
     return (
       <CustomTabGroup borderless>
         <Tab title="标签1">标签内容1</Tab>
@@ -236,9 +228,7 @@ function CustomInkbarDemo() {
         <Tab title="标签6">标签内容6</Tab>
       </CustomTabGroup>
     );
-
-}}
-
+  }}
 </Playground>
 
 ## 定制指示器样式
@@ -292,15 +282,14 @@ function CustomInkbarDemo() {
         },
       },
     }));
-
-    return <CustomTabGroup>
-      <Tab title="标签1">标签内容1</Tab>
-      <Tab title="标签2">标签内容2</Tab>
-      <Tab title="标签3">标签内容3</Tab>
-    </CustomTabGroup>;
-
-}}
-
+    return (
+      <CustomTabGroup>
+        <Tab title="标签1">标签内容1</Tab>
+        <Tab title="标签2">标签内容2</Tab>
+        <Tab title="标签3">标签内容3</Tab>
+      </CustomTabGroup>
+    );
+  }}
 </Playground>
 
 ## 定制文本和指示条颜色

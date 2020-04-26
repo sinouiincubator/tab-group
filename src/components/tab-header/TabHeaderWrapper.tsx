@@ -5,7 +5,7 @@ interface Props {
 }
 
 const borderCss = css`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
 const TabHeaderWrapper = styled.div<Props>`
