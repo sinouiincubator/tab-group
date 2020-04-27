@@ -4,9 +4,8 @@ node_modules
 # testing
 coverage
 
-# production
-build
-dist
+# source code
+src
 
 # cache
 .cache
@@ -29,4 +28,3 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .progress-estimator
-debug.log*

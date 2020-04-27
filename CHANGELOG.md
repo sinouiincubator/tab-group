@@ -1,10 +1,20 @@
 # 版本变更说明
 
-## v2.0.0 - 2020.4.23
+## v2.0.0 - 2020.4.27
 
 - fix: 升级 @sinoui/theme
 - fix: sinoui-components 库调整为引用 @sinoui/core
 - fix: react-icons 库调整为引用 @sinoui/icons
+
+### 破坏性变更
+
+[详细介绍](https://github.com/sinoui/theme/blob/master/CHANGELOG.md#v100-beta1-2020224)
+
+将 @sinoui/theme 库升级到最新的版本：
+
+```shell
+yarn add @sinoui/theme
+```
 
 ## v1.1.5 - 2019.12.3
 

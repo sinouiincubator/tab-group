@@ -1,16 +1,13 @@
 {
   "name": "@sinouiincubator/tab-group",
-  "version": "1.1.5",
+  "version": "2.0.0",
   "description": "选项卡切换组件",
   "license": "MIT",
   "main": "dist/index.js",
   "umd:main": "dist/sinouiincubator-tab-group.umd.production.js",
   "module": "dist/sinouiincubator-tab-group.esm.js",
-  "typings": "dist/index.d.ts",
   "homepage": "https://sinouiincubator.github.io/tab-group",
-  "bugs": {
-    "url": "https://github.com/sinouiincubator/tab-group/issues"
-  },
+  "bugs": { "url": "https://github.com/sinouiincubator/tab-group/issues" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinouiincubator/tab-group.git"
@@ -39,14 +36,8 @@
     "jsxBracketSameLine": false,
     "arrowParens": "always"
   },
-  "eslintConfig": {
-    "extends": "ts-lib"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  "eslintConfig": { "extends": "ts-lib" },
+  "husky": { "hooks": { "pre-commit": "lint-staged" } },
   "lint-staged": {
     "src/*.{ts,tsx}": [
       "cross-env CI=true ts-lib-tools test",
@@ -54,14 +45,7 @@
       "git add"
     ]
   },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "styled-components": ">=4.0.0"
-  },
-  "files": [
-    "dist",
-    "assets"
-  ],
+  "peerDependencies": { "react": ">=16.8.0", "styled-components": ">=4.0.0" },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
@@ -111,10 +95,7 @@
     "typescript": "^3.8.3",
     "webpack-docz-ghpages-plugin": "^0.11.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "resolutions": {
-    "styled-components": "^5.1.0"
-  }
+  "publishConfig": { "access": "public" },
+  "resolutions": { "styled-components": "^5.1.0" },
+  "types": "types/index.d.ts"
 }

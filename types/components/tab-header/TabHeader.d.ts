@@ -1,0 +1,50 @@
+import React from 'react';
+interface Props {
+    children?: React.ReactNode;
+    /**
+     * 指定在密集模式下使用。
+     */
+    dense?: boolean;
+    /**
+     * 设置当前选中的标签页。这是一个从 `0` 开始的索引，第一个标签页的索引为 `0`，第二个标签页的索引为 `1`，……
+     */
+    selectedIndex: number;
+    /**
+     * 每次标签页切换时调用的事件处理器。这个函数的 `index` 参数是新的选中标签页索引，`lastIndex` 参数是变更之前选中的标签页索引，`event` 参数是引起页签切换的事件，可能是 `keydown` 或者 `click` 事件。如果 `index` 和 `lastIndex` 相同时，表示用户在当前选中的标签页上点击。
+     */
+    onSelect?: (index: number, lastIndex: number, event: React.MouseEvent | React.KeyboardEvent) => boolean | undefined | void;
+    /**
+     * 在标签右侧添加附加内容。
+     */
+    extraContent?: React.ReactNode;
+    /**
+     * 设置不显示底部线条。默认为 `false`。
+     */
+    borderless?: boolean;
+    /**
+     * 设置自定义的 css 类名
+     */
+    className?: string;
+    /**
+     * 设置自定义的 css 样式
+     */
+    style?: React.CSSProperties;
+    /**
+     * 标签文本颜色
+     */
+    textColor?: string;
+    /**
+     * 指示条颜色
+     */
+    inkBarColor?: string;
+    /**
+     * 全宽模式
+     */
+    fullWidth?: boolean;
+}
+/**
+ * 选项卡头部组件
+ *
+ */
+declare function TabHeader({ children, dense, selectedIndex, onSelect, extraContent, borderless, textColor, inkBarColor, ...rest }: Props): JSX.Element;
+export default TabHeader;
