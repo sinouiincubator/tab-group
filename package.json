@@ -4,10 +4,11 @@
   "description": "选项卡切换组件",
   "license": "MIT",
   "main": "dist/index.js",
-  "umd:main": "dist/sinouiincubator-tab-group.umd.production.js",
   "module": "dist/sinouiincubator-tab-group.esm.js",
   "homepage": "https://sinouiincubator.github.io/tab-group",
-  "bugs": { "url": "https://github.com/sinouiincubator/tab-group/issues" },
+  "bugs": {
+    "url": "https://github.com/sinouiincubator/tab-group/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinouiincubator/tab-group.git"
@@ -15,10 +16,10 @@
   "scripts": {
     "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
-    "build": "ts-lib-tools build",
+    "build": "ts-lib-tools build --simple",
     "format": "ts-lib-tools format",
     "lint": "ts-lib-tools lint",
-    "prepublishOnly": "ts-lib-tools build",
+    "release": "yarn build && yarn publish dist",
     "doc:dev": "docz dev",
     "doc:build": "docz build",
     "doc:publish": "docz build && gh-pages -d .docz/dist",
@@ -36,8 +37,14 @@
     "jsxBracketSameLine": false,
     "arrowParens": "always"
   },
-  "eslintConfig": { "extends": "ts-lib" },
-  "husky": { "hooks": { "pre-commit": "lint-staged" } },
+  "eslintConfig": {
+    "extends": "ts-lib"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "src/*.{ts,tsx}": [
       "cross-env CI=true ts-lib-tools test",
@@ -45,7 +52,10 @@
       "git add"
     ]
   },
-  "peerDependencies": { "react": ">=16.8.0", "styled-components": ">=4.0.0" },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "styled-components": ">=4.0.0"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
@@ -90,12 +100,16 @@
     "react-test-renderer": "^16.13.1",
     "style-loader": "^1.0.0",
     "styled-components": "^5.1.0",
-    "ts-lib-tools": "^0.11.3",
+    "ts-lib-tools": "^0.13.2",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.8.3",
     "webpack-docz-ghpages-plugin": "^0.11.0"
   },
-  "publishConfig": { "access": "public" },
-  "resolutions": { "styled-components": "^5.1.0" },
+  "publishConfig": {
+    "access": "public"
+  },
+  "resolutions": {
+    "styled-components": "^5.1.0"
+  },
   "types": "types/index.d.ts"
 }
