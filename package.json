@@ -1,6 +1,6 @@
 {
   "name": "@sinouiincubator/tab-group",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "description": "选项卡切换组件",
   "license": "MIT",
   "main": "dist/index.js",
@@ -59,16 +59,16 @@
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
-    "@sinoui/core": "^1.0.0-beta.9",
+    "@sinoui/core": "^1.0.1",
     "@sinoui/ripple": "^1.0.12",
-    "@sinoui/theme": "^1.0.0-beta.8",
-    "@sinoui/utils": "^0.2.1",
+    "@sinoui/theme": "^1.0.0",
+    "@sinoui/utils": "^1.0.0",
     "classnames": "^2.2.6",
     "styled-components-breakpoint": "^2.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@sinoui/icons": "^1.0.0-beta.2",
+    "@sinoui/icons": "^1.0.0",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
